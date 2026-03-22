@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ROMAN FITNESS | FINANCIAL COMMAND</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-highest": "#353436",
+                        "on-surface-variant": "#c3c5d9",
+                        "on-tertiary-fixed-variant": "#004f58",
+                        "surface-dim": "#131314",
+                        "on-background": "#e5e2e3",
+                        "background": "#131314",
+                        "inverse-on-surface": "#313031",
+                        "error": "#ffb4ab",
+                        "primary-container": "#0059ff",
+                        "tertiary-fixed-dim": "#00daf3",
+                        "surface-tint": "#b6c4ff",
+                        "surface": "#131314",
+                        "on-secondary-fixed": "#131d25",
+                        "on-secondary": "#28313a",
+                        "surface-variant": "#353436",
+                        "on-surface": "#e5e2e3",
+                        "tertiary-fixed": "#9cf0ff",
+                        "secondary-container": "#404a53",
+                        "surface-container": "#201f20",
+                        "tertiary-container": "#007583",
+                        "on-primary-container": "#e7eaff",
+                        "outline-variant": "#434656",
+                        "surface-container-low": "#1c1b1c",
+                        "on-tertiary": "#00363d",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "inverse-surface": "#e5e2e3",
+                        "secondary": "#bec8d3",
+                        "on-tertiary-fixed": "#001f24",
+                        "on-secondary-fixed-variant": "#3e4851",
+                        "on-primary": "#00287d",
+                        "on-tertiary-container": "#bef4ff",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#3a393a",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#2a2a2b",
+                        "outline": "#8d90a2",
+                        "primary": "#b6c4ff",
+                        "on-primary-fixed": "#00164f",
+                        "surface-container-lowest": "#0e0e0f",
+                        "secondary-fixed-dim": "#bec8d3",
+                        "primary-fixed": "#dce1ff",
+                        "tertiary": "#00daf3",
+                        "secondary-fixed": "#dae4ef",
+                        "on-primary-fixed-variant": "#003bb0",
+                        "on-secondary-container": "#afb9c5",
+                        "inverse-primary": "#004fe5"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-gladiator-gradient {
+            background: linear-gradient(135deg, #b6c4ff 0%, #0059ff 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #131314;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #434656;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary">
+<!-- SideNavBar (Execution from JSON) -->
+<aside class="fixed left-0 top-0 h-full w-72 z-40 bg-[#131314] border-r-[2px] border-[#0059ff]/10 flex flex-col pt-24 pb-8">
+<div class="px-8 mb-12">
+<h2 class="text-[#b6c4ff] font-black italic font-headline text-xl tracking-tighter">COMMAND CENTER</h2>
+<p class="font-['Space_Grotesk'] font-bold text-[10px] uppercase tracking-[0.2em] text-[#0059ff] mt-1">PREMIUM ADMINISTRATION</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 text-[#bec8d3] py-4 px-8 opacity-60 hover:bg-[#bec8d3]/5 hover:text-[#b6c4ff] transition-all font-headline font-bold text-sm uppercase tracking-wider active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-4 text-[#bec8d3] py-4 px-8 opacity-60 hover:bg-[#bec8d3]/5 hover:text-[#b6c4ff] transition-all font-headline font-bold text-sm uppercase tracking-wider active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">group</span>
+                Members
+            </a>
+<a class="flex items-center gap-4 text-[#0059ff] border-l-4 border-[#0059ff] bg-gradient-to-r from-[#0059ff]/10 to-transparent py-4 px-8 font-headline font-bold text-sm uppercase tracking-wider active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+                Payments
+            </a>
+<a class="flex items-center gap-4 text-[#bec8d3] py-4 px-8 opacity-60 hover:bg-[#bec8d3]/5 hover:text-[#b6c4ff] transition-all font-headline font-bold text-sm uppercase tracking-wider active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">fitness_center</span>
+                Trainers
+            </a>
+<a class="flex items-center gap-4 text-[#bec8d3] py-4 px-8 opacity-60 hover:bg-[#bec8d3]/5 hover:text-[#b6c4ff] transition-all font-headline font-bold text-sm uppercase tracking-wider active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+                Today's Log
+            </a>
+<a class="flex items-center gap-4 text-[#bec8d3] py-4 px-8 opacity-60 hover:bg-[#bec8d3]/5 hover:text-[#b6c4ff] transition-all font-headline font-bold text-sm uppercase tracking-wider active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto px-8">
+<button class="flex items-center gap-4 text-[#bec8d3] py-4 opacity-60 hover:text-error transition-all font-headline font-bold text-sm uppercase tracking-wider w-full">
+<span class="material-symbols-outlined">logout</span>
+                Logout
+            </button>
+</div>
+</aside>
+<!-- TopAppBar (Execution from JSON) -->
+<header class="fixed top-0 w-full z-50 bg-[#131314]/60 backdrop-blur-md flex justify-between items-center px-8 h-20 shadow-[0_20px_40px_rgba(0,89,255,0.08)]">
+<div class="flex items-center gap-12">
+<div class="text-2xl font-black text-[#b6c4ff] tracking-tighter font-headline uppercase">ROMAN FITNESS</div>
+<div class="hidden md:flex gap-8">
+<span class="text-[#0059ff] font-['Space_Grotesk'] font-bold uppercase tracking-widest text-xs">FINANCIAL COMMAND</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#bec8d3] text-sm">search</span>
+<input class="bg-surface-container-lowest border-none text-[10px] font-headline tracking-[0.2em] text-[#bec8d3] pl-10 pr-4 py-2 w-64 focus:ring-0 focus:border-b-2 border-[#0059ff]" placeholder="SEARCH ASSETS..." type="text"/>
+</div>
+<div class="flex gap-4">
+<button class="text-[#bec8d3] hover:text-[#b6c4ff] transition-colors duration-200 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-[#bec8d3] hover:text-[#b6c4ff] transition-colors duration-200 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-72 pt-32 px-12 pb-20">
+<!-- Header Actions -->
+<div class="flex justify-between items-end mb-16">
+<div>
+<h1 class="font-headline font-black text-6xl text-on-background tracking-tight uppercase">Financial Command</h1>
+<p class="font-label text-primary tracking-[0.3em] uppercase text-xs mt-2 flex items-center gap-2">
+<span class="w-12 h-[2px] bg-primary"></span>
+                    Terminal Access: Secure
+                </p>
+</div>
+<div class="flex gap-4">
+<button class="bg-surface-container-high text-on-secondary-container px-6 py-3 font-headline font-bold text-xs uppercase tracking-widest hover:bg-surface-container-highest transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">tune</span>
+                    Filter
+                </button>
+<button class="bg-gladiator-gradient text-on-primary px-8 py-3 font-headline font-bold text-xs uppercase tracking-widest active:scale-95 transition-transform shadow-[0_10px_20px_rgba(0,89,255,0.2)] flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">download</span>
+                    Export Report
+                </button>
+</div>
+</div>
+<!-- Summary Cards Bento Grid -->
+<div class="grid grid-cols-12 gap-6 mb-16">
+<div class="col-span-12 lg:col-span-4 bg-surface-container-high p-8 relative overflow-hidden group">
+<div class="absolute left-0 top-0 w-1 h-full bg-tertiary"></div>
+<div class="relative z-10">
+<span class="font-headline font-bold text-xs text-on-surface-variant tracking-widest uppercase mb-6 block opacity-60">Total Revenue (Monthly)</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline font-black text-5xl text-on-background tracking-tighter">$142,850</span>
+<span class="font-label font-bold text-tertiary text-xs">+12.4%</span>
+</div>
+<div class="mt-8 h-1 bg-surface-container-highest w-full">
+<div class="h-full bg-tertiary w-[75%]"></div>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl text-white opacity-[0.02] group-hover:scale-110 transition-transform duration-700">payments</span>
+</div>
+<div class="col-span-12 lg:col-span-4 bg-surface-container-high p-8 relative overflow-hidden group">
+<div class="absolute left-0 top-0 w-1 h-full bg-primary"></div>
+<div class="relative z-10">
+<span class="font-headline font-bold text-xs text-on-surface-variant tracking-widest uppercase mb-6 block opacity-60">Pending Payments</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline font-black text-5xl text-on-background tracking-tighter">$8,240</span>
+<span class="font-label font-bold text-primary text-xs">14 INV</span>
+</div>
+<p class="font-label text-[10px] text-on-surface-variant/40 mt-6 tracking-widest uppercase">Next settlement in 48 hours</p>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl text-white opacity-[0.02] group-hover:scale-110 transition-transform duration-700">pending_actions</span>
+</div>
+<div class="col-span-12 lg:col-span-4 bg-surface-container-high p-8 relative overflow-hidden group">
+<div class="absolute left-0 top-0 w-1 h-full bg-secondary"></div>
+<div class="relative z-10">
+<span class="font-headline font-bold text-xs text-on-surface-variant tracking-widest uppercase mb-6 block opacity-60">Average Transaction</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline font-black text-5xl text-on-background tracking-tighter">$185.00</span>
+<span class="font-label font-bold text-on-surface-variant text-xs">PREMIUM</span>
+</div>
+<div class="flex gap-1 mt-8">
+<div class="h-4 bg-primary/20 flex-1"></div>
+<div class="h-4 bg-primary/40 flex-1"></div>
+<div class="h-4 bg-primary/60 flex-1"></div>
+<div class="h-4 bg-primary flex-1"></div>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl text-white opacity-[0.02] group-hover:scale-110 transition-transform duration-700">receipt_long</span>
+</div>
+</div>
+<!-- Transactions Table HUD -->
+<div class="bg-surface-container-low border border-outline-variant/10 overflow-hidden">
+<div class="p-8 border-b border-outline-variant/10 flex justify-between items-center bg-surface-container-high/30">
+<h3 class="font-headline font-extrabold text-sm tracking-[0.2em] uppercase text-primary">Recent Transactions Log</h3>
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-2 font-label text-[10px] text-on-surface-variant uppercase tracking-widest">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span> Live Stream
+                    </span>
+</div>
+</div>
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest">
+<th class="px-8 py-4 font-headline font-bold text-[10px] text-on-surface-variant uppercase tracking-widest">Transaction ID</th>
+<th class="px-8 py-4 font-headline font-bold text-[10px] text-on-surface-variant uppercase tracking-widest">User</th>
+<th class="px-8 py-4 font-headline font-bold text-[10px] text-on-surface-variant uppercase tracking-widest">Amount</th>
+<th class="px-8 py-4 font-headline font-bold text-[10px] text-on-surface-variant uppercase tracking-widest">Status</th>
+<th class="px-8 py-4 font-headline font-bold text-[10px] text-on-surface-variant uppercase tracking-widest">Date</th>
+<th class="px-8 py-4 font-headline font-bold text-[10px] text-on-surface-variant uppercase tracking-widest">Invoice</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-8 py-6 font-label text-sm text-secondary font-mono tracking-tighter">RF-TX-9901</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-highest flex items-center justify-center text-[10px] font-headline font-bold text-primary">MC</div>
+<span class="font-headline font-bold text-sm text-on-background">Marcus Cassius</span>
+</div>
+</td>
+<td class="px-8 py-6 font-headline font-black text-sm">$299.00</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center px-3 py-1 bg-tertiary/10 text-tertiary text-[10px] font-headline font-black uppercase tracking-widest">Confirmed</span>
+</td>
+<td class="px-8 py-6 font-label text-xs text-on-surface-variant">OCT 24, 2023</td>
+<td class="px-8 py-6">
+<a class="text-primary hover:text-on-primary-container transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">description</span>
+</a>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-8 py-6 font-label text-sm text-secondary font-mono tracking-tighter">RF-TX-9882</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-highest flex items-center justify-center text-[10px] font-headline font-bold text-primary">LA</div>
+<span class="font-headline font-bold text-sm text-on-background">Livia Augusta</span>
+</div>
+</td>
+<td class="px-8 py-6 font-headline font-black text-sm">$185.00</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center px-3 py-1 bg-tertiary/10 text-tertiary text-[10px] font-headline font-black uppercase tracking-widest">Confirmed</span>
+</td>
+<td class="px-8 py-6 font-label text-xs text-on-surface-variant">OCT 23, 2023</td>
+<td class="px-8 py-6">
+<a class="text-primary hover:text-on-primary-container transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">description</span>
+</a>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-8 py-6 font-label text-sm text-secondary font-mono tracking-tighter">RF-TX-9875</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-highest flex items-center justify-center text-[10px] font-headline font-bold text-primary">DS</div>
+<span class="font-headline font-bold text-sm text-on-background">Decimus Severus</span>
+</div>
+</td>
+<td class="px-8 py-6 font-headline font-black text-sm">$450.00</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center px-3 py-1 bg-primary/10 text-primary text-[10px] font-headline font-black uppercase tracking-widest">Processing</span>
+</td>
+<td class="px-8 py-6 font-label text-xs text-on-surface-variant">OCT 23, 2023</td>
+<td class="px-8 py-6">
+<a class="text-primary hover:text-on-primary-container transition-colors opacity-30 cursor-not-allowed" href="#">
+<span class="material-symbols-outlined text-xl">description</span>
+</a>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-8 py-6 font-label text-sm text-secondary font-mono tracking-tighter">RF-TX-9870</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-highest flex items-center justify-center text-[10px] font-headline font-bold text-primary">AJ</div>
+<span class="font-headline font-bold text-sm text-on-background">Aurelius Julius</span>
+</div>
+</td>
+<td class="px-8 py-6 font-headline font-black text-sm">$185.00</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center px-3 py-1 bg-error/10 text-error text-[10px] font-headline font-black uppercase tracking-widest">Failed</span>
+</td>
+<td class="px-8 py-6 font-label text-xs text-on-surface-variant">OCT 22, 2023</td>
+<td class="px-8 py-6">
+<a class="text-primary hover:text-on-primary-container transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">description</span>
+</a>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-8 py-6 font-label text-sm text-secondary font-mono tracking-tighter">RF-TX-9864</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-highest flex items-center justify-center text-[10px] font-headline font-bold text-primary">TS</div>
+<span class="font-headline font-bold text-sm text-on-background">Tiberius Scipio</span>
+</div>
+</td>
+<td class="px-8 py-6 font-headline font-black text-sm">$1,200.00</td>
+<td class="px-8 py-6">
+<span class="inline-flex items-center px-3 py-1 bg-tertiary/10 text-tertiary text-[10px] font-headline font-black uppercase tracking-widest">Confirmed</span>
+</td>
+<td class="px-8 py-6 font-label text-xs text-on-surface-variant">OCT 22, 2023</td>
+<td class="px-8 py-6">
+<a class="text-primary hover:text-on-primary-container transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">description</span>
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer -->
+<div class="p-6 bg-surface-container-lowest flex justify-between items-center">
+<p class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Showing 5 of 1,248 entries</p>
+<div class="flex gap-2">
+<button class="w-10 h-10 border border-outline-variant/20 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-10 h-10 border border-primary/40 bg-primary/10 flex items-center justify-center text-primary font-headline font-bold text-xs">1</button>
+<button class="w-10 h-10 border border-outline-variant/20 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors font-headline font-bold text-xs">2</button>
+<button class="w-10 h-10 border border-outline-variant/20 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors font-headline font-bold text-xs">3</button>
+<button class="w-10 h-10 border border-outline-variant/20 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- System Status Footer Overlay (Decorative Tech Theme) -->
+<div class="mt-20 grid grid-cols-4 gap-4 opacity-30">
+<div class="border-t border-primary/20 pt-4">
+<span class="font-headline font-bold text-[8px] uppercase tracking-[0.4em] text-primary block mb-2">Network Load</span>
+<div class="flex gap-[2px]">
+<div class="w-1 h-3 bg-primary"></div>
+<div class="w-1 h-3 bg-primary"></div>
+<div class="w-1 h-3 bg-primary/40"></div>
+<div class="w-1 h-3 bg-primary/20"></div>
+</div>
+</div>
+<div class="border-t border-primary/20 pt-4">
+<span class="font-headline font-bold text-[8px] uppercase tracking-[0.4em] text-primary block mb-2">Encryption</span>
+<span class="font-label text-[10px] text-secondary">AES-256 ACTIVE</span>
+</div>
+<div class="border-t border-primary/20 pt-4">
+<span class="font-headline font-bold text-[8px] uppercase tracking-[0.4em] text-primary block mb-2">Sync Status</span>
+<span class="font-label text-[10px] text-tertiary">SYNCHRONIZED</span>
+</div>
+<div class="border-t border-primary/20 pt-4">
+<span class="font-headline font-bold text-[8px] uppercase tracking-[0.4em] text-primary block mb-2">Region</span>
+<span class="font-label text-[10px] text-secondary">CENTRAL_R01</span>
+</div>
+</div>
+</main>
+<!-- FAB Suppression as per mandate (Transactional/Dashboard Admin Detail) -->
+<!-- Navigation Sidebar Shell Logic Applied (Payments Active) -->
+</body></html>

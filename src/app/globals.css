@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    /* #0A0A0A */
+    --foreground: 0 0% 100%;
+    /* White */
+
+    --card: 0 0% 10%;
+    /* #1A1A1A */
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 196 100% 47%;
+    /* Electric Blue #00AEEF */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 207 74% 10%;
+    /* Deep Navy #071B2A */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 196 100% 47%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0A0A0A;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1A1A1A;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00AEEF;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px rgba(0, 174, 239, 0.5), 0 0 40px rgba(0, 174, 239, 0.2);
+  }
+
+  .text-glow-strong {
+    text-shadow: 0 0 20px rgba(0, 174, 239, 0.5), 0 0 40px rgba(0, 174, 239, 0.2);
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-blue {
+    background: rgba(0, 174, 239, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 174, 239, 0.1);
+  }
+
+  .metallic-border {
+    border: 1px solid transparent;
+    background-image: linear-gradient(#1A1A1A, #1A1A1A), linear-gradient(135deg, #333 0%, #00AEEF 50%, #333 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+
+  .blue-glow-box {
+    box-shadow: 0 0 15px rgba(0, 174, 239, 0.15), 0 0 30px rgba(0, 174, 239, 0.05);
+  }
+
+  .hero-gradient {
+    background: radial-gradient(ellipse at center, rgba(0, 174, 239, 0.08) 0%, transparent 70%);
+  }
+
+  /* Lenis smooth scroll */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  /* GPU acceleration for animated elements */
+  .will-change-transform {
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  /* GPU-promote videos */
+  video {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  .lenis.lenis-smooth iframe:not(.razorpay-checkout-frame) {
+    pointer-events: none;
+  }
+}
+
+/* GSAP animation helpers */
+.gsap-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.gsap-reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+
+.gsap-reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+}
+
+.gsap-scale {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+/* Logo metallic shimmer */
+@keyframes metallic-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.metallic-text {
+  background: linear-gradient(90deg, #888 0%, #fff 25%, #00AEEF 50%, #fff 75%, #888 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: metallic-shimmer 4s linear infinite;
+}
+
+/* Neon pulse */
+/* Static glow instead of continuous animation */
+.neon-pulse {
+  box-shadow: 0 0 10px rgba(0, 174, 239, 0.3), 0 0 20px rgba(0, 174, 239, 0.15);
+}
+
+/* Logo intro animations */
+/* Removed continuous logo animations for performance */
+
+@keyframes energy-line {
+  0% { transform: translateX(-100%) scaleX(0); opacity: 0; }
+  50% { transform: translateX(0%) scaleX(1); opacity: 1; }
+  100% { transform: translateX(100%) scaleX(0); opacity: 0; }
+}
+
+@keyframes fade-in-scale {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}

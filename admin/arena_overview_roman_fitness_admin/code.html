@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Arena Control - Arena Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#201f20",
+                        "on-surface": "#e5e2e3",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#3e4851",
+                        "surface-tint": "#b6c4ff",
+                        "on-primary-fixed": "#00164f",
+                        "surface-container-lowest": "#0e0e0f",
+                        "secondary-fixed-dim": "#bec8d3",
+                        "on-tertiary-container": "#bef4ff",
+                        "secondary-fixed": "#dae4ef",
+                        "surface-container-low": "#1c1b1c",
+                        "on-tertiary-fixed": "#001f24",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#313031",
+                        "on-primary": "#00287d",
+                        "background": "#131314",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#00363d",
+                        "on-surface-variant": "#c3c5d9",
+                        "on-primary-container": "#e7eaff",
+                        "on-background": "#e5e2e3",
+                        "primary-container": "#0059ff",
+                        "surface-container-highest": "#353436",
+                        "primary-fixed": "#dce1ff",
+                        "on-secondary-container": "#afb9c5",
+                        "primary": "#b6c4ff",
+                        "secondary-container": "#404a53",
+                        "on-secondary-fixed": "#131d25",
+                        "inverse-surface": "#e5e2e3",
+                        "tertiary": "#00daf3",
+                        "secondary": "#bec8d3",
+                        "on-secondary": "#28313a",
+                        "error-container": "#93000a",
+                        "surface-variant": "#353436",
+                        "surface-dim": "#131314",
+                        "outline": "#8d90a2",
+                        "surface": "#131314",
+                        "on-primary-fixed-variant": "#003bb0",
+                        "surface-container-high": "#2a2a2b",
+                        "surface-bright": "#3a393a",
+                        "tertiary-fixed": "#9cf0ff",
+                        "tertiary-fixed-dim": "#00daf3",
+                        "outline-variant": "#434656",
+                        "inverse-primary": "#004fe5",
+                        "tertiary-container": "#007583",
+                        "on-tertiary-fixed-variant": "#004f58"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0rem", "lg": "0rem", "xl": "0rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-arena-gradient {
+            background: linear-gradient(135deg, #b6c4ff 0%, #0059ff 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #131314;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #353436;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary">
+<!-- SideNavBar Anchor -->
+<aside class="fixed left-0 top-0 h-full flex flex-col z-50 overflow-y-auto w-64 border-r-0 bg-[#131314] shadow-[20px_0_40px_rgba(0,89,255,0.04)]">
+<div class="p-8">
+<h1 class="text-2xl font-black tracking-tighter text-[#b6c4ff] italic font-headline mb-2">ARENA</h1>
+<p class="font-headline font-bold tracking-tight text-[10px] uppercase text-[#bec8d3] opacity-60">High-Performance Terminal</p>
+</div>
+<nav class="flex-1 mt-4">
+<!-- Active: Dashboard -->
+<a class="text-[#b6c4ff] border-l-2 border-[#00daf3] bg-[#1c1c1e] font-headline font-bold px-6 py-4 flex items-center gap-3 transition-all duration-300 text-sm uppercase tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="text-[#bec8d3] hover:bg-[#1c1c1e] hover:text-[#0059ff] px-6 py-4 flex items-center gap-3 transition-all duration-300 font-headline font-bold text-sm uppercase tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                Members
+            </a>
+<a class="text-[#bec8d3] hover:bg-[#1c1c1e] hover:text-[#0059ff] px-6 py-4 flex items-center gap-3 transition-all duration-300 font-headline font-bold text-sm uppercase tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+                Payments
+            </a>
+<a class="text-[#bec8d3] hover:bg-[#1c1c1e] hover:text-[#0059ff] px-6 py-4 flex items-center gap-3 transition-all duration-300 font-headline font-bold text-sm uppercase tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="fitness_center">fitness_center</span>
+                Trainers
+            </a>
+<a class="text-[#bec8d3] hover:bg-[#1c1c1e] hover:text-[#0059ff] px-6 py-4 flex items-center gap-3 transition-all duration-300 font-headline font-bold text-sm uppercase tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+                Today's Log
+            </a>
+<a class="text-[#bec8d3] hover:bg-[#1c1c1e] hover:text-[#0059ff] px-6 py-4 flex items-center gap-3 transition-all duration-300 font-headline font-bold text-sm uppercase tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="p-6 bg-[#1c1c1e] mt-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container flex items-center justify-center overflow-hidden">
+<img alt="Arena Administrator" class="w-full h-full object-cover" data-alt="Strong athlete profile photo in dark gym" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD10SgmvljsjzOmi88atAk89W42ykHVdAcs2kmv9d_2HQryYbBbsHoFrCV9UCx2brkx6l20My92QlSA-9rG2pgBala8oitdF_lki-uQPHrbyQSQxEIN5p61f5hMHRhL36V1Ng0r8EGz3Ed05JtTYy_8beh2nq6syXG1DomAdw89Vlra4WNbAm0h2UNwtovQjxv8e8sV7pWKtYAivzH8exx5eHoA7pmeftjSflNlw0L7VsXgfAj5ZYfMPFNtB_Ry_QpXfsl83mqHoBw"/>
+</div>
+<div>
+<p class="text-xs font-bold font-headline text-on-surface">Arena Administrator</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Master Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TopAppBar Anchor -->
+<header class="flex justify-between items-center w-full px-8 h-16 bg-[#131314]/60 backdrop-blur-xl border-b border-white/5 sticky top-0 z-40">
+<div class="flex items-center gap-8">
+<h2 class="font-headline font-black text-xl text-[#b6c4ff] italic">Arena Overview</h2>
+<div class="hidden md:flex items-center bg-surface-container-low px-4 py-1.5 gap-3 border border-outline-variant/15">
+<span class="material-symbols-outlined text-sm text-on-surface-variant" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm text-on-surface placeholder:text-on-surface-variant/50 w-64 font-body" placeholder="Scan Member ID or Search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-high text-secondary font-headline font-bold text-xs uppercase tracking-widest hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="campaign">campaign</span>
+                    Broadcast
+                </button>
+<button class="flex items-center gap-2 px-6 py-2 bg-arena-gradient text-on-primary font-headline font-black text-xs uppercase tracking-widest shadow-[0_10px_20px_rgba(0,89,255,0.2)] hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="person_add">person_add</span>
+                    Add Member
+                </button>
+<div class="h-6 w-[1px] bg-white/10 mx-2"></div>
+<button class="text-on-surface-variant hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Dashboard Content -->
+<section class="p-8 space-y-8 max-w-[1600px]">
+<!-- Statistics Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Total Members -->
+<div class="bg-surface-container-high p-6 relative border-l-2 border-[#00daf3]">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="groups">groups</span>
+<span class="text-[10px] font-headline font-bold text-on-surface-variant uppercase tracking-widest">Global Count</span>
+</div>
+<div class="space-y-1">
+<h3 class="text-4xl font-headline font-black text-on-surface">549</h3>
+<p class="text-xs font-body text-on-surface-variant">Total Members Enrolled</p>
+</div>
+<div class="mt-4 h-1 bg-surface-container-lowest w-full">
+<div class="h-full bg-primary-container w-[85%]"></div>
+</div>
+</div>
+<!-- Active Now -->
+<div class="bg-surface-container-high p-6 relative border-l-2 border-primary">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="bolt">bolt</span>
+<span class="text-[10px] font-headline font-bold text-on-surface-variant uppercase tracking-widest">Live Arena</span>
+</div>
+<div class="space-y-1">
+<h3 class="text-4xl font-headline font-black text-on-surface">0</h3>
+<p class="text-xs font-body text-on-surface-variant">Currently Training</p>
+</div>
+<div class="mt-4 h-1 bg-surface-container-lowest w-full">
+<div class="h-full bg-primary w-0"></div>
+</div>
+</div>
+<!-- Expiring Soon -->
+<div class="bg-surface-container-high p-6 relative border-l-2 border-error">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-error" data-icon="timer">timer</span>
+<span class="text-[10px] font-headline font-bold text-on-surface-variant uppercase tracking-widest">Critical Alert</span>
+</div>
+<div class="space-y-1">
+<h3 class="text-4xl font-headline font-black text-on-surface">1</h3>
+<p class="text-xs font-body text-on-surface-variant">Membership Expiring</p>
+</div>
+<div class="mt-4 h-1 bg-surface-container-lowest w-full">
+<div class="h-full bg-error w-[15%]"></div>
+</div>
+</div>
+<!-- Today's Revenue -->
+<div class="bg-surface-container-high p-6 relative border-l-2 border-tertiary">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-tertiary" data-icon="payments">payments</span>
+<span class="text-[10px] font-headline font-bold text-on-surface-variant uppercase tracking-widest">Daily Yield</span>
+</div>
+<div class="space-y-1">
+<h3 class="text-4xl font-headline font-black text-on-surface">Rs. 0</h3>
+<p class="text-xs font-body text-on-surface-variant">Revenue Collected Today</p>
+</div>
+<div class="mt-4 h-1 bg-surface-container-lowest w-full">
+<div class="h-full bg-tertiary w-0"></div>
+</div>
+</div>
+</div>
+<!-- Dashboard Main Sections -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Live Activity Feed -->
+<div class="lg:col-span-7 space-y-6">
+<div class="flex items-center justify-between">
+<h4 class="font-headline font-black text-lg uppercase tracking-widest text-on-surface flex items-center gap-3">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                            Live Activity Feed
+                        </h4>
+<button class="text-[10px] font-headline font-bold text-primary uppercase tracking-widest border-b border-primary/30 pb-0.5">View Archive</button>
+</div>
+<div class="bg-surface-container-low p-1 space-y-1 border border-white/5">
+<!-- Empty State or Activity Rows -->
+<div class="bg-surface-container-high p-12 flex flex-col items-center justify-center text-center space-y-4">
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant/30 text-4xl" data-icon="sensors">sensors</span>
+</div>
+<div class="max-w-xs">
+<p class="font-headline font-bold text-sm text-on-surface uppercase tracking-tight">Arena is Silent</p>
+<p class="text-xs text-on-surface-variant mt-2 font-body">No check-ins recorded in the last 60 minutes. High-performance cycles pending.</p>
+</div>
+</div>
+</div>
+<!-- Visual Tech Graphic Overlay -->
+<div class="relative h-48 w-full bg-surface-container-lowest overflow-hidden">
+<div class="absolute inset-0 opacity-10">
+<div class="h-full w-full" style="background-image: radial-gradient(circle at 2px 2px, #b6c4ff 1px, transparent 0); background-size: 24px 24px;"></div>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<img alt="Gym Texture" class="w-full h-full object-cover mix-blend-overlay opacity-30" data-alt="Close up of heavy metal gym equipment and plates" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_8pROFIo1fVsnE4GT9DRaB87Dv21tMdUqyjR1-Lg953IUPfRrCPlzDQIk8ZpgD_ujP4t0gZgrTJmgVnBRJlA9yhvFutgatlOX3TkYeEvUJBkD0Xzg9g9ZG7zZUcgAQSEEdXrTwhUOG1EgkfOUR2ypM0WEgy8sUEo82E4EPmqMUjyUCxBYW5BfRmRdzPPEqP4iJgMvOAbQA00SVnipW3Borme_84ww7c4W_1ySq96lvZtVysTCYJoVN5N-eeyYpNvSyOFsrdFduMs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+<div class="absolute bottom-6 left-8">
+<p class="font-headline font-black text-2xl italic text-primary-fixed-dim/20 tracking-tighter uppercase">STRENGTH THRU DISCIPLINE</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Expiring Approaching Section -->
+<div class="lg:col-span-5 space-y-6">
+<div class="flex items-center justify-between">
+<h4 class="font-headline font-black text-lg uppercase tracking-widest text-on-surface flex items-center gap-3">
+<span class="material-symbols-outlined text-error text-xl" data-icon="warning">warning</span>
+                            Expiring Approaching
+                        </h4>
+<span class="bg-error-container text-error px-2 py-0.5 text-[10px] font-headline font-black uppercase">1 Pending</span>
+</div>
+<div class="space-y-4">
+<!-- Member Alert Card -->
+<div class="bg-surface-container-high p-5 border border-error/20 flex items-center justify-between hover:border-error/50 transition-all group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-lowest border border-white/5 flex items-center justify-center overflow-hidden">
+<img alt="Member Avatar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Focused athlete lifting weights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtsqc3H5QZKAGiuM7WELUv1-G-e6NpI_oj0wfFVu_qZum4JgIbz0FZeWe_knbDo6Y__iA104tkP_e_7ioAzgR32tzPS_Sjo5QIOXkYR1gKonii-lthwnHJDrQTD6j3FlUBGKqB_EGpXS7QJivMPcEleiviUUQwlOg56Yrr8ploy0OHVPMj_xEBA1vstuWhjNuIkO7yva5tgxypau7-cO_t8a9LpWMJ30NNKrFN-GR7zOQ1kI5rGAoMNVMbFhaAiGBY6bo37TK5w-8"/>
+</div>
+<div>
+<p class="font-headline font-bold text-sm text-on-surface uppercase tracking-tight">Vikram Singh</p>
+<p class="text-[10px] font-body text-error font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-icon="event_busy">event_busy</span>
+                                        Expires in 2 days
+                                    </p>
+</div>
+</div>
+<button class="bg-surface-container-lowest hover:bg-primary hover:text-on-primary border border-outline-variant/30 px-4 py-2 text-[10px] font-headline font-black uppercase tracking-widest transition-all active:scale-95">
+                                Remind
+                            </button>
+</div>
+<!-- Secondary Alert Card (Mock) -->
+<div class="bg-surface-container-low p-8 border border-white/5 flex flex-col items-center justify-center text-center opacity-40">
+<span class="material-symbols-outlined text-on-surface-variant mb-2" data-icon="pending_actions">pending_actions</span>
+<p class="text-[10px] font-headline font-bold uppercase tracking-widest">No other critical expirations</p>
+</div>
+</div>
+<!-- Quick Metrics Card -->
+<div class="bg-surface-container-highest p-6 space-y-4">
+<h5 class="font-headline font-bold text-xs uppercase tracking-widest text-on-surface-variant">Membership Distribution</h5>
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<p class="text-[10px] font-headline font-bold uppercase text-on-surface">Annual Elite</p>
+<p class="text-xs font-headline font-bold text-primary">64%</p>
+</div>
+<div class="h-1 bg-surface-container-lowest w-full">
+<div class="h-full bg-primary-container w-[64%]"></div>
+</div>
+<div class="flex justify-between items-end">
+<p class="text-[10px] font-headline font-bold uppercase text-on-surface">Monthly Warrior</p>
+<p class="text-xs font-headline font-bold text-tertiary">22%</p>
+</div>
+<div class="h-1 bg-surface-container-lowest w-full">
+<div class="h-full bg-tertiary w-[22%]"></div>
+</div>
+<div class="flex justify-between items-end">
+<p class="text-[10px] font-headline font-bold uppercase text-on-surface">Trial Combat</p>
+<p class="text-xs font-headline font-bold text-secondary">14%</p>
+</div>
+<div class="h-1 bg-surface-container-lowest w-full">
+<div class="h-full bg-secondary w-[14%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer / Technical Specs -->
+<footer class="mt-auto p-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-6 opacity-40">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-tertiary rounded-full"></span>
+<p class="text-[9px] font-headline font-bold uppercase tracking-[0.2em]">System Status: Operational</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]" data-icon="database">database</span>
+<p class="text-[9px] font-headline font-bold uppercase tracking-[0.2em]">DB Sync: Real-time</p>
+</div>
+</div>
+<p class="text-[9px] font-headline font-bold uppercase tracking-[0.2em] text-on-surface-variant/40">© Arena Control Terminal V2.4 // Roman Fitness Identity</p>
+</footer>
+</main>
+<!-- Contextual FAB - Restricted to Dashboard -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-arena-gradient text-on-primary flex items-center justify-center shadow-[0_20px_40px_rgba(0,89,255,0.3)] z-50 hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-2xl" data-icon="qr_code_scanner" data-weight="fill" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+</button>
+</body></html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ARENA COMMAND | Gladiator HUD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed-variant": "#3e4851",
+                        "background": "#131314",
+                        "tertiary-fixed": "#9cf0ff",
+                        "secondary-fixed-dim": "#bec8d3",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e5e2e3",
+                        "secondary-container": "#404a53",
+                        "inverse-on-surface": "#313031",
+                        "on-error": "#690005",
+                        "surface-bright": "#3a393a",
+                        "primary-container": "#0059ff",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "primary-fixed": "#dce1ff",
+                        "surface-variant": "#353436",
+                        "on-tertiary-container": "#bef4ff",
+                        "on-secondary": "#28313a",
+                        "on-tertiary-fixed-variant": "#004f58",
+                        "on-surface-variant": "#c3c5d9",
+                        "outline": "#8d90a2",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0e0e0f",
+                        "surface-container-highest": "#353436",
+                        "primary": "#b6c4ff",
+                        "on-primary-fixed": "#00164f",
+                        "surface-container": "#201f20",
+                        "tertiary-fixed-dim": "#00daf3",
+                        "on-surface": "#e5e2e3",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#afb9c5",
+                        "on-secondary-fixed": "#131d25",
+                        "tertiary": "#00daf3",
+                        "on-tertiary-fixed": "#001f24",
+                        "on-tertiary": "#00363d",
+                        "on-primary": "#00287d",
+                        "surface-container-high": "#2a2a2b",
+                        "on-primary-fixed-variant": "#003bb0",
+                        "inverse-primary": "#004fe5",
+                        "secondary-fixed": "#dae4ef",
+                        "surface-tint": "#b6c4ff",
+                        "outline-variant": "#434656",
+                        "surface-dim": "#131314",
+                        "secondary": "#bec8d3",
+                        "on-primary-container": "#e7eaff",
+                        "inverse-surface": "#e5e2e3",
+                        "tertiary-container": "#007583",
+                        "surface": "#131314",
+                        "surface-container-low": "#1c1b1c"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hud-scanline {
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 89, 255, 0.05) 50%);
+            background-size: 100% 4px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131314]/60 backdrop-blur-md shadow-[0_20px_40px_rgba(0,89,255,0.08)] flex justify-between items-center px-6 h-20">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-black italic text-[#b6c4ff] tracking-widest font-headline">ARENA COMMAND</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex gap-6 text-[#bec8d3] font-headline font-bold uppercase tracking-tighter text-sm">
+<a class="text-[#b6c4ff] border-b-2 border-[#0059ff] py-1 transition-colors duration-200" href="#">Dashboard</a>
+<a class="hover:text-[#0059ff] transition-colors duration-200 py-1" href="#">Battles</a>
+<a class="hover:text-[#0059ff] transition-colors duration-200 py-1" href="#">Armory</a>
+<a class="hover:text-[#0059ff] transition-colors duration-200 py-1" href="#">Rankings</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#b6c4ff] p-2 hover:text-[#0059ff] transition-transform active:scale-95" data-icon="notifications">notifications</button>
+<div class="h-10 w-10 bg-surface-container-highest border border-outline-variant flex items-center justify-center overflow-hidden">
+<img alt="User Gladiator Profile" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjrjMCozHHjG6NcDPgCpU_sqhnyVWVk2K8XpndJK2HpL2JswVcMBdQlmwS0uGQdFUpg_Kiw3nWWPbkMBZtRymUYXNTVALjNDxll6v6AdlBuqo1RGpOlz2iGbN74tEonPnz-qXXbXWSXUZRQd27J5-LPxCao7IPc_h6sXAlp4ADVZR3dUB38jTM-C6owT7rNd2bbppKxMHtq-leOgjNs3IJ5dBm0RhxCjhZUl_vG_h5uzAHGv_nOY_vbrLs-IIsLZDiF9s82JenD4E"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-gradient-to-r from-[#131314] to-[#1c1c1e] z-40 hidden md:flex flex-col pt-24 pb-8 border-r-0">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 border-2 border-primary-container flex items-center justify-center bg-background">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+<div>
+<p class="font-headline font-bold text-primary tracking-tighter text-xs">CENTURION I</p>
+<p class="text-[10px] text-secondary opacity-60 font-semibold uppercase tracking-[1px]">Elite Division</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col">
+<a class="text-[#b6c4ff] bg-[#0059ff]/10 border-l-4 border-[#0059ff] py-4 px-6 flex items-center gap-4 font-label font-semibold uppercase tracking-[1.5px] text-[0.6875rem]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+            My Arena
+        </a>
+<a class="text-[#bec8d3] py-4 px-6 flex items-center gap-4 opacity-60 hover:bg-[#0059ff]/5 hover:text-[#b6c4ff] transition-all font-label font-semibold uppercase tracking-[1.5px] text-[0.6875rem]" href="#">
+<span class="material-symbols-outlined" data-icon="military_tech">military_tech</span>
+            Gladiator Rank
+        </a>
+<a class="text-[#bec8d3] py-4 px-6 flex items-center gap-4 opacity-60 hover:bg-[#0059ff]/5 hover:text-[#b6c4ff] transition-all font-label font-semibold uppercase tracking-[1.5px] text-[0.6875rem]" href="#">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+            Medals
+        </a>
+<a class="text-[#bec8d3] py-4 px-6 flex items-center gap-4 opacity-60 hover:bg-[#0059ff]/5 hover:text-[#b6c4ff] transition-all font-label font-semibold uppercase tracking-[1.5px] text-[0.6875rem]" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+            Settings
+        </a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 pt-24 px-6 pb-12 min-h-screen">
+<!-- Gladiator HUD (Header) -->
+<section class="mb-10 relative overflow-hidden bg-surface-container-lowest p-8 border-l-4 border-primary">
+<div class="absolute inset-0 hud-scanline opacity-10 pointer-events-none"></div>
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+<div>
+<h1 class="font-headline text-4xl md:text-5xl font-black uppercase tracking-tighter mb-1">Commander <span class="text-primary italic">Maximus</span></h1>
+<div class="flex items-center gap-4 mt-2">
+<span class="bg-primary-container/20 text-primary px-3 py-1 text-[10px] font-bold tracking-[2px] border border-primary/30">LEVEL 42</span>
+<span class="text-secondary text-sm font-label uppercase tracking-widest font-bold">Centurion Class I</span>
+</div>
+</div>
+<div class="w-full md:w-96">
+<div class="flex justify-between text-[10px] font-bold tracking-widest uppercase mb-2 text-primary">
+<span>XP Progress</span>
+<span>8,450 / 10,000 XP</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest border border-outline-variant/20 p-[1px]">
+<div class="h-full bg-gradient-to-r from-primary to-tertiary-fixed-dim" style="width: 84.5%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- The Arena (Main Stats) - Adjusted Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+<!-- Battle Streaks -->
+<div class="bg-surface-container-high p-6 flex flex-col justify-between min-h-[160px] border-l-2 border-tertiary shadow-[4px_0_20px_-10px_rgba(0,218,243,0.3)]">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-tertiary" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="text-[10px] font-bold text-secondary-fixed-dim opacity-40 tracking-widest uppercase">Streaks</span>
+</div>
+<div>
+<h3 class="font-headline text-3xl font-black text-on-surface">14 DAYS</h3>
+<p class="text-[11px] font-bold uppercase tracking-wider text-tertiary mt-1">Legion Loyalty</p>
+</div>
+</div>
+<!-- Spacer placeholders to maintain grid structure or could span columns -->
+<div class="md:col-span-3"></div>
+</div>
+<!-- Layout Grid: Focused on Legion & Medals -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+<!-- Sidebar: Leaderboard & Medal Vault -->
+<div class="lg:col-span-1 space-y-10">
+<!-- Legion Leaderboard -->
+<div>
+<h2 class="font-headline text-xl font-black uppercase tracking-widest flex items-center gap-3 mb-6">
+<span class="w-1 h-6 bg-tertiary"></span>
+                    Legion Rank
+                </h2>
+<div class="bg-surface-container-high border-t-2 border-primary">
+<div class="p-2 space-y-1">
+<!-- User Rank -->
+<div class="flex items-center justify-between p-4 bg-primary-container/20 border border-primary/20">
+<div class="flex items-center gap-4">
+<span class="font-headline font-black text-primary text-xl italic">14</span>
+<div>
+<p class="text-xs font-black uppercase tracking-wider">MAXIMUS (YOU)</p>
+<p class="text-[10px] text-primary tracking-[1px] font-bold">128,450 TOTAL XP</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+<!-- Other ranks -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-highest transition-colors">
+<div class="flex items-center gap-4">
+<span class="font-headline font-black text-secondary-fixed-dim text-xl italic opacity-40">15</span>
+<div>
+<p class="text-xs font-bold uppercase tracking-wider text-secondary">AURELIUS</p>
+<p class="text-[10px] text-secondary tracking-[1px] opacity-40">127,100 TOTAL XP</p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-highest transition-colors">
+<div class="flex items-center gap-4">
+<span class="font-headline font-black text-secondary-fixed-dim text-xl italic opacity-40">16</span>
+<div>
+<p class="text-xs font-bold uppercase tracking-wider text-secondary">BRUTUS</p>
+<p class="text-[10px] text-secondary tracking-[1px] opacity-40">124,000 TOTAL XP</p>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full py-4 text-[10px] font-black uppercase tracking-[3px] text-primary-container hover:text-primary border-t border-outline-variant/10">
+                        View Full Legion
+                    </button>
+</div>
+</div>
+</div>
+<div class="lg:col-span-1 space-y-10">
+<!-- Medal Vault -->
+<div>
+<h2 class="font-headline text-xl font-black uppercase tracking-widest flex items-center gap-3 mb-6">
+<span class="w-1 h-6 bg-primary"></span>
+                    Medal Vault
+                </h2>
+<div class="grid grid-cols-3 gap-2">
+<div class="aspect-square bg-surface-container-low flex items-center justify-center group cursor-pointer border border-outline-variant/10 hover:border-primary/40 transition-all">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform" data-icon="swords" style="font-variation-settings: 'FILL' 1;">swords</span>
+</div>
+<div class="aspect-square bg-surface-container-low flex items-center justify-center group cursor-pointer border border-outline-variant/10 hover:border-tertiary/40 transition-all">
+<span class="material-symbols-outlined text-tertiary text-3xl group-hover:scale-110 transition-transform" data-icon="shield" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<div class="aspect-square bg-surface-container-low flex items-center justify-center group cursor-pointer border border-outline-variant/10 hover:border-error/40 transition-all">
+<span class="material-symbols-outlined text-error text-3xl group-hover:scale-110 transition-transform" data-icon="skull" style="font-variation-settings: 'FILL' 1;">skull</span>
+</div>
+<div class="aspect-square bg-surface-container-low flex items-center justify-center opacity-20 cursor-not-allowed border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="military_tech">military_tech</span>
+</div>
+<div class="aspect-square bg-surface-container-low flex items-center justify-center opacity-20 cursor-not-allowed border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="workspace_premium">workspace_premium</span>
+</div>
+<div class="aspect-square bg-surface-container-low flex items-center justify-center opacity-20 cursor-not-allowed border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="trophy">trophy</span>
+</div>
+</div>
+<p class="mt-4 text-[10px] text-center font-bold tracking-[2px] text-secondary-fixed-dim uppercase opacity-40">3 / 12 Achievements Unlocked</p>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full bg-[#131314]/90 backdrop-blur-xl border-t border-outline-variant/10 flex justify-around items-center md:hidden h-20 px-4 z-50">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[9px] font-black uppercase tracking-widest">Arena</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-secondary opacity-60" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="text-[9px] font-black uppercase tracking-widest">Legion</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-secondary opacity-60" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[9px] font-black uppercase tracking-widest">Profile</span>
+</a>
+</nav>
+</body></html>

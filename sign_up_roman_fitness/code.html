@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-low": "#1c1b1c",
+                        "on-tertiary-fixed-variant": "#004f58",
+                        "surface-container": "#201f20",
+                        "primary": "#b6c4ff",
+                        "inverse-surface": "#e5e2e3",
+                        "inverse-primary": "#004fe5",
+                        "error-container": "#93000a",
+                        "primary-fixed": "#dce1ff",
+                        "surface-container-lowest": "#0e0e0f",
+                        "surface-container-high": "#2a2a2b",
+                        "surface": "#131314",
+                        "on-secondary": "#28313a",
+                        "tertiary-container": "#007583",
+                        "surface-variant": "#353436",
+                        "tertiary-fixed": "#9cf0ff",
+                        "surface-container-highest": "#353436",
+                        "on-tertiary-container": "#bef4ff",
+                        "on-primary-container": "#e7eaff",
+                        "error": "#ffb4ab",
+                        "surface-tint": "#b6c4ff",
+                        "background": "#131314",
+                        "on-secondary-fixed-variant": "#3e4851",
+                        "secondary-container": "#404a53",
+                        "on-error": "#690005",
+                        "on-secondary-container": "#afb9c5",
+                        "surface-bright": "#3a393a",
+                        "secondary": "#bec8d3",
+                        "on-tertiary-fixed": "#001f24",
+                        "on-primary-fixed": "#00164f",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-primary-fixed-variant": "#003bb0",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#00daf3",
+                        "on-background": "#e5e2e3",
+                        "on-secondary-fixed": "#131d25",
+                        "surface-dim": "#131314",
+                        "secondary-fixed-dim": "#bec8d3",
+                        "on-primary": "#00287d",
+                        "tertiary-fixed-dim": "#00daf3",
+                        "outline-variant": "#434656",
+                        "on-surface": "#e5e2e3",
+                        "secondary-fixed": "#dae4ef",
+                        "inverse-on-surface": "#313031",
+                        "outline": "#8d90a2",
+                        "on-tertiary": "#00363d",
+                        "on-surface-variant": "#c3c5d9",
+                        "primary-container": "#0059ff"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: { "DEFAULT": "0rem", "lg": "0rem", "xl": "0rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header {
+            background: rgba(19, 19, 20, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .input-focus-line:focus-within {
+            border-bottom-color: #0059ff;
+            box-shadow: 0 4px 12px -4px rgba(0, 89, 255, 0.3);
+        }
+        .gradient-button {
+            background: linear-gradient(135deg, #b6c4ff 0%, #0059ff 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Suppression: Not rendered for Transactional Sign-up Flow -->
+<main class="min-h-screen flex flex-col md:flex-row">
+<!-- Visual Sidebar: Roman Architectural Influence -->
+<div class="hidden md:flex md:w-1/2 lg:w-3/5 bg-surface-container-lowest relative overflow-hidden items-center justify-center p-20">
+<div class="absolute inset-0 z-0 opacity-40">
+<img alt="Roman Fitness Logo" class="absolute top-12 left-12 w-32 grayscale brightness-200" data-alt="High-performance Roman Fitness branding logo on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWSVLyNndZicfpztAMib47Qa6THRigt1YkgvMbyoNTpdVu-_U3JymBtqLL0DeQ8VI_l2_BrXOs103yqD5jSYl-SOFZDEZMHzuHVFohX29n8qD0fPYILy2BGTh0Cs9ExHVQT4R1IwGgVpkY_Ug-mJB9AGf0FoAF54Og_L66CyNsOe24P0jEAhXxs4ZATwKzAT7EvAKjra7ZowIVgPZ5OeZQL4tK-IR0CleVTqwIhgkIyVyJa7uWZS8y2kPiBM4cjhbA6riHlt4b0eY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10"></div>
+<!-- Background Image Placeholder for Roman Athlete/Architecture -->
+<div class="w-full h-full bg-[url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&amp;w=2070&amp;auto=format&amp;fit=crop')] bg-cover bg-center mix-blend-overlay" data-alt="Powerful gladiator athlete silhouette in a modern dark training arena"></div>
+</div>
+<div class="relative z-20 max-w-xl">
+<h1 class="font-headline font-black text-7xl lg:text-8xl text-primary leading-none tracking-tighter uppercase mb-6">
+                    JOIN THE <span class="text-white block">LEGION</span>
+</h1>
+<p class="text-secondary text-xl font-light tracking-wide max-w-md">
+                    Forge your physique in the fires of the digital colosseum. Excellence is not an act, but a habit.
+                </p>
+<div class="mt-12 flex items-center gap-4">
+<div class="h-1 w-24 bg-primary"></div>
+<span class="font-headline font-bold text-sm tracking-[0.3em] uppercase text-primary">Est. MMXXIV</span>
+</div>
+</div>
+</div>
+<!-- Form Section -->
+<section class="flex-1 flex flex-col justify-center items-center p-6 md:p-12 lg:p-20 bg-background relative">
+<div class="w-full max-w-md space-y-10">
+<!-- Mobile Logo and Header -->
+<div class="md:hidden flex flex-col items-center mb-8">
+<img alt="Roman Fitness Logo" class="h-16 mb-6" data-alt="Roman Fitness branding logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtPCsycN13qTmjU4kfyRfcuwjzIheKNDM8KsSlJnUr4N-CzDmjeZhyifFX29qhLD7jj9ou4MhJ8ln0qRbiGM7exG07ZxTexLwISkF10n5qmtl3WJzo1sPC66Cvf2XQ22nwsjN_mC-xxZGTzeNBhO9HK5FiN1_X6NRoHCtgW2iG9cKSZtLMsBQtjkSECgmt2_gU4ZjGRXMxI_fprZWE5K2xtOnkxVCXQfDY-awEx87Ztsx2CiLRqljhiX0dVduqkJqybdTv14iuZJo"/>
+<h2 class="font-headline font-black text-4xl text-primary text-center tracking-tighter uppercase">JOIN THE LEGION</h2>
+</div>
+<div class="space-y-2">
+<h2 class="hidden md:block font-headline font-black text-4xl text-on-surface tracking-tighter uppercase">JOIN THE LEGION</h2>
+<p class="text-secondary body-lg font-medium opacity-80">Start your journey to glory today.</p>
+</div>
+<form class="space-y-6">
+<!-- Full Name -->
+<div class="space-y-1 group">
+<label class="block font-label text-[10px] uppercase tracking-[0.2em] text-outline font-bold group-focus-within:text-primary transition-colors">Full Name</label>
+<div class="relative flex items-center border-b-2 border-outline-variant bg-surface-container-lowest transition-all input-focus-line">
+<span class="material-symbols-outlined ml-4 text-outline group-focus-within:text-primary text-xl">person</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-outline/40 py-4 px-4 font-medium" placeholder="Gaius Julius" type="text"/>
+</div>
+</div><div class="space-y-1 group">
+<label class="block font-label text-[10px] uppercase tracking-[0.2em] text-outline font-bold group-focus-within:text-primary transition-colors">Warrior DOB</label>
+<div class="relative flex items-center border-b-2 border-outline-variant bg-surface-container-lowest transition-all input-focus-line">
+<span class="material-symbols-outlined ml-4 text-outline group-focus-within:text-primary text-xl">calendar_month</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-outline/40 py-4 px-4 font-medium uppercase text-xs" onblur="if(!this.value)this.type='text'" onfocus="(this.type='date')" placeholder="ENTER BIRTH DATE" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<!-- Mobile Number -->
+<div class="space-y-1 group">
+<label class="block font-label text-[10px] uppercase tracking-[0.2em] text-outline font-bold group-focus-within:text-primary transition-colors">Mobile Number</label>
+<div class="relative flex items-center border-b-2 border-outline-variant bg-surface-container-lowest transition-all input-focus-line">
+<span class="material-symbols-outlined ml-4 text-outline group-focus-within:text-primary text-xl">smartphone</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-outline/40 py-4 px-4 font-medium" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Password -->
+<div class="space-y-1 group">
+<label class="block font-label text-[10px] uppercase tracking-[0.2em] text-outline font-bold group-focus-within:text-primary transition-colors">Create PIN</label>
+<div class="relative flex items-center border-b-2 border-outline-variant bg-surface-container-lowest transition-all input-focus-line">
+<span class="material-symbols-outlined ml-4 text-outline group-focus-within:text-primary text-xl">lock</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-outline/40 py-4 px-4 font-medium" placeholder="••••" type="password"/>
+</div>
+</div>
+<!-- Confirm Password -->
+<div class="space-y-1 group">
+<label class="block font-label text-[10px] uppercase tracking-[0.2em] text-outline font-bold group-focus-within:text-primary transition-colors">Confirm PIN</label>
+<div class="relative flex items-center border-b-2 border-outline-variant bg-surface-container-lowest transition-all input-focus-line">
+<span class="material-symbols-outlined ml-4 text-outline group-focus-within:text-primary text-xl">shield</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-outline/40 py-4 px-4 font-medium" placeholder="••••" type="password"/>
+</div>
+</div>
+</div>
+<!-- Terms Checkbox -->
+<div class="flex items-start gap-3 pt-2">
+<input class="mt-1 bg-surface-container-lowest border-outline-variant text-primary focus:ring-primary rounded-none" type="checkbox"/>
+<p class="text-[11px] text-secondary leading-tight uppercase tracking-wider">
+                            I accept the <span class="text-primary font-bold">Code of Honor</span> and the Terms of Combat.
+                        </p>
+</div>
+<!-- Primary Action -->
+<button class="w-full gradient-button py-5 font-headline font-black text-on-primary-fixed tracking-[0.2em] uppercase transition-all active:scale-[0.98] shadow-lg shadow-primary-container/20" type="submit">
+                        Ascend Now
+                    </button>
+</form>
+<!-- Secondary Action -->
+<div class="text-center pt-4">
+<p class="text-secondary text-sm font-medium">
+                        Already a member? 
+                        <a class="text-primary font-black uppercase tracking-widest ml-2 hover:underline underline-offset-8 transition-all" href="#">
+                            Login Here
+                        </a>
+</p>
+</div>
+</div>
+<!-- Subtle Decorative Elements -->
+<div class="absolute bottom-8 right-8 pointer-events-none opacity-10">
+<span class="font-headline font-black text-9xl leading-none">SPQR</span>
+</div>
+</section>
+</main>
+<!-- Shell Suppression: BottomNavBar and FAB are hidden for auth flow as per Semantic Shell Mandate -->
+</body></html>

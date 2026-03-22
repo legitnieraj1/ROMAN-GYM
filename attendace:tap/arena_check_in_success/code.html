@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ARENA TERMINAL - Check-In Success</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#9cf0ff",
+              "surface-container-highest": "#353436",
+              "secondary": "#bec8d3",
+              "on-secondary": "#28313a",
+              "inverse-on-surface": "#313031",
+              "surface-bright": "#3a393a",
+              "inverse-surface": "#e5e2e3",
+              "outline-variant": "#434656",
+              "on-primary-fixed-variant": "#003bb0",
+              "surface": "#131314",
+              "tertiary-container": "#007583",
+              "surface-tint": "#b6c4ff",
+              "error-container": "#93000a",
+              "primary-container": "#0059ff",
+              "surface-dim": "#131314",
+              "on-error": "#690005",
+              "inverse-primary": "#004fe5",
+              "primary-fixed": "#dce1ff",
+              "on-secondary-container": "#afb9c5",
+              "on-surface": "#e5e2e3",
+              "on-secondary-fixed-variant": "#3e4851",
+              "background": "#131314",
+              "surface-container-lowest": "#0e0e0f",
+              "on-tertiary-fixed": "#001f24",
+              "secondary-fixed": "#dae4ef",
+              "tertiary-fixed-dim": "#00daf3",
+              "on-tertiary-fixed-variant": "#004f58",
+              "surface-container-low": "#1c1b1c",
+              "secondary-fixed-dim": "#bec8d3",
+              "on-primary-fixed": "#00164f",
+              "tertiary": "#00daf3",
+              "outline": "#8d90a2",
+              "on-background": "#e5e2e3",
+              "error": "#ffb4ab",
+              "on-error-container": "#ffdad6",
+              "on-tertiary": "#00363d",
+              "secondary-container": "#404a53",
+              "on-tertiary-container": "#bef4ff",
+              "primary-fixed-dim": "#b6c4ff",
+              "on-primary-container": "#e7eaff",
+              "surface-variant": "#353436",
+              "on-secondary-fixed": "#131d25",
+              "surface-container": "#201f20",
+              "on-primary": "#00287d",
+              "primary": "#b6c4ff",
+              "on-surface-variant": "#c3c5d9",
+              "surface-container-high": "#2a2a2b"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            keyframes: {
+              'count-up': {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              'glow-pulse': {
+                '0%, 100%': { opacity: '0.4', filter: 'blur(10px)' },
+                '50%': { opacity: '0.8', filter: 'blur(20px)' },
+              }
+            },
+            animation: {
+              'count-up': 'count-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .roman-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30L30 0z' fill='%231c1c1e' fill-opacity='0.4'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-white overflow-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-20 bg-[#131314] dark:bg-[#131314] shadow-[0_20px_40px_rgba(0,89,255,0.08)]">
+<div class="flex items-center gap-4">
+<div class="text-2xl font-black italic text-[#b6c4ff] dark:text-[#b6c4ff] tracking-widest font-headline uppercase">ARENA TERMINAL</div>
+</div>
+<div class="flex gap-6 items-center">
+<button class="text-[#bec8d3] hover:opacity-80 transition-opacity active:scale-95">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+</button>
+<button class="text-[#bec8d3] hover:opacity-80 transition-opacity active:scale-95">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-20 h-[calc(100%-80px)] z-40 bg-[#131314] w-64 border-r-0 hidden md:flex flex-col">
+<div class="p-8 border-b border-white/5">
+<h2 class="font-headline font-bold uppercase tracking-widest text-[#b6c4ff]">TERMINAL 01</h2>
+<p class="text-[10px] text-secondary opacity-50 tracking-widest mt-1 uppercase">GATEWAY ALPHA</p>
+</div>
+<div class="flex flex-col py-4">
+<a class="bg-gradient-to-r from-[#0059ff] to-transparent text-white border-l-4 border-[#00daf3] py-4 px-6 flex items-center gap-4 transition-transform active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
+<span class="font-headline uppercase tracking-wider text-sm font-medium">Check-In</span>
+</a>
+<a class="text-[#bec8d3] py-4 px-6 opacity-50 flex items-center gap-4 hover:bg-[#1c1c1e] transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="military_tech">military_tech</span>
+<span class="font-headline uppercase tracking-wider text-sm font-medium">Leaderboard</span>
+</a>
+<a class="text-[#bec8d3] py-4 px-6 opacity-50 flex items-center gap-4 hover:bg-[#1c1c1e] transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-headline uppercase tracking-wider text-sm font-medium">Gym Map</span>
+</a>
+<a class="text-[#bec8d3] py-4 px-6 opacity-50 flex items-center gap-4 hover:bg-[#1c1c1e] transition-all active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="font-headline uppercase tracking-wider text-sm font-medium">Support</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 mt-20 h-[calc(100vh-80px)] relative overflow-hidden flex flex-col items-center justify-center p-8 roman-pattern">
+<!-- Success State UI -->
+<div class="relative z-10 flex flex-col items-center justify-center w-full max-w-4xl text-center" id="success-screen">
+<!-- Hero Status -->
+<div class="mb-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
+<span class="text-primary font-headline text-sm font-bold tracking-[0.4em] uppercase mb-4 block">ACCESS GRANTED</span>
+<h1 class="font-headline text-7xl md:text-8xl font-black uppercase tracking-tighter italic text-white">
+                    WELCOME, <span class="text-tertiary">WARRIOR</span>
+</h1>
+</div>
+<!-- Streak Counter -->
+<div class="relative group my-12">
+<div class="absolute inset-0 bg-primary/20 rounded-full blur-3xl animate-glow-pulse"></div>
+<div class="relative flex flex-col items-center bg-surface-container-high/40 backdrop-blur-md border border-white/10 p-10 px-16 min-w-[320px]">
+<span class="font-headline text-xs font-bold text-secondary uppercase tracking-[0.3em] mb-4">STREAK INCREASED!</span>
+<div class="flex items-baseline gap-4">
+<span class="font-headline text-4xl text-secondary/40 line-through decoration-primary decoration-4">14</span>
+<span class="material-symbols-outlined text-primary text-3xl animate-bounce" data-icon="keyboard_double_arrow_right">keyboard_double_arrow_right</span>
+<span class="font-headline text-9xl font-black text-white drop-shadow-[0_0_20px_rgba(182,196,255,0.4)] animate-count-up">15</span>
+</div>
+<span class="font-headline text-xl font-bold text-tertiary uppercase tracking-widest mt-2">DAYS OF GLORY</span>
+</div>
+</div>
+<!-- Aurelius Creed Quote -->
+<div class="max-w-2xl mx-auto border-y border-white/5 py-8">
+<p class="text-[10px] text-primary font-bold tracking-[0.5em] mb-4 uppercase">Aurelius Creed</p>
+<blockquote class="font-headline text-3xl md:text-4xl font-light italic leading-tight text-secondary-fixed">
+                    "Virtue is the only good. What happens to you does not matter; what you do with it matters."
+                </blockquote>
+</div>
+</div>
+<!-- Bottom Footer -->
+<footer class="absolute bottom-0 left-0 w-full p-10 flex flex-col md:flex-row justify-between items-end gap-8">
+<div class="hidden md:block">
+<!-- User Quick Stats (Persistent but subtle) -->
+<div class="flex gap-8">
+<div>
+<p class="text-[10px] text-secondary uppercase tracking-widest opacity-60">Last Rank</p>
+<p class="font-headline text-xl font-bold">CENTURION</p>
+</div>
+<div>
+<p class="text-[10px] text-secondary uppercase tracking-widest opacity-60">Arena Level</p>
+<p class="font-headline text-xl font-bold text-tertiary">42</p>
+</div>
+</div>
+</div>
+<!-- Gym Tip Section (Kept as requested) -->
+<div class="bg-surface-container-high p-6 w-full md:w-96 border-t-2 border-primary shadow-2xl backdrop-blur-sm">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="lightbulb">lightbulb</span>
+<span class="font-headline text-xs font-bold uppercase tracking-widest">Gym Tip</span>
+</div>
+<p class="font-body text-xs text-secondary leading-relaxed">Maximize hypertrophy by focusing on the eccentric phase of each rep. 3 seconds down, 1 second up.</p>
+</div>
+</footer>
+<!-- Decorative Logo Anchor -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none scale-[4]">
+<img alt="Roman Fitness Logo" class="w-96 grayscale" data-alt="Abstract Roman laurel wreath with geometric weightlifting icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV6fHCPmjt-u7bdqhMLuxcReA-isISBbRzxgVg38wnh24HrVtueZzqPvaf6LU3FVHIeREimPmVe6ZQdcNkAwrpTbV0EcB7Gu7mpc_BzlTL-Ftkg--SjEwcWggAfxz-B8QMc2FCERDsQDEnTJupk9TbI79BwIPmCrnHvUkProtvyBkTYHE04oG44Az6ecA7wjhwNV0kbNoq2v7ilWQZhWqHlbEUbDEdYMWwWNz3Q7LscIu6dwfiKlIodR9M7yDyzraXPy_8hFV9CYg"/>
+</div>
+</main>
+</body></html>

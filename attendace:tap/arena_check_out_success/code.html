@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ARENA TERMINAL | SESSION COMPLETE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed": "#9cf0ff",
+                        "surface-container-highest": "#353436",
+                        "secondary": "#bec8d3",
+                        "on-secondary": "#28313a",
+                        "inverse-on-surface": "#313031",
+                        "surface-bright": "#3a393a",
+                        "inverse-surface": "#e5e2e3",
+                        "outline-variant": "#434656",
+                        "on-primary-fixed-variant": "#003bb0",
+                        "surface": "#131314",
+                        "tertiary-container": "#007583",
+                        "surface-tint": "#b6c4ff",
+                        "error-container": "#93000a",
+                        "primary-container": "#0059ff",
+                        "surface-dim": "#131314",
+                        "on-error": "#690005",
+                        "inverse-primary": "#004fe5",
+                        "primary-fixed": "#dce1ff",
+                        "on-secondary-container": "#afb9c5",
+                        "on-surface": "#e5e2e3",
+                        "on-secondary-fixed-variant": "#3e4851",
+                        "background": "#131314",
+                        "surface-container-lowest": "#0e0e0f",
+                        "on-tertiary-fixed": "#001f24",
+                        "secondary-fixed": "#dae4ef",
+                        "tertiary-fixed-dim": "#00daf3",
+                        "on-tertiary-fixed-variant": "#004f58",
+                        "surface-container-low": "#1c1b1c",
+                        "secondary-fixed-dim": "#bec8d3",
+                        "on-primary-fixed": "#00164f",
+                        "tertiary": "#00daf3",
+                        "outline": "#8d90a2",
+                        "on-background": "#e5e2e3",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary": "#00363d",
+                        "secondary-container": "#404a53",
+                        "on-tertiary-container": "#bef4ff",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-primary-container": "#e7eaff",
+                        "surface-variant": "#353436",
+                        "on-secondary-fixed": "#131d25",
+                        "surface-container": "#201f20",
+                        "on-primary": "#00287d",
+                        "primary": "#b6c4ff",
+                        "on-surface-variant": "#c3c5d9",
+                        "surface-container-high": "#2a2a2b"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0rem", "lg": "0rem", "xl": "0rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .scan-line {
+            width: 100%;
+            height: 2px;
+            background: #00daf3;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scan 6s linear infinite;
+            z-index: 10;
+            box-shadow: 0 0 15px #00daf3;
+        }
+        @keyframes scan {
+            0% { top: 0; opacity: 0; }
+            5% { opacity: 1; }
+            95% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        .stat-card-glow {
+            box-shadow: 0 0 20px rgba(0, 89, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .stat-card-glow:hover {
+            box-shadow: 0 0 30px rgba(0, 218, 243, 0.2);
+            border-color: #00daf3;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-white overflow-hidden">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-20 bg-[#131314] shadow-[0_20px_40px_rgba(0,89,255,0.08)]">
+<div class="flex items-center gap-4">
+<img alt="Roman Fitness Arena Logo" class="h-10 w-auto" data-alt="Roman Fitness Arena premium stylized logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_igOZ4WbCNLqVhWZEd13_Pgib8u4ElhFabP1uUhQaLb_N2jBLFSkGpZQW38WXuR64zz0r1XqYX-pUh03okB-M_CoLRjq_nCntC5B3JmEIftF1xriRHxDIQcjcg0jx-mw5_cKmt4puyOjVaHGjUe6hRalRhQMSVejwdXIy6tSTAiN1sTuoeSqeFs0XUMqZvxzQ5VKhk1z7ewckWjcIYdXt_XLvSyvN3DjOsPrK6E2YM_5vOufHz-iNMu6qFSzcuLzbOkihQkfvgwE"/>
+<h1 class="font-headline font-black italic text-[#b6c4ff] tracking-widest text-2xl uppercase">Arena Terminal</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex flex-col items-end">
+<span class="font-headline text-[#bec8d3] text-xs tracking-widest uppercase">Station_ID</span>
+<span class="font-headline font-bold text-[#b6c4ff] uppercase">Exit_Gate_04</span>
+</div>
+<div class="flex gap-2">
+<button class="material-symbols-outlined text-[#bec8d3] hover:text-primary transition-colors">sync</button>
+<button class="material-symbols-outlined text-[#bec8d3] hover:text-primary transition-colors">settings</button>
+</div>
+</div>
+</header>
+<!-- Side Navigation Shell -->
+<nav class="fixed left-0 top-20 h-[calc(100%-80px)] z-40 bg-[#131314] w-64 hidden lg:flex flex-col">
+<div class="p-8 border-l-4 border-[#0059ff] mb-8 bg-surface-container-low">
+<p class="font-headline font-bold text-[#b6c4ff] text-xl">TERMINAL 01</p>
+<p class="font-headline text-[#0059ff] text-xs tracking-[0.2em] opacity-80">GATEWAY ALPHA</p>
+</div>
+<div class="flex flex-col space-y-1">
+<a class="text-[#bec8d3] py-4 px-6 opacity-50 font-headline uppercase tracking-widest flex items-center gap-4 hover:bg-[#1c1c1e] transition-colors" href="#">
+<span class="material-symbols-outlined">sensors</span>
+<span>Check-In</span>
+</a>
+<a class="bg-gradient-to-r from-[#0059ff] to-transparent text-white border-l-4 border-[#00daf3] py-4 px-6 font-headline uppercase tracking-widest flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">logout</span>
+<span>Check-Out</span>
+</a>
+<a class="text-[#bec8d3] py-4 px-6 opacity-50 font-headline uppercase tracking-widest flex items-center gap-4 hover:bg-[#1c1c1e] transition-colors" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+<span>Leaderboard</span>
+</a>
+<a class="text-[#bec8d3] py-4 px-6 opacity-50 font-headline uppercase tracking-widest flex items-center gap-4 hover:bg-[#1c1c1e] transition-colors" href="#">
+<span class="material-symbols-outlined">map</span>
+<span>Gym Map</span>
+</a>
+<a class="text-[#bec8d3] py-4 px-6 opacity-50 font-headline uppercase tracking-widest flex items-center gap-4 hover:bg-[#1c1c1e] transition-colors mt-auto mb-10" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span>Support</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-20 h-screen bg-background relative overflow-y-auto">
+<div class="scan-line"></div>
+<!-- Background Roman Monolith Pattern -->
+<div class="absolute inset-0 opacity-5 pointer-events-none overflow-hidden">
+<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary to-transparent"></div>
+<div class="flex justify-center items-center h-full scale-150 rotate-12">
+<span class="material-symbols-outlined text-[800px] text-primary" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+</div>
+<div class="relative z-20 max-w-6xl mx-auto px-8 py-12 flex flex-col items-center">
+<!-- Hero Completion Message -->
+<div class="text-center mb-16">
+<div class="inline-flex items-center justify-center w-24 h-24 mb-8 rounded-full border-2 border-tertiary/30 bg-tertiary/5">
+<span class="material-symbols-outlined text-tertiary text-5xl font-bold">done_all</span>
+</div>
+<h2 class="font-headline text-white text-6xl lg:text-8xl font-black uppercase tracking-tighter mb-4">WELL FOUGHT, LEGIONNAIRE</h2>
+<div class="flex items-center justify-center gap-4 text-tertiary">
+<span class="h-[2px] w-12 bg-tertiary"></span>
+<span class="font-headline tracking-[0.5em] text-sm uppercase">Mission Summary Archived</span>
+<span class="h-[2px] w-12 bg-tertiary"></span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full mb-16">
+<!-- Stats Grid -->
+<div class="stat-card-glow bg-surface-container-high border-t-2 border-tertiary p-8 relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-9xl">schedule</span>
+</div>
+<p class="font-headline text-secondary text-xs uppercase tracking-widest mb-4">Session Time</p>
+<p class="font-headline text-5xl font-bold text-on-surface">01:42:18</p>
+</div>
+<div class="stat-card-glow bg-surface-container-high border-t-2 border-primary p-8 relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-9xl">bolt</span>
+</div>
+<p class="font-headline text-secondary text-xs uppercase tracking-widest mb-4">Intensity Score</p>
+<p class="font-headline text-5xl font-bold text-on-surface">88<span class="text-2xl text-primary font-medium">/100</span></p>
+</div>
+<div class="stat-card-glow bg-surface-container-high border-t-2 border-[#b6c4ff] p-8 relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-9xl">fitness_center</span>
+</div>
+<p class="font-headline text-secondary text-xs uppercase tracking-widest mb-4">Volume Moved</p>
+<p class="font-headline text-5xl font-bold text-on-surface">12,450 <span class="text-2xl text-secondary font-medium uppercase">kg</span></p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full">
+<!-- Recovery Protocol -->
+<div class="bg-surface-container-low border-l-4 border-tertiary p-10 relative">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-tertiary text-4xl">rebase_edit</span>
+<p class="font-headline text-tertiary text-sm lg:text-base uppercase tracking-[0.3em] font-black">RECOVERY PROTOCOL</p>
+</div>
+<p class="text-on-surface-variant font-body leading-relaxed text-xl lg:text-2xl">
+                        Prioritize magnesium and 500ml of electrolyte hydration within the next 15 minutes. The body repairs what the arena broke.
+                    </p>
+<div class="mt-8 flex gap-2">
+<div class="h-1 w-12 bg-tertiary"></div>
+<div class="h-1 w-4 bg-tertiary opacity-30"></div>
+<div class="h-1 w-2 bg-tertiary opacity-10"></div>
+</div>
+</div>
+<!-- Quote / Creed -->
+<div class="flex flex-col justify-center items-end text-right border-r-4 border-primary px-10">
+<p class="font-headline text-3xl lg:text-4xl font-bold text-on-surface leading-tight tracking-tighter italic uppercase">
+                        "Victory is won in the silence of the arena."
+                    </p>
+<div class="mt-6 flex flex-col items-end">
+<p class="text-primary font-headline text-sm tracking-widest uppercase">The Aurelius Creed</p>
+<p class="text-secondary/40 font-headline text-[10px] tracking-[0.5em] mt-2 uppercase">Protocol: Departure</p>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="mt-20 w-full flex justify-center">
+<button class="px-16 py-5 bg-primary text-on-primary font-headline font-black tracking-[0.4em] uppercase hover:bg-white hover:text-black transition-all active:scale-95 shadow-[0_15px_30px_rgba(0,89,255,0.3)]">
+                    Return to Lobby
+                </button>
+</div>
+</div>
+</main>
+<!-- Visual Accents -->
+<div class="fixed bottom-0 right-0 p-12 pointer-events-none z-0 opacity-10">
+<img alt="Large background arena mark" class="w-96 grayscale invert" data-alt="Faded large background graphic of the Roman Fitness logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4fTVSbpc9uH9LTc6z3FKqHAQ7LLeLfDJmydkoNIXcribl_YCRn8PMKKTgrjNQK9ejqVIZjTnLaMhS_mNWEneywB-2btbqaX1Hbs82pu_v84KAqTBJ0WfOlRz1mTT6lhEc5zoQobTbxwTOrBU6O_KvMvwUAmKppPvS716-WLAYpqWZAdQh0RY60tGtgQAMgjGyINCanPix-Tf2eNg1vA3RDiwlUxaM14HYCkSOtnGW9Yt0-GacjwnHendVPiMZ6KysrjCPXed7YcU"/>
+</div>
+</body></html>
