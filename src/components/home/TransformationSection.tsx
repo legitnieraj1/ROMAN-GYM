@@ -12,7 +12,7 @@ const transformations = [
     before: "/transform-before-1.png",
     after: "/transform-after-1.png",
     name: "Transformation 1",
-    days: "90 Days",
+    days: "120 Days",
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const transformations = [
     before: "/transform-before-3.png",
     after: "/transform-after-3.png",
     name: "Transformation 3",
-    days: "60 Days",
+    days: "120 Days",
   },
 ];
 
@@ -77,24 +77,24 @@ function BeforeAfterSlider({
         onTouchMove={handleTouchMove}
       >
         {/* After image (full background) */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-black">
           <img
             src={after}
             alt="After transformation"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
             draggable={false}
           />
         </div>
 
         {/* Before image (clipped by slider) */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 bg-black"
           style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
         >
           <img
             src={before}
             alt="Before transformation"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
             draggable={false}
           />
         </div>
