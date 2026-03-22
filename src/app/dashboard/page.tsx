@@ -56,7 +56,7 @@ export default async function DashboardPage() {
             .from("attendance")
             .select("*")
             .eq("member_id", session.userId)
-            .order("check_in", { ascending: false });
+            .order("check_in_time", { ascending: false });
 
         if (attendance) {
             totalCheckIns = attendance.length;
@@ -69,7 +69,7 @@ export default async function DashboardPage() {
                 checkDate.setDate(checkDate.getDate() - i);
                 const dateStr = checkDate.toISOString().split("T")[0];
                 const hasCheckIn = attendance.some((a: any) =>
-                    a.check_in && a.check_in.startsWith(dateStr)
+                    a.date === dateStr || (a.check_in_time && a.check_in_time.startsWith(dateStr))
                 );
                 if (hasCheckIn || (i === 0)) {
                     if (hasCheckIn) streak++;
