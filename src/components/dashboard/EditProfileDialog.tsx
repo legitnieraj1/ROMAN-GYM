@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dialog";
 import { Loader2, Edit } from "lucide-react";
 import { updateMyProfile } from "@/app/actions/user";
+import imageCompression from "browser-image-compression";
 
 export function EditProfileDialog({ memberProfile }: { memberProfile: any }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -32,6 +33,23 @@ export function EditProfileDialog({ memberProfile }: { memberProfile: any }) {
         e.preventDefault();
         setLoading(true);
         const formData = new FormData(e.currentTarget);
+
+        const photoFile = formData.get("photo") as File;
+        if (photoFile && photoFile.size > 0) {
+            try {
+                const options = {
+                    maxSizeMB: 0.5,
+                    maxWidthOrHeight: 800,
+                    useWebWorker: true,
+                };
+                const compressedFile = await imageCompression(photoFile, options);
+                // Create a new file from the blob to maintain the name
+                const newFile = new File([compressedFile], photoFile.name, { type: compressedFile.type });
+                formData.set("photo", newFile);
+            } catch (error) {
+                console.error("Image compression error:", error);
+            }
+        }
 
         const res = await updateMyProfile(formData);
         if (res.success) {
