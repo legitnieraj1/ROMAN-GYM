@@ -144,7 +144,6 @@ export async function createMember(formData: FormData) {
                 name,
                 mobile: formattedMobile,
                 pin_hash: pinHash,
-                membership_plan: plan,
                 membership_start: startDate.toISOString(),
                 membership_end: endDate.toISOString(),
                 age,
@@ -209,7 +208,6 @@ export async function renewMembership(memberId: string, plan: string) {
         const { error: updateErr } = await supabaseAdmin
             .from("members")
             .update({
-                membership_plan: plan,
                 membership_start: newStartDate.toISOString(),
                 membership_end: newEndDate.toISOString()
             })
