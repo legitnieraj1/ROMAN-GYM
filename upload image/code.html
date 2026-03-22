@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Roman Fitness - Warrior Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#0059ff",
+              "error": "#ffb4ab",
+              "tertiary-fixed": "#9cf0ff",
+              "surface-bright": "#3a393a",
+              "on-tertiary-container": "#bef4ff",
+              "tertiary-fixed-dim": "#00daf3",
+              "background": "#131314",
+              "inverse-primary": "#004fe5",
+              "on-tertiary-fixed-variant": "#004f58",
+              "surface-dim": "#131314",
+              "on-primary-container": "#e7eaff",
+              "on-surface-variant": "#c3c5d9",
+              "on-secondary-fixed-variant": "#3e4851",
+              "on-background": "#e5e2e3",
+              "inverse-surface": "#e5e2e3",
+              "secondary-fixed-dim": "#bec8d3",
+              "secondary-container": "#404a53",
+              "on-error": "#690005",
+              "on-tertiary": "#00363d",
+              "on-secondary-container": "#afb9c5",
+              "surface-container-low": "#1c1b1c",
+              "outline-variant": "#434656",
+              "on-error-container": "#ffdad6",
+              "secondary-fixed": "#dae4ef",
+              "on-primary-fixed-variant": "#003bb0",
+              "tertiary": "#00daf3",
+              "on-tertiary-fixed": "#001f24",
+              "secondary": "#bec8d3",
+              "on-primary-fixed": "#00164f",
+              "on-surface": "#e5e2e3",
+              "tertiary-container": "#007583",
+              "surface-variant": "#353436",
+              "surface-container-highest": "#353436",
+              "surface-container-high": "#2a2a2b",
+              "on-secondary-fixed": "#131d25",
+              "surface-container-lowest": "#0e0e0f",
+              "surface-container": "#201f20",
+              "primary-fixed": "#dce1ff",
+              "on-primary": "#00287d",
+              "inverse-on-surface": "#313031",
+              "outline": "#8d90a2",
+              "surface": "#131314",
+              "primary-fixed-dim": "#b6c4ff",
+              "on-secondary": "#28313a",
+              "surface-tint": "#b6c4ff",
+              "primary": "#b6c4ff",
+              "error-container": "#93000a"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-warrior-gradient {
+            background: linear-gradient(135deg, #b6c4ff 0%, #0059ff 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 w-full z-50 bg-[#131314]/60 backdrop-blur-md flex justify-between items-center px-6 py-4 w-full">
+<div class="text-xl font-black tracking-tighter text-[#b6c4ff] font-['Space_Grotesk'] font-bold uppercase tracking-widest">
+            ROMAN FITNESS
+        </div>
+<div class="flex items-center gap-6">
+<button class="text-[#bec8d3] hover:text-white transition-colors font-label text-sm font-bold tracking-widest uppercase active:scale-95 duration-200">
+                Back
+            </button>
+<button class="text-[#b6c4ff] hover:text-white transition-colors font-label text-sm font-bold tracking-widest uppercase active:scale-95 duration-200">
+                Save
+            </button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-4xl mx-auto">
+<!-- Hero Profile Section -->
+<section class="relative mb-16 overflow-hidden">
+<div class="flex flex-col md:flex-row items-center gap-8 md:items-end">
+<!-- Profile Image Component -->
+<div class="relative group">
+<div class="w-48 h-48 bg-surface-container-high overflow-hidden border-l-4 border-tertiary">
+<img alt="Warrior Profile" class="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-700" data-alt="Modern high performance athlete portrait close up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAoFLCwXOszTHjlqk8VFCEBgc-Pw9-A6-NqHe8lzZY6kDV8drpEsikbiyE1ijOrcPk4SMsR0tX_9hwazIjuomupXXxxmGuu3MSkBTJ4wQY2tP9dPf1_Lu_Cu4CXvgKQgSjWSpqLL6k8rppxL2bf6vPCrYb1lEXzHRWOXSnd_UKiAuZ7MM51-zHy_u9smDYC-vsecE9YCo_bh8zfsDbz9j8vVm9vnFQVRdn24TMHnHSU6h_oUwZDrblLmbS7g9HnnXI68mjECB7zBs"/>
+</div>
+<button class="absolute -bottom-2 -right-2 bg-warrior-gradient p-3 text-on-primary-container shadow-[0_10px_20px_rgba(0,89,255,0.2)] active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+</div>
+<div class="flex-1 text-center md:text-left">
+<span class="font-headline text-primary text-sm font-bold tracking-[0.3em] uppercase block mb-2">Member Identity</span>
+<h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter leading-none text-on-background">
+                        WARRIOR <span class="text-outline">PROFILE</span>
+</h1>
+</div>
+</div>
+</section>
+<!-- Personal Information Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-px bg-outline-variant/10">
+<!-- Full Name Input -->
+<div class="md:col-span-8 bg-surface-container-lowest p-8 flex flex-col justify-end group border-l-2 border-transparent focus-within:border-primary transition-colors">
+<label class="font-label text-[10px] font-extrabold tracking-[0.2em] text-secondary uppercase mb-4 block">Full Name</label>
+<input class="bg-transparent border-none p-0 font-headline text-3xl font-bold text-on-surface focus:ring-0 w-full placeholder:opacity-20" placeholder="Enter Name" type="text" value="MARCUS AURELIUS"/>
+</div>
+<!-- Age Input -->
+<div class="md:col-span-4 bg-surface-container-lowest p-8 flex flex-col justify-end group border-l-2 border-transparent focus-within:border-primary transition-colors">
+<label class="font-label text-[10px] font-extrabold tracking-[0.2em] text-secondary uppercase mb-4 block">Age</label>
+<div class="flex items-baseline gap-2">
+<input class="bg-transparent border-none p-0 font-headline text-3xl font-bold text-on-surface focus:ring-0 w-20 placeholder:opacity-20" placeholder="00" type="number" value="32"/>
+<span class="font-headline text-sm font-bold text-secondary/40 uppercase tracking-widest">Years</span>
+</div>
+</div>
+<!-- Date of Birth Input -->
+<div class="md:col-span-12 bg-surface-container-low p-8 flex flex-col justify-end group border-l-2 border-transparent focus-within:border-primary transition-colors">
+<label class="font-label text-[10px] font-extrabold tracking-[0.2em] text-secondary uppercase mb-4 block">Date of Birth</label>
+<input class="bg-transparent border-none p-0 font-headline text-2xl font-bold text-on-surface focus:ring-0 w-full color-scheme-dark" type="date" value="1992-04-26"/>
+</div>
+<!-- Metrics: Weight -->
+<div class="md:col-span-6 bg-surface-container-lowest p-8 flex flex-col justify-end border-l-2 border-tertiary transition-colors">
+<label class="font-label text-[10px] font-extrabold tracking-[0.2em] text-secondary uppercase mb-4 block">Current Weight</label>
+<div class="flex items-baseline justify-between">
+<input class="bg-transparent border-none p-0 font-headline text-5xl font-bold text-on-surface focus:ring-0 w-full placeholder:opacity-20" placeholder="00.0" step="0.1" type="number" value="88.5"/>
+<span class="font-headline text-xl font-bold text-tertiary uppercase tracking-widest">KG</span>
+</div>
+</div>
+<!-- Metrics: Height -->
+<div class="md:col-span-6 bg-surface-container-lowest p-8 flex flex-col justify-end group border-l-2 border-transparent focus-within:border-primary transition-colors">
+<label class="font-label text-[10px] font-extrabold tracking-[0.2em] text-secondary uppercase mb-4 block">Height</label>
+<div class="flex items-baseline justify-between">
+<input class="bg-transparent border-none p-0 font-headline text-5xl font-bold text-on-surface focus:ring-0 w-full placeholder:opacity-20" placeholder="000" type="number" value="188"/>
+<span class="font-headline text-xl font-bold text-secondary/40 uppercase tracking-widest">CM</span>
+</div>
+</div>
+</div>
+<!-- Secondary Information / Tactical Details -->
+<!-- Call to Action -->
+<div class="">
+<button class="w-full bg-warrior-gradient py-6 px-12 text-on-primary-container font-headline text-lg font-black uppercase tracking-[0.2em] active:translate-y-1 transition-all shadow-[0_20px_40px_rgba(0,89,255,0.15)]">
+                Update Warrior Status
+            </button>
+<p class="text-center mt-6 font-label text-[10px] text-secondary uppercase tracking-widest opacity-40">
+                All biometric data is encrypted via ROMAN-SEC protocol.
+            </p>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full h-20 bg-[#131314] flex justify-around items-center px-4 pb-safe z-50 shadow-[0_-20px_40px_rgba(0,89,255,0.08)]">
+<a class="flex flex-col items-center justify-center text-[#bec8d3] opacity-50 hover:opacity-100 transition-opacity active:translate-y-[-2px] duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="fitness_center">fitness_center</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-[1.5px]">TRAIN</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#bec8d3] opacity-50 hover:opacity-100 transition-opacity active:translate-y-[-2px] duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="shield">shield</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-[1.5px]">ARENA</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#bec8d3] opacity-50 hover:opacity-100 transition-opacity active:translate-y-[-2px] duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="leaderboard">leaderboard</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-[1.5px]">STATS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#b6c4ff] scale-110 active:translate-y-[-2px] duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-[1.5px]">PROFILE</span>
+</a>
+</nav>
+<!-- Background Elements (Subtle Branding) -->
+<div class="fixed top-0 right-0 w-1/2 h-screen pointer-events-none opacity-5 overflow-hidden -z-10">
+<h2 class="font-headline text-[30vw] font-black leading-none text-on-background select-none origin-top-right rotate-90 translate-x-1/2">
+            ROMAN
+        </h2>
+</div>
+</body></html>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -18,6 +18,15 @@ import { updateMyProfile } from "@/app/actions/user";
 export function EditProfileDialog({ memberProfile }: { memberProfile: any }) {
     const [isOpen, setIsOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [previewUrl, setPreviewUrl] = useState<string | null>(memberProfile?.photo_url || null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files[0]) {
+            const file = e.target.files[0];
+            setPreviewUrl(URL.createObjectURL(file));
+        }
+    };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -36,49 +45,78 @@ export function EditProfileDialog({ memberProfile }: { memberProfile: any }) {
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
-                <Button variant="outline" size="sm" className="bg-zinc-800 text-white border-zinc-700 hover:bg-zinc-700 hover:text-white">
-                    <Edit className="w-4 h-4 mr-2" /> Edit Profile
+                <Button variant="outline" size="sm" className="bg-[#0e0e0f] text-[#bec8d3] border-[#434656]/30 hover:bg-[#1c1b1c] hover:text-white uppercase tracking-widest text-[10px] font-bold">
+                    <Edit className="w-3 h-3 mr-2" /> Edit Profile
                 </Button>
             </DialogTrigger>
-            <DialogContent className="bg-[#0A0A0A] border-zinc-800 text-white">
+            <DialogContent className="bg-[#131314] border-[#0059ff]/20 text-[#e5e2e3] sm:max-w-md">
                 <DialogHeader>
-                    <DialogTitle>Edit Profile</DialogTitle>
+                    <DialogTitle className="font-heading text-2xl font-black uppercase tracking-widest text-[#b6c4ff]">
+                        Warrior Profile
+                    </DialogTitle>
                 </DialogHeader>
-                <form onSubmit={handleSubmit} className="space-y-4 py-4" encType="multipart/form-data">
-                    <div className="space-y-2">
-                        <Label>Profile Photo</Label>
+                <form onSubmit={handleSubmit} className="space-y-6 pt-4" encType="multipart/form-data">
+                    <div className="flex flex-col items-center">
                         <Input
                             type="file"
                             name="photo"
                             accept="image/*"
-                            className="bg-zinc-900 border-zinc-800 file:bg-[#E50914] file:text-white file:border-0 file:rounded-sm file:px-2 file:mr-4"
+                            className="hidden"
+                            ref={fileInputRef}
+                            onChange={handleFileChange}
                         />
-                        <p className="text-xs text-zinc-500">Upload new photo (leaves existing if empty).</p>
+
+                        <div className="relative group cursor-pointer" onClick={() => fileInputRef.current?.click()}>
+                            <div className="w-32 h-32 sm:w-40 sm:h-40 bg-[#2a2a2b] overflow-hidden border-l-4 border-[#00daf3]">
+                                {previewUrl ? (
+                                    <img
+                                        src={previewUrl}
+                                        alt="Warrior Profile"
+                                        className="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700 hover:scale-105"
+                                    />
+                                ) : (
+                                    <div className="w-full h-full flex flex-col items-center justify-center text-[#bec8d3]/40 group-hover:text-[#00daf3]/60 transition-colors">
+                                        <Edit className="w-8 h-8 mb-2" />
+                                        <span className="text-[10px] uppercase font-bold tracking-widest text-center px-4">Upload<br/>Photo</span>
+                                    </div>
+                                )}
+                            </div>
+                            <button
+                                type="button"
+                                className="absolute -bottom-2 -right-2 bg-gradient-to-br from-[#b6c4ff] to-[#0059ff] p-3 text-[#00164f] shadow-[0_10px_20px_rgba(0,89,255,0.2)] active:scale-90 transition-transform hover:scale-105"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    fileInputRef.current?.click();
+                                }}
+                            >
+                                <Edit className="w-4 h-4 sm:w-5 sm:h-5" />
+                            </button>
+                        </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                            <Label>Age (Optional)</Label>
-                            <Input name="age" type="number" defaultValue={memberProfile?.age || ""} className="bg-zinc-900 border-zinc-800" />
+                            <Label className="text-[10px] font-bold uppercase tracking-widest text-[#bec8d3] opacity-60">Age (Optional)</Label>
+                            <Input name="age" type="number" defaultValue={memberProfile?.age || ""} className="bg-[#0e0e0f] border-[#434656]/30 focus-visible:ring-[#0059ff] font-bold" />
                         </div>
                         <div className="space-y-2">
-                            <Label>Date of Birth</Label>
-                            <Input name="dob" type="date" defaultValue={memberProfile?.dob || ""} className="bg-zinc-900 border-zinc-800" />
+                            <Label className="text-[10px] font-bold uppercase tracking-widest text-[#bec8d3] opacity-60">Date of Birth</Label>
+                            <Input name="dob" type="date" defaultValue={memberProfile?.dob || ""} className="bg-[#0e0e0f] border-[#434656]/30 focus-visible:ring-[#0059ff] font-bold color-scheme-dark" />
                         </div>
                         <div className="space-y-2">
-                            <Label>Weight (kg)</Label>
-                            <Input name="weight" type="number" step="0.1" defaultValue={memberProfile?.weight || ""} className="bg-zinc-900 border-zinc-800" />
+                            <Label className="text-[10px] font-bold uppercase tracking-widest text-[#bec8d3] opacity-60">Weight (kg)</Label>
+                            <Input name="weight" type="number" step="0.1" defaultValue={memberProfile?.weight || ""} className="bg-[#0e0e0f] border-[#434656]/30 focus-visible:ring-[#0059ff] font-bold" />
                         </div>
                         <div className="space-y-2">
-                            <Label>Height (cm)</Label>
-                            <Input name="height" type="number" defaultValue={memberProfile?.height || ""} className="bg-zinc-900 border-zinc-800" />
+                            <Label className="text-[10px] font-bold uppercase tracking-widest text-[#bec8d3] opacity-60">Height (cm)</Label>
+                            <Input name="height" type="number" defaultValue={memberProfile?.height || ""} className="bg-[#0e0e0f] border-[#434656]/30 focus-visible:ring-[#0059ff] font-bold" />
                         </div>
                     </div>
 
-                    <DialogFooter className="pt-4">
-                        <Button type="submit" disabled={loading} className="w-full bg-[#E50914] hover:bg-[#E50914]/90 text-white">
+                    <DialogFooter className="pt-6 border-t border-[#434656]/20">
+                        <Button type="submit" disabled={loading} className="w-full bg-gradient-to-r from-[#00daf3] to-[#0059ff] hover:opacity-90 text-white font-black uppercase tracking-[0.2em] shadow-[0_10px_20px_rgba(0,89,255,0.15)] h-12">
                             {loading ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
-                            Save Changes
+                            Update Warrior Status
                         </Button>
                     </DialogFooter>
                 </form>
