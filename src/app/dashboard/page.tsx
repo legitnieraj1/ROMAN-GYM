@@ -168,11 +168,6 @@ export default async function DashboardPage() {
                                 <span className="bg-[#0059ff]/20 text-[#b6c4ff] px-3 py-1 text-[10px] font-bold tracking-[2px] border border-[#0059ff]/30 uppercase">
                                     {rank} {rankLevel}
                                 </span>
-                                {memberProfile.legacy_member && (
-                                    <span className="bg-[#00daf3]/10 text-[#00daf3] px-3 py-1 text-[10px] font-bold tracking-[2px] border border-[#00daf3]/20 flex items-center gap-1">
-                                        <Shield className="w-3 h-3" /> LEGACY
-                                    </span>
-                                )}
                             </div>
                             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tighter">
                                 Commander <span className="text-[#b6c4ff] italic">{memberProfile.name?.split(" ")[0]}</span>

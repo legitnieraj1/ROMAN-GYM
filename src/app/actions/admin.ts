@@ -147,7 +147,6 @@ export async function createMember(formData: FormData) {
                 membership_plan: plan,
                 membership_start: startDate.toISOString(),
                 membership_end: endDate.toISOString(),
-                legacy_member: false,
                 age,
                 weight,
                 height,
