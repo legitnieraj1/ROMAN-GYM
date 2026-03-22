@@ -16,8 +16,8 @@ const transformations = [
   },
   {
     id: 2,
-    before: "/before.png",
-    after: "/after.png",
+    before: "/transform-before-2.png",
+    after: "/transform-after-2.png",
     name: "Transformation 2",
     days: "120 Days",
   },
