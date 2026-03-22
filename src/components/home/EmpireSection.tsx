@@ -44,7 +44,7 @@ export function EmpireSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden"
+      className="relative py-20 md:py-28 flex flex-col items-center justify-center px-4 overflow-hidden"
     >
       <div className="absolute inset-0 bg-[#0A0A0A]">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#071B2A]/20 to-transparent" />
@@ -54,7 +54,7 @@ export function EmpireSection() {
 
       <div className="relative z-10 text-center max-w-5xl mx-auto">
         <div className="empire-line w-24 h-[2px] bg-gradient-to-r from-transparent via-[#00AEEF] to-transparent mx-auto mb-8 origin-center" />
-        <h2 className="empire-heading font-heading text-5xl md:text-7xl lg:text-8xl xl:text-9xl tracking-wider leading-none will-change-transform">
+        <h2 className="empire-heading font-heading text-5xl md:text-7xl lg:text-8xl tracking-wider leading-none will-change-transform">
           <span className="text-white">ENTER THE</span>
           <br />
           <span className="text-glow-strong text-[#00AEEF]">ROMAN EMPIRE</span>

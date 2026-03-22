@@ -87,9 +87,9 @@ export function FeaturesSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="features" className="relative py-24 md:py-32 px-4 bg-[#0A0A0A]">
+    <section ref={sectionRef} id="features" className="relative py-16 md:py-24 px-4 bg-[#0A0A0A]">
       <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="features-heading text-center mb-16 md:mb-24">
+        <div className="features-heading text-center mb-10 md:mb-16">
           <p className="text-[#00AEEF] text-sm tracking-[0.3em] uppercase mb-4">What We Offer</p>
           <h2 className="font-heading text-4xl md:text-6xl tracking-wider">
             GYM <span className="text-[#00AEEF]">FEATURES</span>

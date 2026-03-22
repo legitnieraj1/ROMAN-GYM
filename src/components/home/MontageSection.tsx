@@ -39,7 +39,7 @@ export function MontageSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative h-[100vh] md:h-[150vh] overflow-hidden">
+    <section ref={sectionRef} className="relative h-[60vh] md:h-[80vh] overflow-hidden">
       {/* Background — static gradient instead of parallax video for performance */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-[#071B2A]/40 to-[#0A0A0A]" />
 
@@ -52,7 +52,7 @@ export function MontageSection() {
             className="will-change-transform"
           >
             <h2
-              className={`font-heading text-5xl md:text-9xl lg:text-[12rem] tracking-wider leading-none ${
+              className={`font-heading text-5xl md:text-8xl lg:text-[10rem] tracking-wider leading-none ${
                 index === 1 ? "text-[#00AEEF] text-glow-strong" : "text-white/80"
               }`}
               style={{

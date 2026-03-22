@@ -66,7 +66,7 @@ export function CTASection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-32 md:py-48 px-4 overflow-hidden">
+    <section ref={sectionRef} className="relative py-20 md:py-28 px-4 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-[#0A0A0A]">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#071B2A]/15 to-transparent" />
@@ -75,15 +75,15 @@ export function CTASection() {
       </div>
 
       <div className="container mx-auto max-w-4xl relative z-10 text-center">
-        <div className="cta-line w-16 h-[2px] bg-gradient-to-r from-transparent via-[#00AEEF] to-transparent mx-auto mb-12 origin-center" />
+        <div className="cta-line w-16 h-[2px] bg-gradient-to-r from-transparent via-[#00AEEF] to-transparent mx-auto mb-8 origin-center" />
 
-        <h2 className="cta-heading font-heading text-5xl md:text-7xl lg:text-8xl xl:text-9xl tracking-wider leading-none mb-8">
+        <h2 className="cta-heading font-heading text-5xl md:text-7xl lg:text-8xl tracking-wider leading-none mb-6">
           <span className="text-white">JOIN THE</span>
           <br />
           <span className="text-glow-strong text-[#00AEEF]">EMPIRE</span>
         </h2>
 
-        <p className="text-white/40 text-lg md:text-xl tracking-wider max-w-xl mx-auto mb-12">
+        <p className="text-white/40 text-lg md:text-xl tracking-wider max-w-xl mx-auto mb-8">
           Your transformation starts today. Enter the Roman Empire of Fitness.
         </p>
 
@@ -96,7 +96,7 @@ export function CTASection() {
           </Link>
         </div>
 
-        <div className="cta-line w-16 h-[2px] bg-gradient-to-r from-transparent via-[#00AEEF] to-transparent mx-auto mt-12 origin-center" />
+        <div className="cta-line w-16 h-[2px] bg-gradient-to-r from-transparent via-[#00AEEF] to-transparent mx-auto mt-8 origin-center" />
       </div>
     </section>
   );

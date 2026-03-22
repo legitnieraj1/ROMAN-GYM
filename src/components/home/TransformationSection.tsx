@@ -1,16 +1,274 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function TransformationSection() {
-  const sectionRef = useRef<HTMLDivElement>(null);
+const transformations = [
+  {
+    id: 1,
+    before: "/transform-before-1.png",
+    after: "/transform-after-1.png",
+    name: "Transformation 1",
+    days: "90 Days",
+  },
+  {
+    id: 2,
+    before: "/before.png",
+    after: "/after.png",
+    name: "Transformation 2",
+    days: "120 Days",
+  },
+  {
+    id: 3,
+    before: "/transform-before-3.png",
+    after: "/transform-after-3.png",
+    name: "Transformation 3",
+    days: "60 Days",
+  },
+];
+
+function BeforeAfterSlider({
+  before,
+  after,
+  name,
+  days,
+}: {
+  before: string;
+  after: string;
+  name: string;
+  days: string;
+}) {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [sliderPosition, setSliderPosition] = useState(50);
   const isDragging = useRef(false);
+
+  const handleMove = (clientX: number) => {
+    if (!sliderRef.current || !isDragging.current) return;
+    const rect = sliderRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const percent = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    setSliderPosition(percent);
+  };
+
+  const handleMouseDown = () => {
+    isDragging.current = true;
+  };
+  const handleMouseUp = () => {
+    isDragging.current = false;
+  };
+  const handleMouseMove = (e: React.MouseEvent) => handleMove(e.clientX);
+  const handleTouchMove = (e: React.TouchEvent) =>
+    handleMove(e.touches[0].clientX);
+
+  return (
+    <div className="flex flex-col items-center">
+      <div
+        ref={sliderRef}
+        className="relative w-full aspect-[3/4] overflow-hidden cursor-ew-resize select-none border border-white/10"
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        onMouseMove={handleMouseMove}
+        onTouchStart={handleMouseDown}
+        onTouchEnd={handleMouseUp}
+        onTouchMove={handleTouchMove}
+      >
+        {/* After image (full background) */}
+        <div className="absolute inset-0">
+          <img
+            src={after}
+            alt="After transformation"
+            className="w-full h-full object-cover"
+            draggable={false}
+          />
+        </div>
+
+        {/* Before image (clipped by slider) */}
+        <div
+          className="absolute inset-0"
+          style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
+        >
+          <img
+            src={before}
+            alt="Before transformation"
+            className="w-full h-full object-cover"
+            draggable={false}
+          />
+        </div>
+
+        {/* Slider line */}
+        <div
+          className="absolute top-0 bottom-0 w-[3px] z-10"
+          style={{
+            left: `${sliderPosition}%`,
+            transform: "translateX(-50%)",
+          }}
+        >
+          <div className="w-full h-full bg-[#00AEEF]" />
+          {/* Handle */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#00AEEF] flex items-center justify-center border-2 border-white/20">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M4 8L1 5M4 8L1 11M4 8H12M12 8L15 5M12 8L15 11"
+                stroke="white"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+
+        {/* Labels */}
+        <div className="absolute bottom-3 left-3 text-[10px] text-white/60 tracking-[0.2em] uppercase z-10 bg-black/50 px-2 py-1">
+          Before
+        </div>
+        <div className="absolute bottom-3 right-3 text-[10px] text-[#00AEEF] tracking-[0.2em] uppercase z-10 bg-black/50 px-2 py-1">
+          After
+        </div>
+      </div>
+
+      {/* Caption */}
+      <div className="mt-3 text-center">
+        <p className="text-white/70 text-sm font-medium">{name}</p>
+        <p className="text-[#00AEEF]/60 text-xs tracking-wider uppercase">
+          {days}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function MobileTransformCarousel() {
+  const [active, setActive] = useState(1); // Start with center
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const next = useCallback(
+    () => setActive((p) => (p + 1) % transformations.length),
+    []
+  );
+  const prev = useCallback(
+    () =>
+      setActive(
+        (p) => (p - 1 + transformations.length) % transformations.length
+      ),
+    []
+  );
+
+  useEffect(() => {
+    if (isAutoPlaying) {
+      intervalRef.current = setInterval(next, 4000);
+    }
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [isAutoPlaying, next]);
+
+  const pauseAuto = () => {
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 8000);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      pauseAuto();
+      if (diff > 0) next();
+      else prev();
+    }
+  };
+
+  const getStyle = (index: number): React.CSSProperties => {
+    const diff =
+      ((index - active + transformations.length) % transformations.length);
+    if (diff === 0)
+      return {
+        transform: "translateX(0) scale(1) rotateY(0deg)",
+        zIndex: 10,
+        opacity: 1,
+      };
+    if (diff === 1)
+      return {
+        transform: "translateX(65%) scale(0.8) rotateY(-20deg)",
+        zIndex: 5,
+        opacity: 0.35,
+      };
+    return {
+      transform: "translateX(-65%) scale(0.8) rotateY(20deg)",
+      zIndex: 5,
+      opacity: 0.35,
+    };
+  };
+
+  return (
+    <div className="relative w-full" style={{ perspective: "1200px" }}>
+      <div
+        className="relative h-[420px] flex items-center justify-center overflow-hidden touch-pan-y"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        {transformations.map((t, index) => (
+          <div
+            key={t.id}
+            className="absolute w-[75%] max-w-[280px] transition-all duration-500 ease-out"
+            style={{ ...getStyle(index), transformStyle: "preserve-3d" }}
+            onClick={() => {
+              pauseAuto();
+              setActive(index);
+            }}
+          >
+            <BeforeAfterSlider
+              before={t.before}
+              after={t.after}
+              name={t.name}
+              days={t.days}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="flex justify-center items-center gap-4 mt-2">
+        <div className="flex gap-2">
+          {transformations.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                pauseAuto();
+                setActive(i);
+              }}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === active ? "bg-[#00AEEF] w-6" : "bg-white/20 w-2"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function TransformationSection() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -30,21 +288,23 @@ export function TransformationSection() {
         }
       );
 
-      gsap.fromTo(
-        ".transform-container",
-        { opacity: 0, scale: 0.95 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 65%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
+      if (!isMobile) {
+        gsap.fromTo(
+          ".transform-grid",
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 65%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
 
       gsap.fromTo(
         ".progress-line",
@@ -63,87 +323,38 @@ export function TransformationSection() {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
-
-  const handleMove = (clientX: number) => {
-    if (!sliderRef.current || !isDragging.current) return;
-    const rect = sliderRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const percent = Math.max(0, Math.min(100, (x / rect.width) * 100));
-    setSliderPosition(percent);
-  };
-
-  const handleMouseDown = () => { isDragging.current = true; };
-  const handleMouseUp = () => { isDragging.current = false; };
-  const handleMouseMove = (e: React.MouseEvent) => handleMove(e.clientX);
-  const handleTouchMove = (e: React.TouchEvent) => handleMove(e.touches[0].clientX);
+  }, [isMobile]);
 
   return (
-    <section ref={sectionRef} className="relative py-24 md:py-32 px-4 bg-[#0A0A0A]">
-      <div className="container mx-auto max-w-3xl">
-        <div className="transform-heading text-center mb-16">
-          <p className="text-[#00AEEF] text-sm tracking-[0.3em] uppercase mb-4">Real Results</p>
+    <section ref={sectionRef} className="relative py-16 md:py-24 px-4 bg-[#0A0A0A]">
+      <div className="container mx-auto max-w-7xl">
+        <div className="transform-heading text-center mb-10 md:mb-14">
+          <p className="text-[#00AEEF] text-sm tracking-[0.3em] uppercase mb-4">
+            Real Results
+          </p>
           <h2 className="font-heading text-4xl md:text-6xl tracking-wider">
             BODY <span className="text-[#00AEEF]">TRANSFORMATION</span>
           </h2>
         </div>
 
-        {/* Before/After Slider - vertical/portrait aspect ratio */}
-        <div
-          ref={sliderRef}
-          className="transform-container relative w-full max-w-md mx-auto aspect-[3/4] rounded-lg overflow-hidden cursor-ew-resize select-none border border-white/10"
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
-          onMouseMove={handleMouseMove}
-          onTouchStart={handleMouseDown}
-          onTouchEnd={handleMouseUp}
-          onTouchMove={handleTouchMove}
-        >
-          {/* After image (full background) */}
-          <div className="absolute inset-0">
-            <img
-              src="/after.png"
-              alt="After transformation"
-              className="w-full h-full object-cover"
-              draggable={false}
-            />
+        {isMobile ? (
+          <MobileTransformCarousel />
+        ) : (
+          <div className="transform-grid grid grid-cols-3 gap-6 items-start">
+            {transformations.map((t) => (
+              <BeforeAfterSlider
+                key={t.id}
+                before={t.before}
+                after={t.after}
+                name={t.name}
+                days={t.days}
+              />
+            ))}
           </div>
-
-          {/* Before image (clipped by slider) */}
-          <div
-            className="absolute inset-0"
-            style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-          >
-            <img
-              src="/before.png"
-              alt="Before transformation"
-              className="w-full h-full object-cover"
-              draggable={false}
-            />
-          </div>
-
-          {/* Slider line */}
-          <div
-            className="absolute top-0 bottom-0 w-[3px] z-10"
-            style={{ left: `${sliderPosition}%`, transform: "translateX(-50%)" }}
-          >
-            <div className="w-full h-full bg-[#00AEEF] shadow-[0_0_10px_rgba(0,174,239,0.5)]" />
-            {/* Handle */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#00AEEF] flex items-center justify-center shadow-[0_0_20px_rgba(0,174,239,0.5)] border-2 border-white/20">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M4 8L1 5M4 8L1 11M4 8H12M12 8L15 5M12 8L15 11" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-          </div>
-
-          {/* Labels */}
-          <div className="absolute bottom-4 left-4 text-xs text-white/60 tracking-[0.2em] uppercase z-10 bg-black/40 px-2 py-1 rounded">Before</div>
-          <div className="absolute bottom-4 right-4 text-xs text-[#00AEEF] tracking-[0.2em] uppercase z-10 bg-black/40 px-2 py-1 rounded">After</div>
-        </div>
+        )}
 
         {/* Glowing progress line */}
-        <div className="mt-12 max-w-md mx-auto">
+        <div className="mt-10 max-w-lg mx-auto">
           <div className="flex justify-between text-xs text-white/30 tracking-wider uppercase mb-2">
             <span>Day 1</span>
             <span>Day 60</span>

@@ -302,13 +302,13 @@ export function MembershipSection() {
   }, [isMobile]);
 
   return (
-    <section ref={sectionRef} id="plans" className="relative py-24 md:py-32 px-4 bg-[#0A0A0A]">
+    <section ref={sectionRef} id="plans" className="relative py-16 md:py-24 px-4 bg-[#0A0A0A]">
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#00AEEF]/[0.02] rounded-full" />
       </div>
 
       <div className="container mx-auto max-w-5xl relative z-10">
-        <div className="membership-heading text-center mb-16">
+        <div className="membership-heading text-center mb-10">
           <p className="text-[#00AEEF] text-sm tracking-[0.3em] uppercase mb-4">Pricing</p>
           <h2 className="font-heading text-4xl md:text-6xl tracking-wider">
             MEMBERSHIP <span className="text-[#00AEEF]">PLANS</span>

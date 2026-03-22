@@ -12,10 +12,11 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.4,
+      duration: 1.0,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      touchMultiplier: 1.5,
+      touchMultiplier: 2,
       smoothWheel: true,
+      wheelMultiplier: 1,
     });
 
     lenisRef.current = lenis;
@@ -28,11 +29,13 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
     gsap.ticker.lagSmoothing(0);
 
-    // Force GPU compositing on animated sections
     ScrollTrigger.defaults({
       fastScrollEnd: true,
       preventOverlaps: true,
     });
+
+    // Force ScrollTrigger to recalculate after load
+    setTimeout(() => ScrollTrigger.refresh(), 500);
 
     return () => {
       lenis.destroy();

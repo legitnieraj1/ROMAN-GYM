@@ -167,9 +167,9 @@ export function TrainersSection() {
   }, [isMobile]);
 
   return (
-    <section ref={sectionRef} id="trainers" className="relative py-24 md:py-32 px-4 bg-[#0A0A0A]">
+    <section ref={sectionRef} id="trainers" className="relative py-16 md:py-24 px-4 bg-[#0A0A0A]">
       <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="trainers-heading text-center mb-16">
+        <div className="trainers-heading text-center mb-10">
           <p className="text-[#00AEEF] text-sm tracking-[0.3em] uppercase mb-4">Our Team</p>
           <h2 className="font-heading text-4xl md:text-6xl tracking-wider">
             EXPERT <span className="text-[#00AEEF]">TRAINERS</span>
