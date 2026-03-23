@@ -166,7 +166,7 @@ export default function TapPage() {
 
                 {/* Decorative Logo Anchor */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none scale-[4]">
-                    <img alt="Roman Fitness Logo" className="w-96 grayscale" src="/logooo.png" />
+                    <img alt="Roman Fitness Logo" className="w-96 grayscale" src="/logoroman.png" />
                 </div>
             </main>
         );

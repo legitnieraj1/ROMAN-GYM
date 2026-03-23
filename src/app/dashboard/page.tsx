@@ -134,7 +134,7 @@ export default async function DashboardPage() {
             {/* Top Bar */}
             <header className="fixed top-0 w-full z-50 bg-[#131314]/80 backdrop-blur-md flex justify-between items-center px-6 h-16 border-b border-[#0059ff]/10">
                 <Link href="/" className="flex items-center gap-3">
-                    <Image src="/logooo.png" alt="Roman Fitness" width={32} height={32} className="h-8 w-auto" />
+                    <Image src="/logoroman.png" alt="Roman Fitness" width={32} height={32} className="h-8 w-auto" />
                     <span className="text-lg font-black italic text-[#b6c4ff] tracking-widest hidden sm:block">ARENA COMMAND</span>
                 </Link>
                 <div className="flex items-center gap-4">

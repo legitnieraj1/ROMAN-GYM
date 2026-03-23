@@ -75,7 +75,7 @@ export default function SignupPage() {
             <div className="hidden md:flex md:w-1/2 lg:w-3/5 bg-[#0e0e0f] relative overflow-hidden items-center justify-center p-20">
                 <div className="absolute inset-0 z-0 opacity-40">
                     <Image
-                        src="/logooo.png"
+                        src="/logoroman.png"
                         alt="Roman Fitness Logo"
                         width={160}
                         height={160}
@@ -112,7 +112,7 @@ export default function SignupPage() {
                     {/* Mobile Logo */}
                     <div className="md:hidden flex flex-col items-center mb-8">
                         <Image
-                            src="/logooo.png"
+                            src="/logoroman.png"
                             alt="Roman Fitness Logo"
                             width={80}
                             height={80}

@@ -12,7 +12,7 @@ export function Footer() {
                     {/* Brand */}
                     <div className="space-y-4">
                         <Link href="/" className="flex items-center gap-2">
-                            <img src="/roman-fitness-logo.png" alt="Roman Fitness" className="w-10 h-10 object-contain" style={{ filter: "drop-shadow(0 0 6px rgba(0, 174, 239, 0.3))" }} />
+                            <img src="/logoroman.png" alt="Roman Fitness" className="w-10 h-10 object-contain" style={{ filter: "drop-shadow(0 0 6px rgba(0, 174, 239, 0.3))" }} />
                             <span className="font-heading text-xl tracking-[0.15em]">
                                 <span className="text-white">ROMAN</span>{" "}
                                 <span className="text-[#00AEEF]">FITNESS</span>

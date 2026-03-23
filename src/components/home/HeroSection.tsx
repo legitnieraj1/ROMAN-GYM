@@ -78,7 +78,7 @@ export function HeroSection() {
           preload="auto"
           className="w-full h-full object-cover will-change-auto"
         >
-          <source src={isMobile ? "/mobilehero.mp4" : "/herobgvideo.mp4"} type="video/mp4" />
+          <source src={isMobile ? "/mobilehero-new.mp4" : "/herobg.mp4"} type="video/mp4" />
         </video>
       </div>
 
@@ -89,7 +89,7 @@ export function HeroSection() {
         style={{ opacity: 0 }}
       >
         <img
-          src="/roman-fitness-logo.png"
+          src="/logoroman.png"
           alt="Roman Fitness Logo"
           className="w-[200px] md:w-[280px] h-auto mb-8"
           loading="eager"

@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/roman-fitness-logo.png",
+        url: "/logoroman.png",
         width: 800,
         height: 600,
         alt: "Roman Fitness - Premium Gym & Fitness Empire",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     title: "Roman Fitness | Enter The Empire of Fitness",
     description:
       "Premium fitness experience with elite equipment, expert coaching, and cinematic training environment.",
-    images: ["/roman-fitness-logo.png"],
+    images: ["/logoroman.png"],
   },
   robots: {
     index: true,
@@ -84,8 +84,8 @@ const jsonLd = {
   description:
     "Roman Fitness is the premium gym and fitness center in Periyanaickenpalayam, Coimbatore. We offer elite training, body transformation programs, AI-powered diet plans, and modern equipment.",
   url: "https://mfpgympnp.in",
-  logo: "https://mfpgympnp.in/roman-fitness-logo.png",
-  image: "https://mfpgympnp.in/roman-fitness-logo.png",
+  logo: "https://mfpgympnp.in/logoroman.png",
+  image: "https://mfpgympnp.in/logoroman.png",
   telephone: "+918098834154",
   email: "mfppnproman@gmail.com",
   address: {

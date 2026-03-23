@@ -69,7 +69,7 @@ export default function LoginPage() {
                     <div className="absolute top-0 left-0 w-1 h-full bg-[#0059ff]" />
                     <div className="relative z-10">
                         <Image
-                            src="/logooo.png"
+                            src="/logoroman.png"
                             alt="Roman Fitness"
                             width={120}
                             height={120}
@@ -92,7 +92,7 @@ export default function LoginPage() {
                     {/* Mobile Logo */}
                     <div className="md:hidden mb-12 flex justify-center">
                         <Image
-                            src="/logooo.png"
+                            src="/logoroman.png"
                             alt="Roman Fitness"
                             width={80}
                             height={80}

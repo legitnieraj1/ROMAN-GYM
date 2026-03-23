@@ -49,7 +49,7 @@ export function Navbar({ session = null }: { session?: any }) {
                     {/* Logo */}
                     <Link href="/" className="z-50 h-full py-2 md:py-3 flex items-center" onClick={() => setIsMenuOpen(false)}>
                         <img
-                            src="/logooo.png"
+                            src="/logoroman.png"
                             alt="Roman Fitness"
                             className="h-full w-auto object-contain transition-all duration-300"
                         />
