@@ -80,8 +80,6 @@ export function HeroSection() {
         >
           <source src={isMobile ? "/mobilehero.mp4" : "/herobgvideo.mp4"} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/60 via-transparent to-[#0A0A0A]" />
       </div>
 
       {/* Hero content */}
