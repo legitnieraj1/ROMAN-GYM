@@ -56,7 +56,7 @@ export async function POST(req: Request) {
                 "X-Title": "mfpgympnp"
             },
             body: JSON.stringify({
-                "model": "arcee-ai/trinity-large-preview:free",
+                "model": "stepfun/step-3.5-flash:free",
                 "messages": [{ "role": "user", "content": initialPrompt }],
                 "reasoning": { "enabled": true }
             })
@@ -111,7 +111,7 @@ export async function POST(req: Request) {
                 "X-Title": "mfpgympnp"
             },
             body: JSON.stringify({
-                "model": "arcee-ai/trinity-large-preview:free",
+                "model": "stepfun/step-3.5-flash:free",
                 "messages": messages,
             })
         });

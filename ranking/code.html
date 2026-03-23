@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Legion Rankings | ARENA TERMINAL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary": "#00287d",
+              "surface-variant": "#353436",
+              "surface-container-low": "#1c1b1c",
+              "surface-bright": "#3a393a",
+              "primary-fixed-dim": "#b6c4ff",
+              "primary-fixed": "#dce1ff",
+              "on-surface": "#e5e2e3",
+              "secondary": "#bec8d3",
+              "surface-dim": "#131314",
+              "outline": "#8d90a2",
+              "on-primary-fixed": "#00164f",
+              "on-primary-container": "#e7eaff",
+              "on-background": "#e5e2e3",
+              "primary-container": "#0059ff",
+              "on-secondary": "#28313a",
+              "background": "#131314",
+              "inverse-on-surface": "#313031",
+              "surface-container-lowest": "#0e0e0f",
+              "secondary-fixed-dim": "#bec8d3",
+              "secondary-fixed": "#dae4ef",
+              "on-secondary-fixed-variant": "#3e4851",
+              "primary": "#b6c4ff",
+              "tertiary-fixed": "#9cf0ff",
+              "on-tertiary-container": "#bef4ff",
+              "tertiary": "#00daf3",
+              "inverse-primary": "#004fe5",
+              "surface": "#131314",
+              "on-surface-variant": "#c3c5d9",
+              "tertiary-container": "#007583",
+              "on-tertiary-fixed": "#001f24",
+              "on-error-container": "#ffdad6",
+              "on-error": "#690005",
+              "tertiary-fixed-dim": "#00daf3",
+              "surface-container-high": "#2a2a2b",
+              "surface-container": "#201f20",
+              "error": "#ffb4ab",
+              "surface-container-highest": "#353436",
+              "error-container": "#93000a",
+              "on-primary-fixed-variant": "#003bb0",
+              "on-tertiary-fixed-variant": "#004f58",
+              "outline-variant": "#434656",
+              "surface-tint": "#b6c4ff",
+              "on-secondary-fixed": "#131d25",
+              "on-tertiary": "#00363d",
+              "secondary-container": "#404a53",
+              "on-secondary-container": "#afb9c5",
+              "inverse-surface": "#e5e2e3"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0rem", "lg": "0rem", "xl": "0rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tech-grid {
+            background-image: linear-gradient(#1c1b1c 1px, transparent 1px), linear-gradient(90deg, #1c1b1c 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .gladiator-gradient {
+            background: linear-gradient(135deg, #b6c4ff 0%, #0059ff 100%);
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #131314; }
+        ::-webkit-scrollbar-thumb { background: #353436; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body overflow-x-hidden selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#131314]/60 backdrop-blur-md flex justify-between items-center px-6 py-4 w-full shadow-[0_20px_40px_rgba(0,89,255,0.08)]">
+<div class="flex items-center gap-8">
+<div class="text-2xl font-black tracking-widest text-[#b6c4ff] italic font-['Space_Grotesk'] uppercase tracking-tighter">
+                ARENA TERMINAL
+            </div>
+<!-- Desktop Nav Cluster -->
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-[#bec8d3] font-['Space_Grotesk'] font-bold uppercase tracking-tighter hover:bg-[#b6c4ff]/10 transition-colors duration-200 px-3 py-1" href="#">Intel</a>
+<a class="text-[#b6c4ff] border-b-2 border-[#0059ff] font-['Space_Grotesk'] font-bold uppercase tracking-tighter px-3 py-1" href="#">Rankings</a>
+<a class="text-[#bec8d3] font-['Space_Grotesk'] font-bold uppercase tracking-tighter hover:bg-[#b6c4ff]/10 transition-colors duration-200 px-3 py-1" href="#">Armory</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="bg-surface-container-lowest border-none focus:ring-0 text-xs font-headline tracking-widest pl-10 pr-4 py-2 w-48 focus:border-b-2 focus:border-primary transition-all" placeholder="FIND OPERATIVE..." type="text"/>
+</div>
+<button class="text-on-surface-variant hover:bg-[#b6c4ff]/10 p-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-outline-variant/30">
+<div class="text-right hidden lg:block">
+<p class="text-[10px] font-headline font-bold text-primary tracking-widest leading-none">COMMANDER</p>
+<p class="text-xs font-bold text-on-surface">VALERIUS_01</p>
+</div>
+<img class="w-10 h-10 object-cover grayscale brightness-125 border border-primary/30" data-alt="Warrior profile portrait close up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzBvk31Os0OwQeWQcdyPoLeihGBvc8WPz5fAFgnxd6RNw43FH4nKcQ_fEUfuadM4W4Gz_XLCmYIxPnIVApvTWXWlOPZRr91ZJuFEBJ2k80AtFOFmFo5ybmQmzOunVjnBPMtxjMOS0boFRKSnwEMNDwTJ3DrmYfibz4EDoKrUpfi0kfziEN1vXQw2gIxm2E5xsiznpOqJmu5Nv6zsbutdp4AZcwx-io7gB0p8yfvKsqugU8JdG4v6Bbd9KDPGJ7KJyMzXh23MLmMYo"/>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 bg-gradient-to-b from-[#b6c4ff]/10 to-transparent h-[1px] w-full"></div>
+</header>
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 h-full w-64 z-40 bg-[#131314] border-r border-[#bec8d3]/15 flex flex-col pt-24 pb-8 hidden md:flex">
+<div class="px-6 mb-8">
+<p class="font-['Space_Grotesk'] uppercase font-bold tracking-widest text-xs text-[#0059ff] mb-1">COMMAND</p>
+<p class="text-xl font-black text-[#b6c4ff] font-headline">OPERATIVE 001</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-[#bec8d3] p-4 w-full flex items-center gap-4 hover:bg-[#bec8d3]/5 hover:text-[#b6c4ff] transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Space_Grotesk'] uppercase font-bold tracking-widest text-xs">Dashboard</span>
+</a>
+<a class="bg-gradient-to-r from-[#b6c4ff] to-[#0059ff] text-white p-4 w-full flex items-center gap-4 active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+<span class="font-['Space_Grotesk'] uppercase font-bold tracking-widest text-xs">Rankings</span>
+</a>
+<a class="text-[#bec8d3] p-4 w-full flex items-center gap-4 hover:bg-[#bec8d3]/5 hover:text-[#b6c4ff] transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Space_Grotesk'] uppercase font-bold tracking-widest text-xs">Profile</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-24 min-h-screen relative tech-grid">
+<div class="max-w-7xl mx-auto px-6 py-8 relative z-10">
+<!-- Hero Title -->
+<div class="mb-12 border-l-4 border-primary pl-6">
+<h1 class="font-headline font-bold text-5xl md:text-7xl uppercase tracking-tighter text-on-surface">
+                    LEGION <span class="text-primary italic">RANKINGS</span>
+</h1>
+<p class="font-body text-secondary mt-2 max-w-xl tracking-tight uppercase text-xs">
+                    SURVIVAL IS DATA. THE STRONGEST WILL IS MEASURED IN DAYS CONQUERED. CLIMB THE HIERARCHY OR BE FORGOTTEN.
+                </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Main Leaderboard -->
+<section class="lg:col-span-8 space-y-4">
+<div class="flex items-center justify-between mb-6 bg-surface-container-low p-4">
+<h2 class="font-headline font-bold text-lg tracking-widest uppercase">ACTIVE STREAK ELITE</h2>
+<div class="flex gap-4">
+<span class="text-[10px] font-headline font-bold text-tertiary tracking-widest">GLOBAL STATUS: ACTIVE</span>
+<span class="text-[10px] font-headline font-bold text-outline tracking-widest uppercase">REFRESH: 04:22:11</span>
+</div>
+</div>
+<!-- Rankings List -->
+<div class="space-y-2">
+<!-- Rank 1 Card -->
+<div class="group flex items-center bg-surface-container-high p-4 relative overflow-hidden transition-all hover:bg-surface-bright">
+<div class="absolute left-0 top-0 h-full w-1 bg-tertiary"></div>
+<div class="w-12 text-center">
+<span class="font-headline font-black text-2xl text-tertiary italic">01</span>
+</div>
+<div class="flex-shrink-0 ml-4">
+<img class="w-12 h-12 grayscale brightness-110 object-cover border border-tertiary/50" data-alt="Aggressive athlete training headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2dcVltmFiORc10IhLfCmtkVFIrl8Ks-nHYAdRhsKHXtACiFOCA_2oNUKOVzzwddXVQvBhYfiMI9fmpbURYnCRt3dIzNccD3BSGlC9f2HWhnbleCaz15R0T10ZesZmJS3Z6e0PCqUq1a-xDy4idcXgqe9eJp_-N_QMej372V1qBpxNL0v8zZFVGNFwBwTsgdTo_hrQFDMP73zj0aL_Jg2KsTtiZNOAG2fRfis2zJUkTHuZLM18pAYC0-v4OZ4QXclJuVfneffPZ2I"/>
+</div>
+<div class="ml-6 flex-1">
+<p class="font-headline font-bold uppercase tracking-widest text-on-surface">CENTURION_MAXIMUS</p>
+<p class="text-[10px] font-headline text-outline tracking-widest uppercase">CLASS: TITAN STRENGTH</p>
+</div>
+<div class="text-right flex flex-col items-end mr-8">
+<span class="font-headline font-black text-xl text-tertiary tracking-tighter">128 DAYS</span>
+<span class="text-[10px] font-headline font-bold text-outline tracking-widest">CURRENT STREAK</span>
+</div>
+<div class="flex items-center justify-center w-10">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="military_tech" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+</div>
+<!-- Rank 2 Card -->
+<div class="group flex items-center bg-surface-container-high p-4 transition-all hover:bg-surface-bright">
+<div class="w-12 text-center">
+<span class="font-headline font-black text-2xl text-primary italic">02</span>
+</div>
+<div class="flex-shrink-0 ml-4">
+<img class="w-12 h-12 grayscale brightness-110 object-cover border border-primary/30" data-alt="Female powerlifter profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMfjYhYal0Sa2CuneQtiJqwGNHNB6Zobn0joH5FRtoOHapWaL8DdAp9ucwqzDA-r7TuqDrbXHese0NxZUEzfqEpjuLAYXloYqibXa-g0B6G1rrkvGT-2V8fxTaZ2etQW-4JltjrDRj_JH9G9W8cULQ_EPKqU5TF9xJG0-Re68RPid1Us0VySURh8WOtVDch-b4mxKDjVeFwpJNEDL9KE5-uJ5dlJRZUL16QsvHc77egyaXPCpZbNZPjvQJyed7KzNal_ZrwiNL1sM"/>
+</div>
+<div class="ml-6 flex-1">
+<p class="font-headline font-bold uppercase tracking-widest text-on-surface">VALKYRIE_PULSE</p>
+<p class="text-[10px] font-headline text-outline tracking-widest uppercase">CLASS: ENDURANCE ELITE</p>
+</div>
+<div class="text-right flex flex-col items-end mr-8">
+<span class="font-headline font-black text-xl text-primary tracking-tighter">94 DAYS</span>
+<span class="text-[10px] font-headline font-bold text-outline tracking-widest">CURRENT STREAK</span>
+</div>
+<div class="flex items-center justify-center w-10">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+</div>
+<!-- Rank 3 Card -->
+<div class="group flex items-center bg-surface-container-high p-4 transition-all hover:bg-surface-bright">
+<div class="w-12 text-center">
+<span class="font-headline font-black text-2xl text-primary italic">03</span>
+</div>
+<div class="flex-shrink-0 ml-4">
+<img class="w-12 h-12 grayscale brightness-110 object-cover border border-primary/30" data-alt="Male crossfit athlete profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc4xP7cJciqVVrh1SBDALOPjifkodIivd6r3wqEDs8bXmU7A1OHu-FaGAqdI9TVTpiDampIuv5rY4nBdlF9w3e1t2mx4uB3XK2Qfi4CL6luneuJsBwIhmV5skW9ypbVRILGP1jI6kSXrlpO9GQH7MrdWmr8YiNjL2qWsb-5rY5MNkrEo56m6f_y_DZoDkwVZqQhOOf9yQcge_rYEJTjiDe66-_VHQGjTd8I5kIEISysjihri1cRQKxya7-3ex_PfLA5Z5UMLMxxVM"/>
+</div>
+<div class="ml-6 flex-1">
+<p class="font-headline font-bold uppercase tracking-widest text-on-surface">IRON_WILL_88</p>
+<p class="text-[10px] font-headline text-outline tracking-widest uppercase">CLASS: HYBRID WARRIOR</p>
+</div>
+<div class="text-right flex flex-col items-end mr-8">
+<span class="font-headline font-black text-xl text-primary tracking-tighter">72 DAYS</span>
+<span class="text-[10px] font-headline font-bold text-outline tracking-widest">CURRENT STREAK</span>
+</div>
+<div class="flex items-center justify-center w-10">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="award" style="font-variation-settings: 'FILL' 1;">award_star</span>
+</div>
+</div>
+<!-- User Rank Placeholder (Contextual Mapping) -->
+<div class="pt-8 pb-4">
+<div class="text-center mb-4">
+<span class="text-[10px] font-headline font-bold text-outline tracking-[0.5em] uppercase">YOUR RANKING POSITION</span>
+</div>
+<div class="group flex items-center bg-[#0059ff]/10 border border-[#0059ff]/30 p-4 relative overflow-hidden backdrop-blur-sm">
+<div class="w-12 text-center">
+<span class="font-headline font-black text-2xl text-white italic">42</span>
+</div>
+<div class="flex-shrink-0 ml-4">
+<img class="w-12 h-12 object-cover border-2 border-primary" data-alt="Warrior user profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApe1soMjYnXiiGrAB0M9cgD8N9Amc_pKusyZJHSxAt4HjanidJ6FqlA4fYjjpL-UgHF3vjG07v9pbezBZzhQE_gOywA4eU7FBtcJ3HmdOm-faAqNiNPyZtAVHjdSZ7PMhM5TL1cDfL5qMdxAAY_uRAC7qGM7a6Vmn7QtGYOTuBNIJw2B2ScRAlGvrueLcqSWJLQtA4fWTLTKmU-rjQtORqI6700km88WoqpD2wEbN1C_3d01IviXdA5vli0BsC6gIqOWmrNVMDLLk"/>
+</div>
+<div class="ml-6 flex-1">
+<p class="font-headline font-bold uppercase tracking-widest text-white">VALERIUS_01 (YOU)</p>
+<p class="text-[10px] font-headline text-primary-fixed-dim tracking-widest uppercase">CLASS: RECRUIT</p>
+</div>
+<div class="text-right flex flex-col items-end mr-8">
+<span class="font-headline font-black text-xl text-white tracking-tighter">12 DAYS</span>
+<span class="text-[10px] font-headline font-bold text-primary-fixed-dim tracking-widest">CURRENT STREAK</span>
+</div>
+<div class="flex items-center justify-center w-10">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="workspace_premium">workspace_premium</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Medal Vault / Sidebar Grid -->
+<aside class="lg:col-span-4 space-y-8">
+<section class="bg-surface-container-low p-6">
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-tertiary" data-icon="lock_open">lock_open</span>
+<h2 class="font-headline font-bold text-lg tracking-widest uppercase">MEDAL VAULT</h2>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Unlocked Medals -->
+<div class="flex flex-col items-center justify-center aspect-square bg-surface-container-highest border-t-2 border-tertiary p-4 text-center group transition-all hover:bg-surface-bright">
+<div class="relative mb-3">
+<div class="absolute inset-0 bg-tertiary/20 blur-xl group-hover:bg-tertiary/40 transition-all"></div>
+<span class="material-symbols-outlined text-tertiary text-4xl relative z-10" data-icon="bloodtype" style="font-variation-settings: 'FILL' 1;">bloodtype</span>
+</div>
+<p class="text-[10px] font-headline font-bold tracking-widest uppercase text-on-surface">FIRST BLOOD</p>
+<p class="text-[8px] font-body text-outline mt-1 uppercase">COMPLETE 1ST WORKOUT</p>
+</div>
+<div class="flex flex-col items-center justify-center aspect-square bg-surface-container-highest border-t-2 border-tertiary p-4 text-center group transition-all hover:bg-surface-bright">
+<div class="relative mb-3">
+<div class="absolute inset-0 bg-tertiary/20 blur-xl group-hover:bg-tertiary/40 transition-all"></div>
+<span class="material-symbols-outlined text-tertiary text-4xl relative z-10" data-icon="fitness_center" style="font-variation-settings: 'FILL' 1;">fitness_center</span>
+</div>
+<p class="text-[10px] font-headline font-bold tracking-widest uppercase text-on-surface">IRON WILL</p>
+<p class="text-[8px] font-body text-outline mt-1 uppercase">7 DAY STREAK</p>
+</div>
+<!-- Locked Medals -->
+<div class="flex flex-col items-center justify-center aspect-square bg-surface-container-lowest border border-outline-variant/10 p-4 text-center opacity-40 grayscale transition-all hover:grayscale-0 hover:opacity-60">
+<span class="material-symbols-outlined text-secondary text-4xl mb-3" data-icon="shield">shield</span>
+<p class="text-[10px] font-headline font-bold tracking-widest uppercase text-outline">CENTURION</p>
+<p class="text-[8px] font-body text-outline mt-1 uppercase">100 DAY STREAK</p>
+</div>
+<div class="flex flex-col items-center justify-center aspect-square bg-surface-container-lowest border border-outline-variant/10 p-4 text-center opacity-40 grayscale transition-all hover:grayscale-0 hover:opacity-60">
+<span class="material-symbols-outlined text-secondary text-4xl mb-3" data-icon="swords">swords</span>
+<p class="text-[10px] font-headline font-bold tracking-widest uppercase text-outline">ARENA MASTER</p>
+<p class="text-[8px] font-body text-outline mt-1 uppercase">WIN 10 DUELS</p>
+</div>
+<div class="flex flex-col items-center justify-center aspect-square bg-surface-container-lowest border border-outline-variant/10 p-4 text-center opacity-40 grayscale transition-all hover:grayscale-0 hover:opacity-60">
+<span class="material-symbols-outlined text-secondary text-4xl mb-3" data-icon="mountain_flag">mountain_flag</span>
+<p class="text-[10px] font-headline font-bold tracking-widest uppercase text-outline">EVEREST</p>
+<p class="text-[8px] font-body text-outline mt-1 uppercase">10K ELEVATION GAIN</p>
+</div>
+<div class="flex flex-col items-center justify-center aspect-square bg-surface-container-lowest border border-outline-variant/10 p-4 text-center opacity-40 grayscale transition-all hover:grayscale-0 hover:opacity-60">
+<span class="material-symbols-outlined text-secondary text-4xl mb-3" data-icon="bolt">bolt</span>
+<p class="text-[10px] font-headline font-bold tracking-widest uppercase text-outline">LIGHTNING</p>
+<p class="text-[8px] font-body text-outline mt-1 uppercase">TOP 1% VELOCITY</p>
+</div>
+</div>
+<button class="w-full mt-8 py-3 bg-surface-container-highest text-secondary font-headline text-[10px] tracking-[0.3em] font-bold uppercase border border-outline-variant/20 hover:text-white transition-all">
+                            VIEW FULL VAULT (24)
+                        </button>
+</section>
+<!-- Tactical Ad / Info -->
+</aside>
+</div>
+</div>
+</main>
+<!-- Navigation Shell Mobile Only -->
+<nav class="md:hidden fixed bottom-0 w-full bg-[#131314]/90 backdrop-blur-lg border-t border-outline-variant/20 flex justify-around py-4 px-2 z-50">
+<a class="flex flex-col items-center gap-1 text-[#bec8d3]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-headline font-bold uppercase tracking-widest">Dash</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#b6c4ff]" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+<span class="text-[10px] font-headline font-bold uppercase tracking-widest">Rank</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#bec8d3]" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-headline font-bold uppercase tracking-widest">User</span>
+</a>
+</nav>
+</body></html>

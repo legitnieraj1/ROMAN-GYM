@@ -1,12 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Loader2, Utensils } from "lucide-react";
-import { Navbar } from "@/components/layout/Navbar";
 import { useRouter } from "next/navigation";
+import { Navbar } from "@/components/layout/Navbar";
+import { Loader2 } from "lucide-react";
 
 export default function DietPage() {
     const router = useRouter();
@@ -16,10 +13,17 @@ export default function DietPage() {
     const [hasActiveMembership, setHasActiveMembership] = useState<boolean | null>(null);
     const [checkingAuth, setCheckingAuth] = useState(true);
 
+    const [formData, setFormData] = useState({
+        weight: "",
+        height: "",
+        age: "",
+        goal: "MAINTAIN",
+        vegNonVeg: "Non-Veg"
+    });
+
     useEffect(() => {
         const checkAccess = async () => {
             try {
-                // Fetch session from our API
                 const res = await fetch("/api/auth/session");
                 const data = await res.json();
 
@@ -30,7 +34,6 @@ export default function DietPage() {
 
                 setSession(data);
 
-                // Check membership by fetching member profile
                 const profileRes = await fetch("/api/auth/profile");
                 const profile = await profileRes.json();
 
@@ -48,14 +51,6 @@ export default function DietPage() {
         };
         checkAccess();
     }, [router]);
-
-    const [formData, setFormData] = useState({
-        weight: "",
-        height: "",
-        age: "",
-        goal: "MAINTAIN",
-        vegNonVeg: "Non-Veg"
-    });
 
     const handleChange = (e: any) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -85,135 +80,224 @@ export default function DietPage() {
     };
 
     if (checkingAuth || hasActiveMembership === null) return (
-        <div className="min-h-screen bg-black flex items-center justify-center">
-            <Loader2 className="w-8 h-8 animate-spin text-[#E50914]" />
+        <div className="min-h-screen bg-[#131314] flex items-center justify-center">
+            <Loader2 className="w-8 h-8 animate-spin text-[#b6c4ff]" />
         </div>
     );
 
     if (hasActiveMembership === false) {
         return (
-            <div className="min-h-screen bg-black text-white relative">
+            <div className="min-h-screen bg-[#131314] text-white relative font-['Manrope'] selection:bg-[#b6c4ff]/30">
                 <Navbar />
-                <div className="container mx-auto px-4 py-32 flex flex-col items-center justify-center text-center h-[80vh]">
-                    <div className="w-20 h-20 bg-[#E50914]/10 rounded-full flex items-center justify-center mb-6">
-                        <Utensils className="w-10 h-10 text-[#E50914]" />
+                <div className="max-w-7xl mx-auto px-4 py-32 flex flex-col items-center justify-center text-center h-[80vh]">
+                    <div className="w-32 h-32 rounded-full bg-[#353436] flex items-center justify-center border border-[#8d90a2]/20 relative group mb-8">
+                        <div className="absolute inset-0 bg-[#b6c4ff]/5 rounded-full blur-xl transition-colors"></div>
+                        <span className="material-symbols-outlined text-[#00daf3] text-6xl relative z-10" style={{ fontVariationSettings: "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24" }}>restaurant</span>
                     </div>
-                    <h1 className="text-4xl font-heading font-bold mb-4">MEMBER <span className="text-[#E50914]">ONLY</span> ACCESS</h1>
-                    <p className="text-zinc-400 max-w-md mb-8">
-                        The AI Nutritionist is exclusively available to MFP GYM members with an active plan. Join us to unlock personalized diet plans.
+                    <div className="flex items-baseline gap-4 mb-4">
+                        <h1 className="text-[#bec8d3] font-['Space_Grotesk'] font-black text-4xl md:text-5xl tracking-tighter uppercase">MEMBER<span className="text-[#ffb4ab] italic ml-2">ONLY</span> ACCESS</h1>
+                    </div>
+                    <p className="text-[#afb9c5] font-medium tracking-wide max-w-md mt-4 mb-10">
+                        The AI Nutritionist is exclusively available to Gladiator Tech operatives with an active plan. Secure your credentials to access tactical diet plans.
                     </p>
-                    <Button
+                    <button
                         onClick={() => router.push("/#plans")}
-                        className="bg-[#E50914] hover:bg-[#E50914]/90 text-white font-bold px-8 py-6 text-xl rounded-full shadow-[0_0_20px_-5px_#E50914]"
+                        className="py-4 px-12 bg-gradient-to-br from-[#b6c4ff] to-[#0059ff] text-[#00287d] font-['Manrope'] font-extrabold uppercase tracking-[2px] hover:brightness-110 active:scale-[0.98] transition-all flex justify-center items-center gap-2"
                     >
-                        VIEW PLANS
-                    </Button>
+                        <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>bolt</span>
+                        VIEW INTEL PLANS
+                    </button>
                 </div>
             </div>
         );
     }
 
     return (
-        <div className="min-h-screen bg-black text-white relative">
-            {/* Background */}
-            <div className="absolute inset-0 bg-[url('/diet-bg.webp')] bg-cover bg-center opacity-20 pointer-events-none fixed" />
-            <Navbar />
-            <div className="container mx-auto px-4 py-24">
-                <div className="max-w-4xl mx-auto">
-                    <h1 className="text-4xl font-heading font-bold mb-8 text-center">AI <span className="text-[#E50914]">NUTRITIONIST</span></h1>
+        <div className="bg-[#131314] text-[#e5e2e3] font-['Manrope'] selection:bg-[#b6c4ff]/30">
+            {/* TopAppBar inside page to replace existing standalone Navbar for better look, but using Next Navbar component to reuse session/links logic */}
+            <div className="fixed top-0 w-full z-50 bg-[#131314]/60 backdrop-blur-xl border-b border-white/5 shadow-[0_20px_40px_rgba(0,89,255,0.08)]">
+                <Navbar session={session} />
+            </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {/* Form */}
-                        <Card className="bg-zinc-900 border-zinc-800 h-fit">
-                            <CardHeader>
-                                <CardTitle className="text-white">Your Stats</CardTitle>
-                                <CardDescription>Tell us about yourself to get a tailored plan.</CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <form onSubmit={handleGenerate} className="space-y-4">
+            <main className="relative min-h-screen pt-24 pb-20 md:pb-8 px-4 md:px-8 overflow-hidden">
+                {/* Hero Background */}
+                <div className="absolute inset-0 -z-10">
+                    <img 
+                        alt="Background" 
+                        src="/diet-bg.webp" 
+                        className="w-full h-full object-cover opacity-20 grayscale" 
+                        onError={(e) => { e.currentTarget.src = "https://lh3.googleusercontent.com/aida-public/AB6AXuCgt5VRhbwY8FTqIkqrRetByxm8Y1kRdazjVlrAESWEJuRnwzHtrTOHcZ1S14XMAvI5erORMcghv72rPfW-5OcGM0WmVg3VL33RZJ0yjjMGZx42cq5QPCDEo78eKAv_EPIx-hMhBLYDfzJWfSCkNVUC-f9NDGMmXHon6-vHWaZt5wI_3B4cHzy_Mrl0ZPZJLmgyeu-r0W4nB4ynB6gk7NpXSaH0hIIz-1O_akx1BcsOuHPQwNpdbkAMzOeIHyib0c4X7liR5ebolwE" }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#131314] via-[#131314]/80 to-[#131314]"></div>
+                    <div className="absolute inset-0" style={{
+                        backgroundImage: "radial-gradient(rgba(0, 89, 255, 0.1) 1px, transparent 1px)",
+                        backgroundSize: "30px 30px"
+                    }}></div>
+                </div>
+
+                <div className="max-w-7xl mx-auto space-y-12 mt-12">
+                    {/* AI Nutritionist Header */}
+                    <section className="flex flex-col gap-2">
+                        <div className="flex items-baseline gap-4">
+                            <span className="text-[#ffb4ab] font-['Space_Grotesk'] font-black text-6xl md:text-8xl italic tracking-tighter">AI</span>
+                            <h1 className="text-[#bec8d3] font-['Space_Grotesk'] font-black text-5xl md:text-7xl tracking-tighter uppercase">NUTRITIONIST</h1>
+                        </div>
+                        <div className="h-1 w-32 bg-[#b6c4ff]"></div>
+                        <p className="text-[#afb9c5] font-medium tracking-wide max-w-2xl mt-4">
+                            Deploying precision algorithms to engineer your metabolic destiny. Input your biometrics to receive a tactical Roman Fitness fueling protocol.
+                        </p>
+                    </section>
+
+                    {/* Grid Layout */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                        {/* Left: Stats Form Panel */}
+                        <aside className="lg:col-span-5 bg-[#2a2a2b]/60 backdrop-blur-2xl p-8 border-l-2 border-[#00daf3] relative overflow-hidden">
+                            <div className="relative z-10 space-y-8">
+                                <div className="flex items-center gap-3">
+                                    <span className="material-symbols-outlined text-[#b6c4ff]" style={{ fontVariationSettings: "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24" }}>analytics</span>
+                                    <h2 className="font-['Space_Grotesk'] font-bold text-xl uppercase tracking-widest text-[#e5e2e3]">Biometric Uplink</h2>
+                                </div>
+                                <form onSubmit={handleGenerate} className="space-y-6">
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="space-y-2">
-                                            <label className="text-sm text-gray-400">Weight (kg)</label>
-                                            <Input name="weight" type="number" required placeholder="Enter weight in kg" className="bg-black/50 border-zinc-700" onChange={handleChange} />
+                                            <label className="text-[#afb9c5] font-['Manrope'] text-[10px] font-bold uppercase tracking-[1.5px]">Weight (kg)</label>
+                                            <input 
+                                                required
+                                                type="number" 
+                                                name="weight"
+                                                value={formData.weight}
+                                                onChange={handleChange}
+                                                className="w-full bg-[#0e0e0f] border-0 border-b-2 border-transparent focus:border-[#b6c4ff] focus:ring-0 text-[#e5e2e3] font-['Manrope'] p-3 transition-colors" 
+                                                placeholder="85"
+                                            />
                                         </div>
                                         <div className="space-y-2">
-                                            <label className="text-sm text-gray-400">Height (cm)</label>
-                                            <Input name="height" type="number" required placeholder="Enter height in cm" className="bg-black/50 border-zinc-700" onChange={handleChange} />
+                                            <label className="text-[#afb9c5] font-['Manrope'] text-[10px] font-bold uppercase tracking-[1.5px]">Height (cm)</label>
+                                            <input 
+                                                required
+                                                type="number" 
+                                                name="height"
+                                                value={formData.height}
+                                                onChange={handleChange}
+                                                className="w-full bg-[#0e0e0f] border-0 border-b-2 border-transparent focus:border-[#b6c4ff] focus:ring-0 text-[#e5e2e3] font-['Manrope'] p-3 transition-colors" 
+                                                placeholder="182"
+                                            />
                                         </div>
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-sm text-gray-400">Age</label>
-                                        <Input name="age" type="number" required placeholder="Enter your age" className="bg-black/50 border-zinc-700" onChange={handleChange} />
+                                        <label className="text-[#afb9c5] font-['Manrope'] text-[10px] font-bold uppercase tracking-[1.5px]">Current Age</label>
+                                        <input 
+                                            required
+                                            type="number"
+                                            name="age"
+                                            value={formData.age}
+                                            onChange={handleChange}
+                                            className="w-full bg-[#0e0e0f] border-0 border-b-2 border-transparent focus:border-[#b6c4ff] focus:ring-0 text-[#e5e2e3] font-['Manrope'] p-3 transition-colors" 
+                                            placeholder="28"
+                                            />
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-sm text-gray-400">Goal</label>
-                                        <select name="goal" className="w-full bg-black/50 border border-zinc-700 rounded-md p-2 text-sm text-white" onChange={handleChange}>
+                                        <label className="text-[#afb9c5] font-['Manrope'] text-[10px] font-bold uppercase tracking-[1.5px]">Primary Objective</label>
+                                        <select 
+                                            name="goal"
+                                            value={formData.goal}
+                                            onChange={handleChange}
+                                            className="w-full bg-[#0e0e0f] border-0 border-b-2 border-transparent focus:border-[#b6c4ff] focus:ring-0 text-[#e5e2e3] font-['Manrope'] p-3 transition-colors"
+                                        >
+                                            <option value="BULK">Gain Muscle</option>
+                                            <option value="CUT">Lose Fat</option>
                                             <option value="MAINTAIN">Maintain Weight</option>
-                                            <option value="CUT">Weight Loss (Cut)</option>
-                                            <option value="BULK">Muscle Gain (Bulk)</option>
                                         </select>
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-sm text-gray-400">Diet Type</label>
-                                        <select name="vegNonVeg" className="w-full bg-black/50 border border-zinc-700 rounded-md p-2 text-sm text-white" onChange={handleChange}>
+                                        <label className="text-[#afb9c5] font-['Manrope'] text-[10px] font-bold uppercase tracking-[1.5px]">Dietary Protocol</label>
+                                        <select 
+                                            name="vegNonVeg"
+                                            value={formData.vegNonVeg}
+                                            onChange={handleChange}
+                                            className="w-full bg-[#0e0e0f] border-0 border-b-2 border-transparent focus:border-[#b6c4ff] focus:ring-0 text-[#e5e2e3] font-['Manrope'] p-3 transition-colors"
+                                        >
                                             <option value="Non-Veg">Non-Vegetarian</option>
                                             <option value="Veg">Vegetarian</option>
                                             <option value="Vegan">Vegan</option>
                                         </select>
                                     </div>
-
-                                    <Button type="submit" className="w-full bg-[#E50914] hover:bg-[#E50914]/90 text-white font-bold shadow-[0_0_15px_-5px_#E50914]" disabled={loading}>
-                                        {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                                        Generate Plan
-                                    </Button>
+                                    <button 
+                                        type="submit" 
+                                        disabled={loading}
+                                        className="w-full py-4 mt-4 bg-gradient-to-br from-[#b6c4ff] to-[#0059ff] text-[#00287d] font-['Manrope'] font-extrabold uppercase tracking-[2px] hover:brightness-110 active:scale-[0.98] transition-all flex justify-center items-center gap-2 disabled:opacity-50"
+                                    >
+                                        {loading ? <Loader2 className="animate-spin" size={24} /> : <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>bolt</span>}
+                                        {loading ? "GENERATING..." : "GENERATE PLAN"}
+                                    </button>
                                 </form>
-                            </CardContent>
-                        </Card>
+                            </div>
+                        </aside>
 
-                        {/* Result */}
-                        <div className="relative">
-                            {plan ? (
-                                <Card className="bg-zinc-900 border-zinc-800 animate-fade-in-up">
-                                    <CardHeader>
-                                        <CardTitle className="text-white flex items-center gap-2">
-                                            <Utensils className="text-[#E50914]" /> Your Weekly Plan
-                                        </CardTitle>
-                                        <div className="flex gap-4 text-sm text-gray-400 mt-2">
-                                            <span className="bg-black/30 px-2 py-1 rounded">Calories: {plan.calories}</span>
-                                            <span className="bg-black/30 px-2 py-1 rounded">Protein: {plan.protein}g</span>
+                        {/* Right: Diet Plan Preview */}
+                        <section className="lg:col-span-7 bg-[#1c1b1c] p-1 relative min-h-[600px] flex flex-col items-stretch">
+                            <div className="flex-1 bg-[#201f20] p-6 lg:p-8 flex flex-col text-left space-y-6 overflow-y-auto w-full">
+                                {!plan ? (
+                                    <div className="h-full flex-1 flex flex-col justify-center items-center text-center">
+                                        <div className="w-32 h-32 rounded-full bg-[#353436] flex items-center justify-center border border-[#8d90a2]/20 relative group mb-6">
+                                            <div className="absolute inset-0 bg-[#b6c4ff]/5 rounded-full blur-xl group-hover:bg-[#b6c4ff]/10 transition-colors"></div>
+                                            <span className="material-symbols-outlined text-[#b6c4ff] text-6xl relative z-10" style={{ fontVariationSettings: "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24" }}>restaurant</span>
                                         </div>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <div className="space-y-4">
+                                        <div className="space-y-2">
+                                            <h3 className="font-['Space_Grotesk'] font-bold text-2xl uppercase tracking-tighter text-[#e5e2e3]">Tactical Intel Awaiting Command</h3>
+                                            <p className="text-[#afb9c5] max-w-md mx-auto">
+                                                Configure your biometrics and execute the generation protocol to reveal your customized high-performance diet plan.
+                                            </p>
+                                        </div>
+                                        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 opacity-20 select-none pointer-events-none">
+                                            <div className="h-24 bg-[#353436] border border-[#8d90a2]/10"></div>
+                                            <div className="h-24 bg-[#353436] border border-[#8d90a2]/10"></div>
+                                            <div className="h-24 bg-[#353436] border border-[#8d90a2]/10"></div>
+                                            <div className="h-24 bg-[#353436] border border-[#8d90a2]/10"></div>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="h-full flex-1 w-full space-y-4 animate-fade-in-up">
+                                        <div className="flex justify-between items-center mb-6 pb-4 border-b border-[#353436]">
+                                            <h3 className="font-['Space_Grotesk'] font-bold text-xl uppercase tracking-widest text-[#00daf3] flex items-center gap-2">
+                                                <span className="material-symbols-outlined">analytics</span>
+                                                Protocol Active
+                                            </h3>
+                                            <div className="flex gap-2 text-xs font-['Manrope'] bg-[#0e0e0f] p-2 rounded">
+                                                <span className="text-[#afb9c5]">CALS: <b className="text-[#e5e2e3]">{plan.calories}</b></span>
+                                                <span className="text-[#afb9c5] border-l border-[#353436] pl-2">PRO: <b className="text-[#e5e2e3]">{plan.protein}g</b></span>
+                                            </div>
+                                        </div>
+                                        <div className="space-y-4 w-full text-sm lg:text-base font-['Manrope']">
                                             {plan.weeklyPlan.split('\n').map((line: string, index: number) => {
                                                 if (line.trim().startsWith('##')) {
                                                     return (
-                                                        <h3 key={index} className="text-xl font-bold text-[#E50914] mt-6 mb-2 border-b border-zinc-800 pb-2">
+                                                        <h3 key={index} className="text-lg lg:text-xl font-black text-[#b6c4ff] mt-6 mb-2 border-b border-white/5 pb-2 uppercase tracking-tight">
                                                             {line.replace(/^##\s+/, '').replace(/\*\*/g, '')}
                                                         </h3>
                                                     );
                                                 }
                                                 if (line.trim().startsWith('###')) {
                                                     return (
-                                                        <h4 key={index} className="text-lg font-semibold text-white mt-4 mb-2">
+                                                        <h4 key={index} className="text-md lg:text-lg font-bold text-[#e5e2e3] mt-5 mb-2 uppercase">
                                                             {line.replace(/^###\s+/, '').replace(/\*\*/g, '')}
                                                         </h4>
                                                     );
                                                 }
                                                 if (line.trim().startsWith('**') && line.trim().endsWith('**')) {
                                                     return (
-                                                        <h4 key={index} className="text-md font-bold text-zinc-200 mt-4 mb-1">
+                                                        <h4 key={index} className="text-base font-bold text-[#e5e2e3] mt-4 mb-2">
                                                             {line.replace(/\*\*/g, '')}
                                                         </h4>
                                                     );
                                                 }
                                                 if (line.trim().startsWith('-')) {
                                                     return (
-                                                        <div key={index} className="flex items-start gap-2 ml-2 text-zinc-300">
-                                                            <span className="text-[#E50914] mt-1.5">•</span>
+                                                        <div key={index} className="flex items-start gap-3 ml-2 text-[#bec8d3]">
+                                                            <span className="text-[#0059ff] mt-1 text-xs">◆</span>
                                                             <p className="flex-1 leading-relaxed">
                                                                 {line.replace(/^- /, '').split('**').map((part: string, i: number) =>
-                                                                    i % 2 === 1 ? <span key={i} className="font-semibold text-white">{part}</span> : part
+                                                                    i % 2 === 1 ? <span key={i} className="font-bold text-[#e5e2e3]">{part}</span> : part
                                                                 )}
                                                             </p>
                                                         </div>
@@ -223,26 +307,26 @@ export default function DietPage() {
                                                     return <div key={index} className="h-2"></div>;
                                                 }
                                                 return (
-                                                    <p key={index} className="text-zinc-400">
+                                                    <p key={index} className="text-[#afb9c5] leading-relaxed">
                                                         {line.split('**').map((part: string, i: number) =>
-                                                            i % 2 === 1 ? <strong key={i} className="text-white">{part}</strong> : part
+                                                            i % 2 === 1 ? <strong key={i} className="text-[#e5e2e3] font-bold">{part}</strong> : part
                                                         )}
                                                     </p>
                                                 );
                                             })}
                                         </div>
-                                    </CardContent>
-                                </Card>
-                            ) : (
-                                <div className="h-full flex flex-col items-center justify-center p-8 border border-dashed border-zinc-800 rounded-lg text-center">
-                                    <Utensils className="w-12 h-12 text-zinc-700 mb-4" />
-                                    <p className="text-zinc-500">Fill the form and hit Generate to see your personalized Indian diet plan.</p>
-                                </div>
-                            )}
-                        </div>
+                                    </div>
+                                )}
+                            </div>
+                            {/* Footer Label for Section */}
+                            <div className="bg-[#353436] px-6 py-3 flex justify-between items-center w-full shrink-0">
+                                <span className="text-[#afb9c5] font-['Manrope'] text-[10px] font-bold uppercase tracking-[1.5px]">{plan ? 'Protocol: Generated' : 'System Status: Ready'}</span>
+                                <span className="text-[#00daf3] font-['Manrope'] text-[10px] font-bold uppercase tracking-[1.5px]">GLADIATOR_OS v4.0</span>
+                            </div>
+                        </section>
                     </div>
                 </div>
-            </div>
+            </main>
         </div>
     );
 }

@@ -12,6 +12,8 @@ const navLinks = [
     { name: "FEATURES", href: "/#features" },
     { name: "TRAINERS", href: "/#trainers" },
     { name: "MEMBERSHIP", href: "/#plans" },
+    { name: "RANKINGS", href: "/dashboard/ranking" },
+    { name: "DIET AI", href: "/diet" },
     { name: "CONTACT", href: "/#contact" },
 ];
 

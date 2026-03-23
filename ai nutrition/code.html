@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Diet AI - Roman Fitness</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&amp;family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-highest": "#353436",
+                        "inverse-on-surface": "#313031",
+                        "on-secondary-container": "#afb9c5",
+                        "outline": "#8d90a2",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "surface-bright": "#3a393a",
+                        "on-primary": "#00287d",
+                        "tertiary-fixed": "#9cf0ff",
+                        "tertiary-container": "#007583",
+                        "on-secondary-fixed-variant": "#3e4851",
+                        "surface": "#131314",
+                        "primary": "#b6c4ff",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#28313a",
+                        "secondary-fixed-dim": "#bec8d3",
+                        "surface-tint": "#b6c4ff",
+                        "on-tertiary-fixed": "#001f24",
+                        "tertiary": "#00daf3",
+                        "on-secondary-fixed": "#131d25",
+                        "background": "#131314",
+                        "inverse-surface": "#e5e2e3",
+                        "secondary-fixed": "#dae4ef",
+                        "primary-fixed": "#dce1ff",
+                        "surface-variant": "#353436",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-primary-container": "#e7eaff",
+                        "inverse-primary": "#004fe5",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#00daf3",
+                        "on-tertiary": "#00363d",
+                        "surface-container-high": "#2a2a2b",
+                        "on-primary-fixed-variant": "#003bb0",
+                        "outline-variant": "#434656",
+                        "surface-container-lowest": "#0e0e0f",
+                        "surface-container-low": "#1c1b1c",
+                        "on-primary-fixed": "#00164f",
+                        "surface-dim": "#131314",
+                        "on-tertiary-container": "#bef4ff",
+                        "on-surface-variant": "#c3c5d9",
+                        "surface-container": "#201f20",
+                        "on-surface": "#e5e2e3",
+                        "secondary": "#bec8d3",
+                        "secondary-container": "#404a53",
+                        "on-tertiary-fixed-variant": "#004f58",
+                        "primary-container": "#0059ff",
+                        "on-background": "#e5e2e3"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .grid-pattern {
+            background-image: radial-gradient(rgba(0, 89, 255, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .shimmer {
+            background: linear-gradient(90deg, rgba(182, 196, 255, 0) 0%, rgba(182, 196, 255, 0.05) 50%, rgba(182, 196, 255, 0) 100%);
+            background-size: 200% 100%;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#131314]/60 backdrop-blur-xl flex justify-between items-center px-8 py-4 w-full shadow-[0_20px_40px_rgba(0,89,255,0.08)]">
+<div class="text-2xl font-black tracking-tighter text-[#b6c4ff] italic font-['Space_Grotesk'] uppercase">
+            GLADIATOR TECH
+        </div>
+<nav class="hidden md:flex items-center gap-8 font-['Space_Grotesk'] font-bold uppercase tracking-tighter">
+<a class="text-[#bec8d3] hover:text-white transition-colors duration-300" href="#">Dashboard</a>
+<a class="text-[#bec8d3] hover:text-white transition-colors duration-300" href="#">Training</a>
+<a class="text-[#bec8d3] hover:text-white transition-colors duration-300" href="#">Warrior</a>
+<a class="text-[#b6c4ff] border-b-2 border-[#0059ff] pb-1 duration-300" href="#">Intel</a>
+</nav>
+<div class="flex items-center gap-4 text-[#b6c4ff]">
+<button class="material-symbols-outlined hover:scale-110 transition-transform">notifications</button>
+<button class="material-symbols-outlined hover:scale-110 transition-transform">account_circle</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="relative min-h-screen pt-24 pb-20 md:pb-8 px-4 md:px-8 overflow-hidden">
+<!-- Hero Background -->
+<div class="absolute inset-0 -z-10">
+<img alt="High intensity professional gym interior background" class="w-full h-full object-cover opacity-20 grayscale" data-alt="High intensity professional gym interior background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgt5VRhbwY8FTqIkqrRetByxm8Y1kRdazjVlrAESWEJuRnwzHtrTOHcZ1S14XMAvI5erORMcghv72rPfW-5OcGM0WmVg3VL33RZJ0yjjMGZx42cq5QPCDEo78eKAv_EPIx-hMhBLYDfzJWfSCkNVUC-f9NDGMmXHon6-vHWaZt5wI_3B4cHzy_Mrl0ZPZJLmgyeu-r0W4nB4ynB6gk7NpXSaH0hIIz-1O_akx1BcsOuHPQwNpdbkAMzOeIHyib0c4X7liR5ebolwE"/>
+<div class="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background"></div>
+<div class="absolute inset-0 grid-pattern"></div>
+</div>
+<div class="max-w-7xl mx-auto space-y-12">
+<!-- AI Nutritionist Header -->
+<section class="flex flex-col gap-2">
+<div class="flex items-baseline gap-4">
+<span class="text-error font-headline font-black text-6xl md:text-8xl italic tracking-tighter">AI</span>
+<h1 class="text-secondary font-headline font-black text-5xl md:text-7xl tracking-tighter uppercase">NUTRITIONIST</h1>
+</div>
+<div class="h-1 w-32 bg-primary"></div>
+<p class="text-on-secondary-container font-medium tracking-wide max-w-2xl mt-4">
+                    Deploying precision algorithms to engineer your metabolic destiny. Input your biometrics to receive a tactical Roman Fitness fueling protocol.
+                </p>
+</section>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left: Stats Form Panel (Glassmorphism) -->
+<aside class="lg:col-span-5 bg-surface-container-high/60 backdrop-blur-2xl p-8 border-l-2 border-tertiary relative overflow-hidden">
+<div class="relative z-10 space-y-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">analytics</span>
+<h2 class="font-headline font-bold text-xl uppercase tracking-widest text-on-surface">Biometric Uplink</h2>
+</div>
+<form class="space-y-6">
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-on-secondary-container font-label text-[10px] font-bold uppercase tracking-[1.5px]">Weight (kg)</label>
+<input class="w-full bg-surface-container-lowest border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 text-on-surface font-body p-3 transition-colors" placeholder="85" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="text-on-secondary-container font-label text-[10px] font-bold uppercase tracking-[1.5px]">Height (cm)</label>
+<input class="w-full bg-surface-container-lowest border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 text-on-surface font-body p-3 transition-colors" placeholder="182" type="number"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-on-secondary-container font-label text-[10px] font-bold uppercase tracking-[1.5px]">Current Age</label>
+<input class="w-full bg-surface-container-lowest border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 text-on-surface font-body p-3 transition-colors" placeholder="28" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="text-on-secondary-container font-label text-[10px] font-bold uppercase tracking-[1.5px]">Primary Objective</label>
+<select class="w-full bg-surface-container-lowest border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 text-on-surface font-body p-3 transition-colors">
+<option>Gain Muscle</option>
+<option>Lose Fat</option>
+<option>Maintain Weight</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-on-secondary-container font-label text-[10px] font-bold uppercase tracking-[1.5px]">Dietary Protocol</label>
+<select class="w-full bg-surface-container-lowest border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 text-on-surface font-body p-3 transition-colors">
+<option>Non-Vegetarian</option>
+<option>Vegetarian</option>
+<option>Vegan</option>
+</select>
+</div>
+<button class="w-full py-4 mt-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-label font-extrabold uppercase tracking-[2px] hover:brightness-110 active:scale-[0.98] transition-all flex justify-center items-center gap-2" type="button">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                                GENERATE PLAN
+                            </button>
+</form>
+</div>
+</aside>
+<!-- Right: Diet Plan Preview -->
+<section class="lg:col-span-7 bg-surface-container-low p-1 relative min-h-[600px] flex flex-col">
+<div class="flex-1 bg-surface-container p-8 flex flex-col justify-center items-center text-center space-y-6">
+<!-- Cutlery Icon Placeholder -->
+<div class="w-32 h-32 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant/20 relative group">
+<div class="absolute inset-0 bg-primary/5 rounded-full blur-xl group-hover:bg-primary/10 transition-colors"></div>
+<span class="material-symbols-outlined text-primary text-6xl relative z-10">restaurant</span>
+</div>
+<div class="space-y-2">
+<h3 class="font-headline font-bold text-2xl uppercase tracking-tighter text-on-surface">Tactical Intel Awaiting Command</h3>
+<p class="text-on-secondary-container max-w-md mx-auto">
+                                Configure your biometrics and execute the generation protocol to reveal your customized Indian-inspired high-performance diet plan.
+                            </p>
+</div>
+<!-- Stylized Placeholder Content (Simulating a blurred grid) -->
+<div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 opacity-20 select-none pointer-events-none">
+<div class="h-24 bg-surface-container-highest border border-outline-variant/10"></div>
+<div class="h-24 bg-surface-container-highest border border-outline-variant/10"></div>
+<div class="h-24 bg-surface-container-highest border border-outline-variant/10"></div>
+<div class="h-24 bg-surface-container-highest border border-outline-variant/10"></div>
+</div>
+</div>
+<!-- Footer Label for Section -->
+<div class="bg-surface-container-highest px-6 py-3 flex justify-between items-center">
+<span class="text-on-secondary-container font-label text-[10px] font-bold uppercase tracking-[1.5px]">System Status: Ready</span>
+<span class="text-tertiary font-label text-[10px] font-bold uppercase tracking-[1.5px]">GLADIATOR_OS v4.0</span>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe md:hidden bg-[#131314] h-16 border-t border-white/5">
+<a class="flex flex-col items-center justify-center text-[#bec8d3] p-2 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Manrope'] text-[8px] font-bold uppercase tracking-[1px] mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#bec8d3] p-2 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">fitness_center</span>
+<span class="font-['Manrope'] text-[8px] font-bold uppercase tracking-[1px] mt-1">Training</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#bec8d3] p-2 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">shield</span>
+<span class="font-['Manrope'] text-[8px] font-bold uppercase tracking-[1px] mt-1">Warrior</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#b6c4ff] bg-[#0059ff]/10 p-2 brightness-125 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="font-['Manrope'] text-[8px] font-bold uppercase tracking-[1px] mt-1">Intel</span>
+</a>
+</nav>
+</body></html>
