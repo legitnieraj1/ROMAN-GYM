@@ -11,6 +11,14 @@ export function HeroSection() {
   const contentRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [revealed, setRevealed] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile(); // Check on mount
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -61,6 +69,7 @@ export function HeroSection() {
       {/* Background video */}
       <div className="absolute inset-0 z-0">
         <video
+          key={isMobile ? "mobile" : "desktop"}
           ref={videoRef}
           autoPlay
           muted
@@ -69,7 +78,7 @@ export function HeroSection() {
           preload="auto"
           className="w-full h-full object-cover will-change-auto"
         >
-          <source src="/herobgvideo.mp4" type="video/mp4" />
+          <source src={isMobile ? "/mobilehero.mp4" : "/herobgvideo.mp4"} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/60 via-transparent to-[#0A0A0A]" />
