@@ -74,6 +74,10 @@ export const metadata: Metadata = {
     },
   },
   category: "fitness",
+  icons: {
+    icon: "/logoroman.png",
+    apple: "/logoroman.png",
+  },
 };
 
 const jsonLd = {
