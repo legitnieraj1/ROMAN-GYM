@@ -107,9 +107,9 @@ function BeforeAfterSlider({
             transform: "translateX(-50%)",
           }}
         >
-          <div className="w-full h-full bg-[#00AEEF]" />
+          <div className="w-full h-full bg-[#E8192B]" />
           {/* Handle */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#00AEEF] flex items-center justify-center border-2 border-white/20">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#E8192B] flex items-center justify-center border-2 border-white/20">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path
                 d="M4 8L1 5M4 8L1 11M4 8H12M12 8L15 5M12 8L15 11"
@@ -126,7 +126,7 @@ function BeforeAfterSlider({
         <div className="absolute bottom-3 left-3 text-[10px] text-white/60 tracking-[0.2em] uppercase z-10 bg-black/50 px-2 py-1">
           Before
         </div>
-        <div className="absolute bottom-3 right-3 text-[10px] text-[#00AEEF] tracking-[0.2em] uppercase z-10 bg-black/50 px-2 py-1">
+        <div className="absolute bottom-3 right-3 text-[10px] text-[#E8192B] tracking-[0.2em] uppercase z-10 bg-black/50 px-2 py-1">
           After
         </div>
       </div>
@@ -134,7 +134,7 @@ function BeforeAfterSlider({
       {/* Caption */}
       <div className="mt-3 text-center">
         <p className="text-white/70 text-sm font-medium">{name}</p>
-        <p className="text-[#00AEEF]/60 text-xs tracking-wider uppercase">
+        <p className="text-[#E8192B]/60 text-xs tracking-wider uppercase">
           {days}
         </p>
       </div>
@@ -249,7 +249,7 @@ function MobileTransformCarousel() {
                 setActive(i);
               }}
               className={`h-2 rounded-full transition-all duration-300 ${
-                i === active ? "bg-[#00AEEF] w-6" : "bg-white/20 w-2"
+                i === active ? "bg-[#E8192B] w-6" : "bg-white/20 w-2"
               }`}
             />
           ))}
@@ -329,11 +329,11 @@ export function TransformationSection() {
     <section ref={sectionRef} className="relative py-16 md:py-24 px-4 bg-[#0A0A0A]">
       <div className="container mx-auto max-w-7xl">
         <div className="transform-heading text-center mb-10 md:mb-14">
-          <p className="text-[#00AEEF] text-sm tracking-[0.3em] uppercase mb-4">
+          <p className="text-[#E8192B] text-sm tracking-[0.3em] uppercase mb-4">
             Real Results
           </p>
           <h2 className="font-heading text-4xl md:text-6xl tracking-wider">
-            BODY <span className="text-[#00AEEF]">TRANSFORMATION</span>
+            BODY <span className="text-[#E8192B]">TRANSFORMATION</span>
           </h2>
         </div>
 
@@ -361,7 +361,7 @@ export function TransformationSection() {
             <span>Day 120</span>
           </div>
           <div className="h-[2px] bg-white/5 rounded-full overflow-hidden">
-            <div className="progress-line h-full bg-gradient-to-r from-[#00AEEF]/50 via-[#00AEEF] to-[#00AEEF]/50 origin-left" />
+            <div className="progress-line h-full bg-gradient-to-r from-[#E8192B]/50 via-[#E8192B] to-[#E8192B]/50 origin-left" />
           </div>
         </div>
       </div>

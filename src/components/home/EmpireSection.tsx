@@ -14,7 +14,7 @@ export function EmpireSection() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 70%",
+          start: "top 72%",
           toggleActions: "play none none reverse",
         },
       });
@@ -22,20 +22,44 @@ export function EmpireSection() {
       tl.fromTo(
         ".empire-line",
         { scaleX: 0 },
-        { scaleX: 1, duration: 1, ease: "power2.out" }
+        { scaleX: 1, duration: 1.2, ease: "power3.out" }
       )
-      .fromTo(
-        ".empire-heading",
-        { opacity: 0, y: 60 },
-        { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
-        "-=0.6"
-      )
-      .fromTo(
-        ".empire-sub",
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-        "-=0.5"
-      );
+        .fromTo(
+          ".empire-label",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+          "-=0.5"
+        )
+        .fromTo(
+          ".empire-word-1",
+          { opacity: 0, x: -60, skewX: -3 },
+          { opacity: 1, x: 0, skewX: 0, duration: 0.9, ease: "power4.out" },
+          "-=0.3"
+        )
+        .fromTo(
+          ".empire-word-2",
+          { opacity: 0, y: 50, scale: 0.9 },
+          { opacity: 1, y: 0, scale: 1, duration: 1, ease: "power4.out" },
+          "-=0.65"
+        )
+        .fromTo(
+          ".empire-word-3",
+          { opacity: 0, x: 60, skewX: 3 },
+          { opacity: 1, x: 0, skewX: 0, duration: 0.9, ease: "power4.out" },
+          "-=0.7"
+        )
+        .fromTo(
+          ".empire-sub",
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+          "-=0.5"
+        )
+        .fromTo(
+          ".empire-stats",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: "power2.out" },
+          "-=0.4"
+        );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -44,26 +68,86 @@ export function EmpireSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 md:py-28 flex flex-col items-center justify-center px-4 overflow-hidden"
+      className="relative py-16 md:py-24 flex flex-col items-center justify-center px-4 overflow-hidden"
     >
+      {/* Background layers */}
       <div className="absolute inset-0 bg-[#0A0A0A]">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#071B2A]/20 to-transparent" />
-        <div className="absolute top-1/4 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#00AEEF]/20 to-transparent" />
-        <div className="absolute top-3/4 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#00AEEF]/15 to-transparent" />
+        {/* Subtle red radial glow at center */}
+        <div
+          className="absolute inset-0"
+          style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(232,25,43,0.06) 0%, transparent 65%)" }}
+        />
+        {/* Diagonal accent lines */}
+        <div className="absolute top-1/3 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#E8192B]/12 to-transparent" />
+        <div className="absolute top-2/3 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#E8192B]/08 to-transparent" />
+        {/* Side vertical bars */}
+        <div className="absolute left-[8%] top-[20%] w-[1px] h-[60%] bg-gradient-to-b from-transparent via-[#E8192B]/15 to-transparent" />
+        <div className="absolute right-[8%] top-[20%] w-[1px] h-[60%] bg-gradient-to-b from-transparent via-[#E8192B]/15 to-transparent" />
       </div>
 
       <div className="relative z-10 text-center max-w-5xl mx-auto">
-        <div className="empire-line w-24 h-[2px] bg-gradient-to-r from-transparent via-[#00AEEF] to-transparent mx-auto mb-8 origin-center" />
-        <h2 className="empire-heading font-heading text-5xl md:text-7xl lg:text-8xl tracking-wider leading-none will-change-transform">
-          <span className="text-white">ENTER THE</span>
-          <br />
-          <span className="text-glow-strong text-[#00AEEF]">ROMAN EMPIRE</span>
-          <br />
-          <span className="text-white/80">OF FITNESS</span>
-        </h2>
-        <p className="empire-sub mt-8 text-lg md:text-xl text-white/40 tracking-[0.2em] uppercase max-w-2xl mx-auto">
+        {/* Eyebrow */}
+        <div className="empire-label flex items-center justify-center gap-4 mb-8">
+          <div className="empire-line w-12 h-[1px] bg-[#E8192B] origin-left" />
+          <span className="text-[#E8192B] text-[10px] tracking-[0.5em] uppercase font-semibold">
+            Jothipuram, Coimbatore
+          </span>
+          <div className="empire-line w-12 h-[1px] bg-[#E8192B] origin-right" />
+        </div>
+
+        {/* Headline — staggered words */}
+        <div className="overflow-hidden">
+          <h2
+            className="empire-word-1 font-heading text-white leading-none tracking-wider"
+            style={{ fontSize: "clamp(3rem, 9vw, 7.5rem)" }}
+          >
+            ENTER THE
+          </h2>
+        </div>
+        <div className="overflow-hidden -mt-1 md:-mt-2">
+          <h2
+            className="empire-word-2 font-heading leading-none tracking-wider"
+            style={{
+              fontSize: "clamp(3rem, 10vw, 8.5rem)",
+              color: "#E8192B",
+              textShadow: "0 0 60px rgba(232,25,43,0.3), 0 0 120px rgba(232,25,43,0.1)",
+            }}
+          >
+            ROMAN EMPIRE
+          </h2>
+        </div>
+        <div className="overflow-hidden -mt-1 md:-mt-2">
+          <h2
+            className="empire-word-3 font-heading text-white/70 leading-none tracking-wider"
+            style={{ fontSize: "clamp(3rem, 9vw, 7.5rem)" }}
+          >
+            OF FITNESS
+          </h2>
+        </div>
+
+        {/* Sub copy */}
+        <p className="empire-sub mt-8 md:mt-10 text-white/35 text-sm md:text-base tracking-[0.3em] uppercase max-w-2xl mx-auto">
           Where legends are forged and limits are shattered
         </p>
+
+        {/* Stats row */}
+        <div className="mt-12 md:mt-16 flex justify-center gap-8 md:gap-16">
+          {[
+            { value: "5 AM", label: "Doors Open" },
+            { value: "NO", label: "Admission Fee" },
+            { value: "2026", label: "Est." },
+          ].map((s) => (
+            <div key={s.label} className="empire-stats flex flex-col items-center gap-1">
+              <span
+                className="font-heading text-2xl md:text-4xl text-[#E8192B]"
+                style={{ textShadow: "0 0 20px rgba(232,25,43,0.3)" }}
+              >
+                {s.value}
+              </span>
+              <span className="text-white/30 text-[9px] tracking-[0.35em] uppercase">{s.label}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

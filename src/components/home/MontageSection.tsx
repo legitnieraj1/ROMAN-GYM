@@ -10,17 +10,16 @@ const words = ["POWER", "DISCIPLINE", "LEGACY"];
 
 export function MontageSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const wordsRef = useRef<HTMLDivElement[]>([]);
+  const wordsRef   = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Single timeline for all words — fewer scroll listeners
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 60%",
-          end: "center center",
-          scrub: 0.8,
+          end:   "center center",
+          scrub: 0.9,
         },
       });
 
@@ -28,7 +27,7 @@ export function MontageSection() {
         if (!word) return;
         tl.fromTo(
           word,
-          { opacity: 0, x: index % 2 === 0 ? -60 : 60 },
+          { opacity: 0, x: index % 2 === 0 ? -80 : 80 },
           { opacity: 1, x: 0, duration: 1, ease: "power2.out" },
           index * 0.3
         );
@@ -40,11 +39,10 @@ export function MontageSection() {
 
   return (
     <section ref={sectionRef} className="relative h-[60vh] md:h-[80vh] overflow-hidden">
-      {/* Background — static gradient instead of parallax video for performance */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-[#071B2A]/40 to-[#0A0A0A]" />
+      {/* Background gradient — red tint now */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-[#140202]/50 to-[#0A0A0A]" />
 
-      {/* Sticky word container */}
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center gap-4 md:gap-12">
+      <div className="sticky top-0 h-screen flex flex-col items-center justify-center gap-4 md:gap-10">
         {words.map((word, index) => (
           <div
             key={word}
@@ -52,11 +50,13 @@ export function MontageSection() {
             className="will-change-transform"
           >
             <h2
-              className={`font-heading text-5xl md:text-8xl lg:text-[10rem] tracking-wider leading-none ${
-                index === 1 ? "text-[#00AEEF] text-glow-strong" : "text-white/80"
+              className={`font-heading leading-none tracking-wider ${
+                index === 1 ? "text-[#E8192B]" : "text-white/75"
               }`}
               style={{
-                WebkitTextStroke: index !== 1 ? "1px rgba(0, 174, 239, 0.2)" : "none",
+                fontSize: "clamp(3.5rem, 10vw, 10rem)",
+                textShadow: index === 1 ? "0 0 80px rgba(232,25,43,0.35), 0 0 160px rgba(232,25,43,0.12)" : "none",
+                WebkitTextStroke: index !== 1 ? "1px rgba(232, 25, 43, 0.18)" : "none",
               }}
             >
               {word}
@@ -64,8 +64,9 @@ export function MontageSection() {
           </div>
         ))}
 
-        <div className="absolute left-8 top-1/4 w-[1px] h-1/2 bg-gradient-to-b from-transparent via-[#00AEEF]/20 to-transparent" />
-        <div className="absolute right-8 top-1/4 w-[1px] h-1/2 bg-gradient-to-b from-transparent via-[#00AEEF]/20 to-transparent" />
+        {/* Side vertical accent bars */}
+        <div className="absolute left-8 top-1/4 w-[1px] h-1/2 bg-gradient-to-b from-transparent via-[#E8192B]/20 to-transparent" />
+        <div className="absolute right-8 top-1/4 w-[1px] h-1/2 bg-gradient-to-b from-transparent via-[#E8192B]/20 to-transparent" />
       </div>
     </section>
   );
