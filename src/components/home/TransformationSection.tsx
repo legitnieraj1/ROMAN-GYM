@@ -326,15 +326,30 @@ export function TransformationSection() {
   }, [isMobile]);
 
   return (
-    <section ref={sectionRef} className="relative py-16 md:py-24 px-4 bg-[#0A0A0A]">
+    <section ref={sectionRef} className="relative py-14 md:py-20 px-4 bg-[#0A0A0A]">
       <div className="container mx-auto max-w-7xl">
-        <div className="transform-heading text-center mb-10 md:mb-14">
-          <p className="text-[#E8192B] text-sm tracking-[0.3em] uppercase mb-4">
-            Real Results
-          </p>
-          <h2 className="font-heading text-4xl md:text-6xl tracking-wider">
-            BODY <span className="text-[#E8192B]">TRANSFORMATION</span>
-          </h2>
+        <div className="transform-heading flex items-start gap-5 md:gap-8 mb-8 md:mb-12">
+          <div className="flex flex-col items-center gap-3 pt-2 flex-shrink-0">
+            <div className="w-px h-12 bg-[#E8192B]" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#E8192B]" />
+          </div>
+          <div>
+            <p className="text-[#E8192B] text-[10px] tracking-[0.45em] uppercase mb-3 font-medium">
+              Real Results
+            </p>
+            <h2
+              className="font-heading tracking-wider leading-none text-white"
+              style={{ fontSize: "clamp(2.5rem, 8vw, 6rem)" }}
+            >
+              BODY{" "}
+              <span
+                className="text-[#E8192B]"
+                style={{ textShadow: "0 0 40px rgba(232,25,43,0.25)" }}
+              >
+                TRANSFORMATION
+              </span>
+            </h2>
+          </div>
         </div>
 
         {isMobile ? (

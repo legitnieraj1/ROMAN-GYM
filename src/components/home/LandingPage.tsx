@@ -2,7 +2,6 @@
 
 import { SmoothScroll }        from "./SmoothScroll";
 import { GrainOverlay }        from "./GrainOverlay";
-import { CustomCursor }        from "./CustomCursor";
 import { PageIntro }           from "./PageIntro";
 import { HeroSection }         from "./HeroSection";
 import { ManifestoSection }    from "./ManifestoSection";
@@ -31,7 +30,6 @@ export function LandingPage() {
     <>
       {/* ── Fixed overlays ── */}
       <PageIntro />
-      <CustomCursor />
       <GrainOverlay />
 
       {/* ── Scrollable content ── */}

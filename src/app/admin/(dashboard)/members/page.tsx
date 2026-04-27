@@ -263,11 +263,11 @@ export default function MembersPage() {
                 </div>
                 <Dialog open={isAddOpen} onOpenChange={setIsAddOpen}>
                     <DialogTrigger asChild>
-                        <Button className="bg-gradient-to-r from-[#b6c4ff] to-[#0059ff] hover:bg-[#0059ff]/90 text-white shadow-[0_0_15px_-5px_#0059ff]">
+                        <Button className="bg-[#E8192B] hover:bg-[#E8192B]/90 text-white shadow-[0_0_20px_rgba(232,25,43,0.3)]">
                             <Plus className="mr-2 h-4 w-4" /> Add New Member
                         </Button>
                     </DialogTrigger>
-                    <DialogContent className="bg-[#131314] border-zinc-800 text-white max-h-[90vh] overflow-y-auto">
+                    <DialogContent className="bg-[#080808] border-zinc-800 text-white max-h-[90vh] overflow-y-auto">
                         <DialogHeader>
                             <DialogTitle>Add New Member (Walk-in)</DialogTitle>
                         </DialogHeader>
@@ -301,7 +301,7 @@ export default function MembersPage() {
                                         type="file"
                                         name="photo"
                                         accept="image/*"
-                                        className="bg-zinc-900 border-zinc-800 file:bg-[#0059ff] file:text-white file:border-0 file:rounded-sm file:px-2 file:mr-4"
+                                        className="bg-zinc-900 border-zinc-800 file:bg-[#E8192B] file:text-white file:border-0 file:rounded-sm file:px-2 file:mr-4"
                                     />
                                 </div>
                                 <p className="text-xs text-zinc-500">Upload from gallery or take a picture.</p>
@@ -344,7 +344,7 @@ export default function MembersPage() {
                             </div>
 
                             <DialogFooter className="pt-4">
-                                <Button type="submit" disabled={submitLoading} className="w-full bg-gradient-to-r from-[#b6c4ff] to-[#0059ff] hover:bg-[#0059ff]/90">
+                                <Button type="submit" disabled={submitLoading} className="w-full bg-[#E8192B] hover:bg-[#E8192B]/90">
                                     {submitLoading ? (
                                         <>
                                             <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Creating Profile...
@@ -365,7 +365,7 @@ export default function MembersPage() {
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
                     <Input
                         placeholder="Search by name or enroll no..."
-                        className="pl-10 bg-zinc-900 border-zinc-800 text-white focus:border-[#0059ff]"
+                        className="pl-10 bg-zinc-900 border-zinc-800 text-white focus:border-[#E8192B]"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
@@ -402,7 +402,7 @@ export default function MembersPage() {
                             <TableRow key={member.id} className="border-zinc-800 hover:bg-zinc-800/50 transition-colors">
                                 <TableCell className="flex items-center gap-3">
                                     <div 
-                                        className={`h-10 w-10 rounded-full overflow-hidden bg-zinc-800 border border-white/10 ${member.photo ? 'cursor-pointer hover:ring-2 hover:ring-[#0059ff] transition-all' : ''}`}
+                                        className={`h-10 w-10 rounded-full overflow-hidden bg-zinc-800 border border-white/10 ${member.photo ? 'cursor-pointer hover:ring-2 hover:ring-[#E8192B] transition-all' : ''}`}
                                         onClick={() => member.photo && setPhotoViewerUrl(member.photo)}
                                     >
                                         {member.photo ? (
@@ -431,7 +431,7 @@ export default function MembersPage() {
                                 </TableCell>
                                 <TableCell>
                                     {member.membership ? (
-                                        <span className="px-2 py-1 rounded-full text-xs font-medium bg-[#0059ff]/10 text-[#b6c4ff] border border-[#0059ff]/20">
+                                        <span className="px-2 py-1 rounded-full text-xs font-medium bg-[#E8192B]/10 text-[#E8192B] border border-[#E8192B]/20">
                                             {member.membership.plan}
                                         </span>
                                     ) : (
@@ -440,12 +440,12 @@ export default function MembersPage() {
                                 </TableCell>
                                 <TableCell>
                                     {member.membership?.status === 'ACTIVE' ? (
-                                        <span className="flex items-center gap-1.5 text-[#00daf3] text-xs font-medium">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-[#00daf3]" /> Active
+                                        <span className="flex items-center gap-1.5 text-[#E8192B] text-xs font-medium">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-[#E8192B]" /> Active
                                         </span>
                                     ) : (
-                                        <span className="flex items-center gap-1.5 text-[#ffb4ab] text-xs font-medium">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-[#ffb4ab]" /> Expired
+                                        <span className="flex items-center gap-1.5 text-[#f59e0b] text-xs font-medium">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]" /> Expired
                                         </span>
                                     )}
                                 </TableCell>
@@ -479,7 +479,7 @@ export default function MembersPage() {
                                             <DropdownMenuSeparator className="bg-zinc-800" />
                                             <DropdownMenuItem onClick={() => { setSelectedMember(member); setIsRenewOpen(true); }}>Renew Membership</DropdownMenuItem>
                                             <DropdownMenuSeparator className="bg-zinc-800" />
-                                            <DropdownMenuItem onClick={() => handleDeleteMember(member.id)} className="text-[#ffb4ab] focus:text-[#ffb4ab]">Delete Member</DropdownMenuItem>
+                                            <DropdownMenuItem onClick={() => handleDeleteMember(member.id)} className="text-[#f59e0b] focus:text-[#f59e0b]">Delete Member</DropdownMenuItem>
                                         </DropdownMenuContent>
                                     </DropdownMenu>
                                 </TableCell>
@@ -491,7 +491,7 @@ export default function MembersPage() {
 
             {/* View Profile Dialog */}
             <Dialog open={isViewOpen} onOpenChange={setIsViewOpen}>
-                <DialogContent className="bg-[#131314] border-zinc-800 text-white max-h-[90vh] overflow-y-auto">
+                <DialogContent className="bg-[#080808] border-zinc-800 text-white max-h-[90vh] overflow-y-auto">
                     <DialogHeader>
                         <DialogTitle>Member Profile</DialogTitle>
                     </DialogHeader>
@@ -501,7 +501,7 @@ export default function MembersPage() {
                         <div className="space-y-6">
                             <div className="flex items-center gap-4 border-b border-zinc-800 pb-4">
                                 <div 
-                                    className={`h-16 w-16 bg-zinc-800 rounded-full flex items-center justify-center overflow-hidden border border-white/10 ${memberDetails.photo_url ? 'cursor-pointer hover:ring-2 hover:ring-[#0059ff] transition-all' : ''}`}
+                                    className={`h-16 w-16 bg-zinc-800 rounded-full flex items-center justify-center overflow-hidden border border-white/10 ${memberDetails.photo_url ? 'cursor-pointer hover:ring-2 hover:ring-[#E8192B] transition-all' : ''}`}
                                     onClick={() => memberDetails.photo_url && setPhotoViewerUrl(memberDetails.photo_url)}
                                 >
                                     {memberDetails.photo_url ? (
@@ -516,7 +516,7 @@ export default function MembersPage() {
                                     {memberDetails.enroll_no && (
                                         <p className="text-xs text-zinc-500 mb-2">Enroll No: <span className="text-zinc-300 font-medium">{memberDetails.enroll_no}</span></p>
                                     )}
-                                    <span className={`text-xs px-2 py-1 rounded-full ${new Date(memberDetails.membership_end) > new Date() ? 'bg-[#00daf3]/10 text-[#00daf3]' : 'bg-[#ffb4ab]/10 text-[#ffb4ab]'}`}>
+                                    <span className={`text-xs px-2 py-1 rounded-full ${new Date(memberDetails.membership_end) > new Date() ? 'bg-[#E8192B]/10 text-[#E8192B]' : 'bg-[#f59e0b]/10 text-[#f59e0b]'}`}>
                                         {new Date(memberDetails.membership_end) > new Date() ? 'ACTIVE' : 'EXPIRED'}
                                     </span>
                                 </div>
@@ -562,7 +562,7 @@ export default function MembersPage() {
 
             {/* Renew Dialog */}
             <Dialog open={isRenewOpen} onOpenChange={(open) => { setIsRenewOpen(open); if (!open) setRenewPlan("BASIC"); }}>
-                <DialogContent className="bg-[#131314] border-zinc-800 text-white">
+                <DialogContent className="bg-[#080808] border-zinc-800 text-white">
                     <DialogHeader>
                         <DialogTitle>Renew Membership</DialogTitle>
                         <p className="text-sm text-zinc-400">Renewing for {selectedMember?.name}</p>
@@ -592,11 +592,11 @@ export default function MembersPage() {
                             </div>
                             <div className="flex justify-between">
                                 <span className="text-zinc-400">End Date</span>
-                                <span className="font-medium text-[#b6c4ff]">{renewPreview.end}</span>
+                                <span className="font-medium text-[#E8192B]">{renewPreview.end}</span>
                             </div>
                         </div>
                         <DialogFooter>
-                            <Button type="submit" disabled={submitLoading} className="w-full bg-gradient-to-r from-[#b6c4ff] to-[#0059ff] hover:bg-[#0059ff]/90 text-white">
+                            <Button type="submit" disabled={submitLoading} className="w-full bg-[#E8192B] hover:bg-[#E8192B]/90 text-white">
                                 {submitLoading ? <Loader2 className="animate-spin w-4 h-4 mr-2" /> : null} Renew
                             </Button>
                         </DialogFooter>
@@ -606,7 +606,7 @@ export default function MembersPage() {
 
             {/* Edit Dialog */}
             <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
-                <DialogContent className="bg-[#131314] border-zinc-800 text-white">
+                <DialogContent className="bg-[#080808] border-zinc-800 text-white">
                     <DialogHeader>
                         <DialogTitle>Edit Member</DialogTitle>
                     </DialogHeader>
@@ -629,7 +629,7 @@ export default function MembersPage() {
                                     type="file"
                                     name="photo"
                                     accept="image/*"
-                                    className="bg-zinc-900 border-zinc-800 file:bg-[#0059ff] file:text-white file:border-0 file:rounded-sm file:px-2 file:mr-4"
+                                    className="bg-zinc-900 border-zinc-800 file:bg-[#E8192B] file:text-white file:border-0 file:rounded-sm file:px-2 file:mr-4"
                                 />
                             </div>
                             <p className="text-xs text-zinc-500">Upload new photo (leaves existing if empty).</p>
@@ -693,7 +693,7 @@ export default function MembersPage() {
 
             {/* Edit Membership Dates Dialog */}
             <Dialog open={isEditDatesOpen} onOpenChange={setIsEditDatesOpen}>
-                <DialogContent className="bg-[#131314] border-zinc-800 text-white">
+                <DialogContent className="bg-[#080808] border-zinc-800 text-white">
                     <DialogHeader>
                         <DialogTitle>Edit Membership Dates</DialogTitle>
                         <p className="text-sm text-zinc-400">Editing dates for {selectedMember?.name}</p>
@@ -724,7 +724,7 @@ export default function MembersPage() {
                             />
                         </div>
                         <DialogFooter>
-                            <Button type="submit" disabled={submitLoading} className="w-full bg-gradient-to-r from-[#b6c4ff] to-[#0059ff] hover:bg-[#0059ff]/90 text-white">
+                            <Button type="submit" disabled={submitLoading} className="w-full bg-[#E8192B] hover:bg-[#E8192B]/90 text-white">
                                 {submitLoading ? <Loader2 className="animate-spin w-4 h-4 mr-2" /> : null} Save Dates
                             </Button>
                         </DialogFooter>

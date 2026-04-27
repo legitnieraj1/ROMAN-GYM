@@ -29,7 +29,9 @@ export function Navbar({ session = null }: { session?: any }) {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? "hidden" : "unset";
+    /* Toggle a class on <html> — safer than inline style which fights Lenis */
+    document.documentElement.classList.toggle("menu-open", isMenuOpen);
+    return () => document.documentElement.classList.remove("menu-open");
   }, [isMenuOpen]);
 
   const handleLogout = async () => {
@@ -41,7 +43,7 @@ export function Navbar({ session = null }: { session?: any }) {
     <>
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+          "fixed top-0 left-0 right-0 z-[900] transition-all duration-500",
           isScrolled && !isMenuOpen
             ? "bg-[#0A0A0A]/80 backdrop-blur-md border-b border-white/[0.04] h-16 md:h-20"
             : "bg-transparent h-20 md:h-24"
@@ -70,9 +72,9 @@ export function Navbar({ session = null }: { session?: any }) {
             />
           </Link>
 
-          {/* Hamburger */}
+          {/* Hamburger — relative so z-[900] creates its own stacking layer above the overlay */}
           <button
-            className="z-50 w-10 h-10 flex flex-col items-center justify-center gap-[6px] group"
+            className="relative z-[900] w-10 h-10 flex flex-col items-center justify-center gap-[6px] group"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -106,7 +108,7 @@ export function Navbar({ session = null }: { session?: any }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            className="fixed inset-0 z-40 bg-[#0A0A0A] flex flex-col items-center justify-center"
+            className="fixed inset-0 z-[800] bg-[#0A0A0A] flex flex-col items-center justify-center"
           >
             {/* Subtle red radial in background */}
             <div
@@ -119,7 +121,7 @@ export function Navbar({ session = null }: { session?: any }) {
               initial={{ scaleY: 0 }}
               animate={{ scaleY: 1 }}
               exit={{ scaleY: 0 }}
-              transition={{ duration: 0.5, ease: "power3.out" as any }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="absolute left-8 top-[15%] w-[2px] h-[70%] bg-gradient-to-b from-transparent via-[#E8192B]/30 to-transparent origin-top"
             />
 

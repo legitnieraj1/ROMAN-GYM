@@ -81,7 +81,7 @@ export default function SettingsPage() {
         <div className="space-y-8">
             <div>
                 <h1 className="text-3xl font-bold tracking-tight text-white mb-2 flex items-center gap-2">
-                    <Settings className="text-[#0059ff]" size={32} /> Settings
+                    <Settings className="text-[#E8192B]" size={32} /> Settings
                 </h1>
                 <p className="text-muted-foreground">Manage system configuration and data.</p>
             </div>
@@ -92,7 +92,7 @@ export default function SettingsPage() {
                 <Card className="bg-[#0A0A0A] border-zinc-800">
                     <CardHeader>
                         <CardTitle className="text-white flex items-center gap-2">
-                            <Upload className="h-5 w-5 text-[#0059ff]" /> Bulk Member Upload
+                            <Upload className="h-5 w-5 text-[#E8192B]" /> Bulk Member Upload
                         </CardTitle>
                         <CardDescription className="text-zinc-500">
                             Import members from Excel sheet. <br />
@@ -107,7 +107,7 @@ export default function SettingsPage() {
                                     <p className="mb-2 text-sm text-zinc-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                                     <p className="text-xs text-zinc-500">XLSX or XLS files</p>
                                     {file && (
-                                        <div className="mt-4 px-4 py-2 bg-[#0059ff]/10 text-[#0059ff] rounded-md font-medium">
+                                        <div className="mt-4 px-4 py-2 bg-[#E8192B]/10 text-[#E8192B] rounded-md font-medium">
                                             Selected: {file.name}
                                         </div>
                                     )}
@@ -119,7 +119,7 @@ export default function SettingsPage() {
                         <Button
                             onClick={handleUpload}
                             disabled={!file || loading}
-                            className="w-full bg-[#0059ff] hover:bg-[#0059ff]/90 text-white font-bold h-12 shadow-[0_0_15px_-5px_#0059ff]"
+                            className="w-full bg-[#E8192B] hover:bg-[#E8192B]/90 text-white font-bold h-12 shadow-[0_0_20px_rgba(232,25,43,0.3)]"
                         >
                             {loading ? "Processing..." : "Upload & Process"}
                         </Button>
@@ -139,12 +139,12 @@ export default function SettingsPage() {
                                     </div>
                                 </CardContent>
                             </Card>
-                            <Card className="bg-[#0059ff]/10 border-[#0059ff]/20">
+                            <Card className="bg-[#E8192B]/10 border-[#E8192B]/20">
                                 <CardContent className="flex items-center gap-4 p-6">
-                                    <AlertCircle className="w-8 h-8 text-[#0059ff]" />
+                                    <AlertCircle className="w-8 h-8 text-[#E8192B]" />
                                     <div>
                                         <p className="text-2xl font-bold text-white">{result.failed}</p>
-                                        <p className="text-[#0059ff] text-sm">Failed Rows</p>
+                                        <p className="text-[#E8192B] text-sm">Failed Rows</p>
                                     </div>
                                 </CardContent>
                             </Card>
@@ -153,7 +153,7 @@ export default function SettingsPage() {
                         {result.errors.length > 0 && (
                             <Card className="bg-[#0A0A0A] border-zinc-800">
                                 <CardHeader>
-                                    <CardTitle className="text-[#0059ff] text-lg">Error Log</CardTitle>
+                                    <CardTitle className="text-[#E8192B] text-lg">Error Log</CardTitle>
                                 </CardHeader>
                                 <CardContent>
                                     <ul className="space-y-2 text-sm text-zinc-400 max-h-60 overflow-y-auto">
@@ -171,7 +171,7 @@ export default function SettingsPage() {
                 <Card className="bg-zinc-900 border-zinc-800">
                     <CardHeader>
                         <CardTitle className="text-white flex items-center gap-2">
-                            <Lock className="h-5 w-5 text-[#0059ff]" /> Security
+                            <Lock className="h-5 w-5 text-[#E8192B]" /> Security
                         </CardTitle>
                         <CardDescription className="text-zinc-500">Change your admin password.</CardDescription>
                     </CardHeader>
@@ -190,7 +190,7 @@ export default function SettingsPage() {
                                 <Input type="password" className="bg-zinc-950 border-zinc-800" />
                             </div>
                         </div>
-                        <Button className="bg-[#0059ff] text-white hover:bg-[#0059ff]/90">
+                        <Button className="bg-[#E8192B] text-white hover:bg-[#E8192B]/90">
                             Update Password
                         </Button>
                     </CardContent>

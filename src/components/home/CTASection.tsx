@@ -46,7 +46,7 @@ export function CTASection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden bg-[#080808]"
+      className="relative min-h-[70vh] flex flex-col items-center justify-center px-4 overflow-hidden bg-[#080808]"
     >
       {/* Ambient red glow */}
       <div
@@ -60,7 +60,7 @@ export function CTASection() {
 
       <div className="relative z-10 text-center flex flex-col items-center">
         {/* Top vertical accent */}
-        <div className="cta-line-v w-px h-16 md:h-24 bg-gradient-to-b from-transparent to-[#E8192B]/70 mb-10 md:mb-14 origin-top" />
+        <div className="cta-line-v w-px h-10 md:h-14 bg-gradient-to-b from-transparent to-[#E8192B]/70 mb-6 md:mb-8 origin-top" />
 
         {/* ── The main statement ── */}
         <div className="cta-main overflow-hidden">
@@ -73,7 +73,7 @@ export function CTASection() {
         </div>
 
         {/* Sub copy */}
-        <p className="cta-sub text-white/25 text-[10px] md:text-xs tracking-[0.55em] uppercase mt-5 mb-10 md:mb-14">
+        <p className="cta-sub text-white/25 text-[10px] md:text-xs tracking-[0.55em] uppercase mt-4 mb-7 md:mb-9">
           Your transformation starts today
         </p>
 
@@ -105,7 +105,7 @@ export function CTASection() {
         </a>
 
         {/* Bottom vertical accent */}
-        <div className="cta-line-v w-px h-16 md:h-24 bg-gradient-to-b from-[#E8192B]/70 to-transparent mt-10 md:mt-14 origin-bottom" />
+        <div className="cta-line-v w-px h-10 md:h-14 bg-gradient-to-b from-[#E8192B]/70 to-transparent mt-6 md:mt-8 origin-bottom" />
       </div>
     </section>
   );

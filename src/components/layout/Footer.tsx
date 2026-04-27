@@ -26,7 +26,7 @@ export function Footer() {
                                 href="https://www.instagram.com/mfp_pnp_/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-9 h-9 rounded border border-white/10 flex items-center justify-center hover:border-[#E8192B]/50 hover:bg-[#E8192B]/10 transition-all duration-300"
+                                className="w-9 h-9 border border-white/10 flex items-center justify-center hover:border-[#E8192B]/50 hover:bg-[#E8192B]/10 transition-all duration-300"
                             >
                                 <Instagram className="w-4 h-4 text-white/50 hover:text-[#E8192B]" />
                             </a>

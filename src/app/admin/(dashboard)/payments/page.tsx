@@ -106,7 +106,7 @@ export default function PaymentsPage() {
                         <div className="text-2xl font-bold text-white">
                             {loading ? "..." : formatCurrency(stats.revenue)}
                         </div>
-                        <p className={`text-xs flex items-center mt-1 ${stats.percentChange >= 0 ? 'text-green-500' : 'text-[#0059ff]'}`}>
+                        <p className={`text-xs flex items-center mt-1 ${stats.percentChange >= 0 ? 'text-green-500' : 'text-[#E8192B]'}`}>
                             {stats.percentChange > 0 ? '+' : ''}{stats.percentChange}% from last month
                         </p>
                     </CardContent>
@@ -187,7 +187,7 @@ export default function PaymentsPage() {
                                                 className={`
                                                     ${payment.status === 'SUCCESS' ? 'bg-green-500/10 text-green-500 border-green-500/20' :
                                                         payment.status === 'PENDING' ? 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' :
-                                                            'bg-[#0059ff]/10 text-[#0059ff] border-[#0059ff]/20'}
+                                                            'bg-[#E8192B]/10 text-[#E8192B] border-[#E8192B]/20'}
                                                 `}
                                             >
                                                 {payment.status}
@@ -197,7 +197,7 @@ export default function PaymentsPage() {
                                             {new Date(payment.created_at).toLocaleDateString("en-GB")}
                                         </TableCell>
                                         <TableCell className="text-right">
-                                            <Button variant="ghost" size="sm" className="h-8 text-[#0059ff] hover:text-[#0059ff] hover:bg-[#0059ff]/10">
+                                            <Button variant="ghost" size="sm" className="h-8 text-[#E8192B] hover:text-[#E8192B] hover:bg-[#E8192B]/10">
                                                 Download
                                             </Button>
                                         </TableCell>

@@ -77,7 +77,7 @@ export default function TrainersPage() {
                 </div>
                 <Dialog open={isAddOpen} onOpenChange={setIsAddOpen}>
                     <DialogTrigger asChild>
-                        <Button className="bg-[#0059ff] text-white hover:bg-[#0059ff]/90 shadow-[0_0_15px_-5px_#0059ff]">
+                        <Button className="bg-[#E8192B] text-white hover:bg-[#E8192B]/90 shadow-[0_0_20px_rgba(232,25,43,0.3)]">
                             <Plus className="mr-2 h-4 w-4" /> Add Trainer
                         </Button>
                     </DialogTrigger>
@@ -103,7 +103,7 @@ export default function TrainersPage() {
                                 <Input name="image_url" className="bg-zinc-900 border-zinc-800" placeholder="Enter image URL" />
                             </div>
                             <DialogFooter>
-                                <Button type="submit" disabled={submitLoading} className="w-full bg-[#0059ff] hover:bg-[#0059ff]/90">
+                                <Button type="submit" disabled={submitLoading} className="w-full bg-[#E8192B] hover:bg-[#E8192B]/90">
                                     {submitLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Add Trainer"}
                                 </Button>
                             </DialogFooter>
@@ -119,7 +119,7 @@ export default function TrainersPage() {
                     <div className="col-span-full py-12 text-center text-zinc-500">No trainers found. Add one to get started.</div>
                 ) : (
                     trainers.map((trainer) => (
-                        <Card key={trainer.id} className="bg-zinc-900 border-zinc-800 overflow-hidden group hover:border-[#0059ff]/50 transition-colors">
+                        <Card key={trainer.id} className="bg-zinc-900 border-zinc-800 overflow-hidden group hover:border-[#E8192B]/50 transition-colors">
                             <div className="aspect-square w-full relative overflow-hidden bg-zinc-800">
                                 {trainer.image_url ? (
                                     <img src={trainer.image_url} alt={trainer.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -131,7 +131,7 @@ export default function TrainersPage() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                                 <div className="absolute bottom-4 left-4 right-4">
                                     <h3 className="text-lg font-bold text-white">{trainer.name}</h3>
-                                    <p className="text-sm text-[#0059ff]">{trainer.specialty}</p>
+                                    <p className="text-sm text-[#E8192B]">{trainer.specialty}</p>
                                 </div>
                             </div>
                             <CardContent className="p-4 flex items-center justify-between">
@@ -141,7 +141,7 @@ export default function TrainersPage() {
                                 <Button
                                     variant="ghost"
                                     size="sm"
-                                    className="text-zinc-500 hover:text-[#0059ff] hover:bg-[#0059ff]/10"
+                                    className="text-zinc-500 hover:text-[#E8192B] hover:bg-[#E8192B]/10"
                                     onClick={() => handleDelete(trainer.id)}
                                 >
                                     <Trash2 size={18} />

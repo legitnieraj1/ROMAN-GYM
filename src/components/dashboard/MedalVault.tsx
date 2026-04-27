@@ -68,48 +68,48 @@ export function MedalVault({ stats, unlocked, locked, nextMedal, total }: MedalV
     const unlockedCount = unlocked.length;
 
     return (
-        <div className="bg-[#1c1b1c] p-6 sm:p-8">
+        <div className="bg-[#0d0d0d] p-6 sm:p-8">
             {/* Header */}
             <div className="flex items-center justify-between mb-2">
                 <h2 className="font-black text-lg uppercase tracking-widest flex items-center gap-3">
-                    <span className="w-1 h-5 bg-[#0059ff]" />
+                    <span className="w-1 h-5 bg-[#E8192B]" />
                     Medal Vault
                 </h2>
-                <span className="text-[10px] font-bold tracking-[2px] text-[#b6c4ff] uppercase">
+                <span className="text-[10px] font-bold tracking-[2px] text-[#E8192B] uppercase">
                     {unlockedCount} / {total}
                 </span>
             </div>
 
             {/* Overall progress bar */}
-            <div className="h-1.5 w-full bg-[#353436] mb-6 overflow-hidden">
+            <div className="h-1.5 w-full bg-[#1a1a1a] mb-6 overflow-hidden">
                 <div
-                    className="h-full bg-gradient-to-r from-[#0059ff] via-[#00daf3] to-[#b6c4ff] transition-all duration-700"
+                    className="h-full bg-gradient-to-r from-[#E8192B] via-[#E8192B] to-[#E8192B] transition-all duration-700"
                     style={{ width: `${(unlockedCount / total) * 100}%` }}
                 />
             </div>
 
             {/* Next Medal Progress */}
             {nextMedal && nextMedal.progress && (
-                <div className="mb-6 p-4 bg-[#0e0e0f] border border-[#434656]/20">
+                <div className="mb-6 p-4 bg-[#080808] border border-white/[0.06]/20">
                     <div className="flex items-center gap-3 mb-2">
-                        {(() => { const Icon = ICON_MAP[nextMedal.icon]; return Icon ? <Icon className="w-6 h-6" style={{ color: CATEGORY_COLORS[nextMedal.category] }} /> : <Shield className="w-6 h-6 text-[#bec8d3]" />; })()}
+                        {(() => { const Icon = ICON_MAP[nextMedal.icon]; return Icon ? <Icon className="w-6 h-6" style={{ color: CATEGORY_COLORS[nextMedal.category] }} /> : <Shield className="w-6 h-6 text-[rgba(255,255,255,0.4)]" />; })()}
                         <div className="flex-1">
                             <div className="flex items-center justify-between">
-                                <p className="text-xs font-black uppercase tracking-wider text-[#b6c4ff]">
+                                <p className="text-xs font-black uppercase tracking-wider text-[#E8192B]">
                                     Next: {nextMedal.label}
                                 </p>
                                 <span className="text-[9px] font-bold tracking-widest uppercase px-2 py-0.5" style={{
-                                    color: TIER_COLORS[nextMedal.tier]?.text.replace("text-[", "").replace("]", "") || "#bec8d3",
+                                    color: TIER_COLORS[nextMedal.tier]?.text.replace("text-[", "").replace("]", "") || "rgba(255,255,255,0.4)",
                                     backgroundColor: `${CATEGORY_COLORS[nextMedal.category]}15`,
                                     border: `1px solid ${CATEGORY_COLORS[nextMedal.category]}30`,
                                 }}>
                                     {TIER_LABELS[nextMedal.tier]}
                                 </span>
                             </div>
-                            <p className="text-[10px] text-[#bec8d3] opacity-60 mt-0.5">{nextMedal.progress.label}</p>
+                            <p className="text-[10px] text-[rgba(255,255,255,0.4)] opacity-60 mt-0.5">{nextMedal.progress.label}</p>
                         </div>
                     </div>
-                    <div className="h-2 w-full bg-[#353436] overflow-hidden">
+                    <div className="h-2 w-full bg-[#1a1a1a] overflow-hidden">
                         <div
                             className="h-full transition-all duration-500"
                             style={{
@@ -118,7 +118,7 @@ export function MedalVault({ stats, unlocked, locked, nextMedal, total }: MedalV
                             }}
                         />
                     </div>
-                    <p className="text-[10px] text-[#bec8d3] opacity-40 mt-1.5 text-right font-mono">
+                    <p className="text-[10px] text-[rgba(255,255,255,0.4)] opacity-40 mt-1.5 text-right font-mono">
                         {nextMedal.progress.current} / {nextMedal.progress.target}
                     </p>
                 </div>
@@ -137,8 +137,8 @@ export function MedalVault({ stats, unlocked, locked, nextMedal, total }: MedalV
                             onClick={() => setActiveCategory(cat.key)}
                             className={`flex-shrink-0 px-3 py-1.5 text-[9px] font-bold uppercase tracking-widest transition-all ${
                                 isActive
-                                    ? "bg-[#0059ff]/20 text-[#b6c4ff] border border-[#0059ff]/40"
-                                    : "bg-[#0e0e0f] text-[#bec8d3] opacity-50 border border-transparent hover:opacity-80"
+                                    ? "bg-[#E8192B]/20 text-[#E8192B] border border-[#E8192B]/40"
+                                    : "bg-[#080808] text-[rgba(255,255,255,0.4)] opacity-50 border border-transparent hover:opacity-80"
                             }`}
                         >
                             {cat.label}
@@ -160,10 +160,10 @@ export function MedalVault({ stats, unlocked, locked, nextMedal, total }: MedalV
                         <button
                             key={medal.id}
                             onClick={() => setSelectedMedal(selectedMedal?.id === medal.id ? null : medal)}
-                            className={`relative aspect-square bg-[#0e0e0f] flex flex-col items-center justify-center gap-1.5 border transition-all group ${
+                            className={`relative aspect-square bg-[#080808] flex flex-col items-center justify-center gap-1.5 border transition-all group ${
                                 isUnlocked
                                     ? `${tierStyle.border} hover:${tierStyle.glow}`
-                                    : "border-[#434656]/10 opacity-25 grayscale"
+                                    : "border-white/[0.06]/10 opacity-25 grayscale"
                             }`}
                         >
                             {/* Tier indicator dot */}
@@ -173,14 +173,14 @@ export function MedalVault({ stats, unlocked, locked, nextMedal, total }: MedalV
                                     style={{ backgroundColor: CATEGORY_COLORS[medal.category] }}
                                 />
                             )}
-                            {(() => { const Icon = ICON_MAP[medal.icon]; return Icon ? <Icon className={`w-6 h-6 sm:w-7 sm:h-7 ${isUnlocked ? "group-hover:scale-110 transition-transform" : ""}`} style={{ color: isUnlocked ? CATEGORY_COLORS[medal.category] : "#bec8d3" }} /> : <Shield className="w-6 h-6 text-[#bec8d3]" />; })()}
-                            <span className="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest text-[#bec8d3] opacity-60 text-center leading-tight px-1">
+                            {(() => { const Icon = ICON_MAP[medal.icon]; return Icon ? <Icon className={`w-6 h-6 sm:w-7 sm:h-7 ${isUnlocked ? "group-hover:scale-110 transition-transform" : ""}`} style={{ color: isUnlocked ? CATEGORY_COLORS[medal.category] : "rgba(255,255,255,0.4)" }} /> : <Shield className="w-6 h-6 text-[rgba(255,255,255,0.4)]" />; })()}
+                            <span className="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest text-[rgba(255,255,255,0.4)] opacity-60 text-center leading-tight px-1">
                                 {medal.label}
                             </span>
 
                             {/* Progress bar for locked medals */}
                             {!isUnlocked && medal.progress && (
-                                <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#353436]">
+                                <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#1a1a1a]">
                                     <div
                                         className="h-full opacity-60"
                                         style={{
@@ -197,9 +197,9 @@ export function MedalVault({ stats, unlocked, locked, nextMedal, total }: MedalV
 
             {/* Selected Medal Detail */}
             {selectedMedal && (
-                <div className="mt-4 p-4 bg-[#0e0e0f] border border-[#434656]/20 animate-in fade-in duration-200">
+                <div className="mt-4 p-4 bg-[#080808] border border-white/[0.06]/20 animate-in fade-in duration-200">
                     <div className="flex items-start gap-3">
-                        {(() => { const Icon = ICON_MAP[selectedMedal.icon]; return Icon ? <Icon className="w-7 h-7" style={{ color: CATEGORY_COLORS[selectedMedal.category] }} /> : <Shield className="w-7 h-7 text-[#bec8d3]" />; })()}
+                        {(() => { const Icon = ICON_MAP[selectedMedal.icon]; return Icon ? <Icon className="w-7 h-7" style={{ color: CATEGORY_COLORS[selectedMedal.category] }} /> : <Shield className="w-7 h-7 text-[rgba(255,255,255,0.4)]" />; })()}
                         <div className="flex-1">
                             <div className="flex items-center gap-2 mb-1">
                                 <h3 className="font-black text-sm uppercase tracking-wider">{selectedMedal.label}</h3>
@@ -223,16 +223,16 @@ export function MedalVault({ stats, unlocked, locked, nextMedal, total }: MedalV
                                     {TIER_LABELS[selectedMedal.tier]}
                                 </span>
                             </div>
-                            <p className="text-xs text-[#bec8d3] opacity-60">{selectedMedal.desc}</p>
+                            <p className="text-xs text-[rgba(255,255,255,0.4)] opacity-60">{selectedMedal.desc}</p>
                             {selectedMedal.isUnlocked ? (
-                                <p className="text-[10px] font-bold text-[#00daf3] uppercase tracking-widest mt-2">Unlocked</p>
+                                <p className="text-[10px] font-bold text-[#E8192B] uppercase tracking-widest mt-2">Unlocked</p>
                             ) : selectedMedal.progress ? (
                                 <div className="mt-2">
                                     <div className="flex justify-between text-[10px] mb-1">
-                                        <span className="text-[#bec8d3] opacity-40">{selectedMedal.progress.label}</span>
-                                        <span className="text-[#bec8d3] opacity-40 font-mono">{selectedMedal.progress.current}/{selectedMedal.progress.target}</span>
+                                        <span className="text-[rgba(255,255,255,0.4)] opacity-40">{selectedMedal.progress.label}</span>
+                                        <span className="text-[rgba(255,255,255,0.4)] opacity-40 font-mono">{selectedMedal.progress.current}/{selectedMedal.progress.target}</span>
                                     </div>
-                                    <div className="h-1.5 w-full bg-[#353436]">
+                                    <div className="h-1.5 w-full bg-[#1a1a1a]">
                                         <div
                                             className="h-full"
                                             style={{
@@ -249,7 +249,7 @@ export function MedalVault({ stats, unlocked, locked, nextMedal, total }: MedalV
             )}
 
             {/* Footer count */}
-            <p className="mt-4 text-[10px] text-center font-bold tracking-[2px] text-[#bec8d3] uppercase opacity-40">
+            <p className="mt-4 text-[10px] text-center font-bold tracking-[2px] text-[rgba(255,255,255,0.4)] uppercase opacity-40">
                 {unlockedCount} / {total} Achievements Unlocked
             </p>
         </div>

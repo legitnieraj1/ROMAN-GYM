@@ -355,7 +355,7 @@ export function MembershipSection() {
   }, [isMobile]);
 
   return (
-    <section ref={sectionRef} id="plans" className="relative py-16 md:py-28 px-4 bg-[#0A0A0A]">
+    <section ref={sectionRef} id="plans" className="relative py-14 md:py-20 px-4 bg-[#0A0A0A]">
       {/* Ambient red glow */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -363,12 +363,27 @@ export function MembershipSection() {
       />
 
       <div className="container mx-auto max-w-5xl relative z-10">
-        <div className="membership-heading text-center mb-10 md:mb-14">
-          <p className="text-[#E8192B] text-xs tracking-[0.45em] uppercase mb-4 font-medium">Pricing</p>
-          <h2 className="font-heading text-4xl md:text-6xl tracking-wider">
-            MEMBERSHIP <span className="text-[#E8192B]" style={{ textShadow: "0 0 40px rgba(232,25,43,0.25)" }}>PLANS</span>
+        <div className="membership-heading text-center mb-8 md:mb-12">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="w-8 h-px bg-[#E8192B]/60" />
+            <p className="text-[#E8192B] text-[10px] tracking-[0.45em] uppercase font-medium">Pricing</p>
+            <div className="w-8 h-px bg-[#E8192B]/60" />
+          </div>
+          <h2
+            className="font-heading tracking-wider leading-none text-white"
+            style={{ fontSize: "clamp(2.5rem, 8vw, 6rem)" }}
+          >
+            MEMBERSHIP{" "}
+            <span
+              className="text-[#E8192B]"
+              style={{ textShadow: "0 0 40px rgba(232,25,43,0.25)" }}
+            >
+              PLANS
+            </span>
           </h2>
-          <p className="mt-4 text-white/30 text-sm tracking-wider">No admission fee. Just results.</p>
+          <p className="mt-4 text-white/25 text-[11px] tracking-[0.35em] uppercase">
+            No admission fee. Just results.
+          </p>
         </div>
 
         {isMobile ? (

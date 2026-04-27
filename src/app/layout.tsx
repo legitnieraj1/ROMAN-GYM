@@ -3,6 +3,7 @@ import { Inter, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Providers } from "@/components/providers";
+import { CustomCursor } from "@/components/home/CustomCursor";
 import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -11,8 +12,6 @@ const bebas = Bebas_Neue({ weight: "400", subsets: ["latin"], variable: "--font-
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 };
 
 export const metadata: Metadata = {
@@ -178,6 +177,14 @@ export default function RootLayout({
         />
       </head>
       <body className={cn(inter.variable, bebas.variable, "font-sans antialiased text-white bg-[#0A0A0A]")}>
+        {/* Skip-to-content for keyboard / screen-reader users */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10000] focus:bg-[#E8192B] focus:text-white focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:uppercase focus:tracking-widest"
+        >
+          Skip to main content
+        </a>
+        <CustomCursor />
         <Providers>
           {children}
         </Providers>

@@ -206,7 +206,7 @@ export function TrainersSection() {
   }, [isMobile]);
 
   return (
-    <section ref={sectionRef} id="trainers" className="relative py-16 md:py-28 px-4 bg-[#0A0A0A]">
+    <section ref={sectionRef} id="trainers" className="relative py-14 md:py-20 px-4 bg-[#0A0A0A]">
       {/* Subtle red radial background */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -214,11 +214,28 @@ export function TrainersSection() {
       />
 
       <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="trainers-heading text-center mb-10 md:mb-16">
-          <p className="text-[#E8192B] text-xs tracking-[0.45em] uppercase mb-4 font-medium">Our Team</p>
-          <h2 className="font-heading text-4xl md:text-6xl tracking-wider">
-            ELITE <span className="text-[#E8192B]" style={{ textShadow: "0 0 40px rgba(232,25,43,0.25)" }}>TRAINERS</span>
-          </h2>
+        <div className="trainers-heading flex items-start gap-5 md:gap-8 mb-8 md:mb-12">
+          <div className="flex flex-col items-center gap-3 pt-2 flex-shrink-0">
+            <div className="w-px h-12 bg-[#E8192B]" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#E8192B]" />
+          </div>
+          <div>
+            <p className="text-[#E8192B] text-[10px] tracking-[0.45em] uppercase mb-3 font-medium">
+              Our Team
+            </p>
+            <h2
+              className="font-heading tracking-wider leading-none text-white"
+              style={{ fontSize: "clamp(2.5rem, 8vw, 6rem)" }}
+            >
+              ELITE{" "}
+              <span
+                className="text-[#E8192B]"
+                style={{ textShadow: "0 0 40px rgba(232,25,43,0.25)" }}
+              >
+                TRAINERS
+              </span>
+            </h2>
+          </div>
         </div>
 
         {isMobile ? (

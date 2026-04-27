@@ -300,7 +300,7 @@ export default function MembersLogPage() {
                             <Button
                                 type="submit"
                                 disabled={loading}
-                                className="w-full bg-[#0059ff] hover:bg-[#0059ff]/90 text-white font-bold h-12"
+                                className="w-full bg-[#E8192B] hover:bg-[#E8192B]/90 text-white font-bold h-12"
                             >
                                 {loading ? <Loader2 className="animate-spin mr-2" /> : <Upload className="mr-2 w-4 h-4" />}
                                 Add to Digital Database

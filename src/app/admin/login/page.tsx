@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Dumbbell, Lock, Mail, AlertCircle } from "lucide-react";
+import { Loader2, Lock, Mail, Shield } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function AdminLoginPage() {
     const router = useRouter();
@@ -18,22 +18,19 @@ export default function AdminLoginPage() {
         e.preventDefault();
         setLoading(true);
         setError("");
-
         try {
             const res = await fetch("/api/admin/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password }),
             });
-
             const data = await res.json();
-
             if (!res.ok) {
                 setError(data.error || "Login failed");
             } else {
                 window.location.href = "/admin/dashboard";
             }
-        } catch (err) {
+        } catch {
             setError("Something went wrong");
         } finally {
             setLoading(false);
@@ -41,49 +38,55 @@ export default function AdminLoginPage() {
     };
 
     return (
-        <div className="min-h-screen bg-[#131314] flex items-center justify-center relative overflow-hidden">
-            {/* Background Effects */}
-            <div className="absolute inset-0 bg-[url('/auth-bg.webp')] opacity-10 bg-cover bg-center" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#131314] via-[#131314]/90 to-[#131314]/80" />
+        <div className="min-h-screen bg-[#080808] flex items-center justify-center relative overflow-hidden px-4">
+            {/* Ambient red glow */}
+            <div className="absolute inset-0 pointer-events-none"
+                style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(232,25,43,0.07) 0%, transparent 60%)" }} />
 
-            {/* Blue Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#0059ff] rounded-full blur-[120px] opacity-10" />
+            {/* Hairlines */}
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
+            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
 
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="relative z-10 w-full max-w-md p-8"
+                className="relative z-10 w-full max-w-md"
             >
-                <div className="text-center mb-8">
-                    <div className="inline-flex items-center justify-center p-4 bg-[#0059ff]/10 rounded-none mb-4 border border-[#0059ff]/20">
-                        <Dumbbell className="w-10 h-10 text-[#b6c4ff]" />
+                {/* Header */}
+                <div className="text-center mb-10">
+                    <Image src="/logoroman.png" alt="Roman Fitness" width={64} height={64} className="h-14 w-auto mx-auto mb-6" />
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-[#E8192B]/20 bg-[#E8192B]/05 mb-4">
+                        <Shield className="w-3 h-3 text-[#E8192B]" />
+                        <span className="text-[#E8192B] text-[10px] tracking-[0.4em] uppercase font-bold">Restricted Access</span>
                     </div>
-                    <h1 className="text-3xl font-bold italic text-[#b6c4ff] tracking-wider mb-1">
-                        ARENA
-                    </h1>
-                    <p className="text-sm uppercase tracking-widest font-bold text-[#bec8d3] opacity-60">
-                        Command
-                    </p>
-                    <p className="text-[#bec8d3] opacity-60 text-sm mt-2">Restricted Access Portal</p>
+                    <h1 className="font-heading text-4xl uppercase tracking-wider text-white">Arena Command</h1>
+                    <p className="text-white/25 text-xs tracking-widest uppercase mt-2">Administrator Portal</p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6 bg-[#131314]/80 backdrop-blur-md p-8 rounded-none border border-[#0059ff]/10 shadow-2xl">
+                {/* Form */}
+                <form onSubmit={handleSubmit}
+                    className="bg-[#0a0a0a] border border-white/[0.06] p-8 space-y-6">
+                    {/* Top red accent */}
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#E8192B]/60 to-transparent pointer-events-none" />
+
                     {error && (
-                        <div className="flex items-center gap-2 p-3 bg-[#ffb4ab]/10 border border-[#ffb4ab]/20 rounded-none text-[#ffb4ab] text-sm">
-                            <AlertCircle size={16} />
+                        <div className="flex items-center gap-2 p-3 bg-[#E8192B]/10 border border-[#E8192B]/30 text-[#E8192B] text-sm">
+                            <Shield size={14} />
                             {error}
                         </div>
                     )}
 
-                    <div className="space-y-2">
-                        <label className="text-sm font-bold uppercase tracking-wider text-[#bec8d3]">Email Address</label>
+                    <div className="space-y-2 group">
+                        <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 group-focus-within:text-[#E8192B] transition-colors">
+                            Email Address
+                        </label>
                         <div className="relative">
-                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#bec8d3] opacity-60" />
+                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20" />
                             <Input
                                 type="email"
-                                placeholder="Enter your email"
-                                className="pl-10 bg-black/50 border-[#0059ff]/10 text-white rounded-none focus:border-[#0059ff] focus:ring-[#0059ff]/20 h-12"
+                                placeholder="admin@romanfitness.in"
+                                className="pl-10 bg-[#080808] border-white/10 text-white rounded-none focus:border-[#E8192B] focus:ring-0 h-12 placeholder:text-white/20"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
@@ -91,17 +94,16 @@ export default function AdminLoginPage() {
                         </div>
                     </div>
 
-                    <div className="space-y-2">
-                        <div className="flex justify-between items-center">
-                            <label className="text-sm font-bold uppercase tracking-wider text-[#bec8d3]">Password</label>
-                            <a href="#" className="text-xs text-[#b6c4ff] hover:underline">Forgot password?</a>
-                        </div>
+                    <div className="space-y-2 group">
+                        <label className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 group-focus-within:text-[#E8192B] transition-colors">
+                            Password
+                        </label>
                         <div className="relative">
-                            <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#bec8d3] opacity-60" />
+                            <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20" />
                             <Input
                                 type="password"
                                 placeholder="Enter your password"
-                                className="pl-10 bg-black/50 border-[#0059ff]/10 text-white rounded-none focus:border-[#0059ff] focus:ring-[#0059ff]/20 h-12"
+                                className="pl-10 bg-[#080808] border-white/10 text-white rounded-none focus:border-[#E8192B] focus:ring-0 h-12 placeholder:text-white/20"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
@@ -109,17 +111,20 @@ export default function AdminLoginPage() {
                         </div>
                     </div>
 
-                    <Button
+                    <button
                         type="submit"
                         disabled={loading}
-                        className="w-full h-12 bg-gradient-to-r from-[#b6c4ff] to-[#0059ff] hover:from-[#b6c4ff]/90 hover:to-[#0059ff]/90 text-white font-bold uppercase tracking-wider rounded-none shadow-[0_0_20px_-5px_#0059ff]"
+                        className="group relative w-full h-12 bg-[#E8192B] text-white font-bold uppercase tracking-[0.28em] text-sm overflow-hidden transition-shadow duration-300 hover:shadow-[0_0_40px_rgba(232,25,43,0.5)] disabled:opacity-50"
                     >
-                        {loading ? "AUTHENTICATING..." : "ACCESS DASHBOARD"}
-                    </Button>
+                        <span className="relative z-10">
+                            {loading ? <Loader2 className="w-5 h-5 animate-spin mx-auto" /> : "Access Dashboard"}
+                        </span>
+                        <div className="absolute inset-0 bg-white/10 translate-x-[-115%] skew-x-[-20deg] group-hover:translate-x-[115%] transition-transform duration-500" />
+                    </button>
                 </form>
 
-                <p className="text-center mt-8 text-[#bec8d3] opacity-60 text-xs uppercase tracking-wider">
-                    Protected by reCAPTCHA and Subject to the Roman Fitness Identity.
+                <p className="text-center mt-6 text-white/20 text-[10px] uppercase tracking-[0.4em]">
+                    Roman Fitness · Command Terminal
                 </p>
             </motion.div>
         </div>

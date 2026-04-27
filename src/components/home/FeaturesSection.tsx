@@ -139,7 +139,7 @@ export function FeaturesSection() {
       <div className="container mx-auto max-w-6xl px-4 md:px-8">
 
         {/* ── Heading block ── */}
-        <div className="features-heading flex items-start gap-5 md:gap-8 mb-12 md:mb-20">
+        <div className="features-heading flex items-start gap-5 md:gap-8 mb-8 md:mb-12">
           <div className="flex flex-col items-center gap-3 pt-2">
             <div className="w-px h-12 bg-[#E8192B]" />
             <div className="w-1.5 h-1.5 rounded-full bg-[#E8192B]" />

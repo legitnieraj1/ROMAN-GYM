@@ -38,7 +38,7 @@ export function MontageSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative h-[60vh] md:h-[80vh] overflow-hidden">
+    <section ref={sectionRef} className="relative h-[50vh] md:h-[60vh] overflow-hidden">
       {/* Background gradient — red tint now */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-[#140202]/50 to-[#0A0A0A]" />
 

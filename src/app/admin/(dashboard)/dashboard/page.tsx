@@ -2,273 +2,208 @@
 
 import { useEffect, useState } from "react";
 import { Users, UserPlus, Clock, TrendingUp, Bell, UserCheck, AlertTriangle } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getMembers, getAttendance, getPayments } from "@/app/actions/admin";
-
 import { useRouter } from "next/navigation";
 import { openWhatsAppReminder } from "@/utils/whatsapp";
 
+function getTimeAgo(date: Date) {
+    const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
+    let interval = seconds / 31536000;
+    if (interval > 1) return Math.floor(interval) + " years ago";
+    interval = seconds / 2592000;
+    if (interval > 1) return Math.floor(interval) + " months ago";
+    interval = seconds / 86400;
+    if (interval > 1) return Math.floor(interval) + " days ago";
+    interval = seconds / 3600;
+    if (interval > 1) return Math.floor(interval) + " hours ago";
+    interval = seconds / 60;
+    if (interval > 1) return Math.floor(interval) + " mins ago";
+    return Math.floor(seconds) + " seconds ago";
+}
+
 export default function AdminDashboard() {
     const router = useRouter();
-    const [stats, setStats] = useState({
-        totalMembers: 0,
-        activeNow: 0,
-        expiringSoon: 0,
-        todayRevenue: 0
-    });
+    const [stats, setStats] = useState({ totalMembers: 0, activeNow: 0, expiringSoon: 0, todayRevenue: 0 });
     const [activityFeed, setActivityFeed] = useState<any[]>([]);
     const [expiringMembers, setExpiringMembers] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
 
-    function getTimeAgo(date: Date) {
-        const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
-        let interval = seconds / 31536000;
-        if (interval > 1) return Math.floor(interval) + " years ago";
-        interval = seconds / 2592000;
-        if (interval > 1) return Math.floor(interval) + " months ago";
-        interval = seconds / 86400;
-        if (interval > 1) return Math.floor(interval) + " days ago";
-        interval = seconds / 3600;
-        if (interval > 1) return Math.floor(interval) + " hours ago";
-        interval = seconds / 60;
-        if (interval > 1) return Math.floor(interval) + " mins ago";
-        return Math.floor(seconds) + " seconds ago";
-    }
-
     useEffect(() => {
         async function fetchStats() {
             const [membersRes, attendanceRes, paymentsRes] = await Promise.all([
-                getMembers(),
-                getAttendance(),
-                getPayments()
+                getMembers(), getAttendance(), getPayments()
             ]);
-
-            const members = membersRes.success && membersRes.data ? membersRes.data : [];
+            const members    = membersRes.success && membersRes.data ? membersRes.data : [];
             const attendance = attendanceRes.success && attendanceRes.data ? attendanceRes.data : [];
-            const payments = paymentsRes.success && paymentsRes.data ? paymentsRes.data : [];
+            const payments   = paymentsRes.success && paymentsRes.data ? paymentsRes.data : [];
 
-            // Calculate stats
             const totalMembers = members.length;
-            // Mocking "Active Now" based on recent check-ins within last 2 hours
             const activeNow = attendance.filter((a: any) => {
                 const checkIn = new Date(a.check_in_time);
-                const twoHoursAgo = new Date(Date.now() - 2 * 60 * 60 * 1000);
-                return checkIn > twoHoursAgo;
+                return checkIn > new Date(Date.now() - 2 * 60 * 60 * 1000);
             }).length;
 
             const expiringList = members.filter((m: any) => {
-                if (!m.membership || m.membership.status !== 'ACTIVE') return false;
+                if (!m.membership || m.membership.status !== "ACTIVE") return false;
                 const endDate = new Date(m.membership.end_date);
-                const sevenDaysFromNow = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-                return endDate > new Date() && endDate < sevenDaysFromNow;
+                return endDate > new Date() && endDate < new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
             }).sort((a: any, b: any) => new Date(a.membership.end_date).getTime() - new Date(b.membership.end_date).getTime());
-
-            const expiringSoon = expiringList.length;
 
             const todayRevenue = payments
                 .filter((p: any) => {
-                    const paymentDate = new Date(p.created_at);
-                    const today = new Date();
-                    return paymentDate.getDate() === today.getDate() &&
-                        paymentDate.getMonth() === today.getMonth() &&
-                        paymentDate.getFullYear() === today.getFullYear();
+                    const d = new Date(p.created_at); const t = new Date();
+                    return d.getDate() === t.getDate() && d.getMonth() === t.getMonth() && d.getFullYear() === t.getFullYear();
                 })
                 .reduce((sum: number, p: any) => sum + (p.amount || 0), 0);
 
-            // Format Activity Feed
-            // 1. Attendance Check-ins
             const checkins = attendance.map((a: any) => ({
-                type: 'checkin',
-                name: a.member?.name || "Unknown Member",
-                action: "checked in",
-                time: new Date(a.check_in_time),
-                amount: 0
+                type: "checkin", name: a.member?.name || "Unknown", action: "checked in",
+                time: new Date(a.check_in_time), amount: 0
             }));
-
-            // 2. Payments
             const recentPayments = payments.map((p: any) => ({
-                type: 'payment',
-                name: p.member?.name || "Unknown Member",
-                action: "renewed membership",
-                time: new Date(p.created_at),
-                amount: p.amount
+                type: "payment", name: p.member?.name || "Unknown", action: "renewed membership",
+                time: new Date(p.created_at), amount: p.amount
             }));
-
-            // Combine and Sort
             const combinedFeed = [...checkins, ...recentPayments]
                 .sort((a, b) => b.time.getTime() - a.time.getTime())
-                .slice(0, 5) // Top 5
-                .map(item => ({
-                    ...item,
-                    timeStr: getTimeAgo(item.time)
-                }));
+                .slice(0, 5)
+                .map(item => ({ ...item, timeStr: getTimeAgo(item.time) }));
 
             setActivityFeed(combinedFeed);
-            setExpiringMembers(expiringList.slice(0, 5)); // Top 5 expiring
-
-            setStats({
-                totalMembers,
-                activeNow,
-                expiringSoon,
-                todayRevenue
-            });
+            setExpiringMembers(expiringList.slice(0, 5));
+            setStats({ totalMembers, activeNow, expiringSoon: expiringList.length, todayRevenue });
             setLoading(false);
         }
-
         fetchStats();
     }, []);
 
-
+    const kpis = [
+        { label: "Total Members",   value: stats.totalMembers,    prefix: "",     icon: Users,         accent: "#E8192B", textColor: "text-white" },
+        { label: "Active Now",      value: stats.activeNow,       prefix: "",     icon: TrendingUp,    accent: "#22c55e", textColor: "text-green-400" },
+        { label: "Expiring Soon",   value: stats.expiringSoon,    prefix: "",     icon: AlertTriangle, accent: "#f59e0b", textColor: "text-amber-400" },
+        { label: "Today's Revenue", value: `₹${stats.todayRevenue.toLocaleString()}`, prefix: "", icon: null, accent: "#E8192B", textColor: "text-[#E8192B]" },
+    ];
 
     return (
         <div className="space-y-8">
             {/* Header */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/[0.06] pb-6">
                 <div>
-                    <h1 className="text-3xl font-black uppercase tracking-wider text-white">Arena Control</h1>
-                    <p className="text-[#b6c4ff]/60">Overview of your arena&apos;s performance today.</p>
+                    <p className="text-[#E8192B] text-[10px] tracking-[0.45em] uppercase font-medium mb-1">Admin Panel</p>
+                    <h1 className="font-heading text-4xl uppercase tracking-wider text-white">Arena Control</h1>
+                    <p className="text-white/25 text-sm mt-1">Overview of today&apos;s performance.</p>
                 </div>
-                <div className="flex gap-4">
+                <div className="flex gap-3">
                     <button
-                        onClick={() => router.push('/admin/members')}
-                        className="px-4 py-2 bg-[#0059ff] text-white rounded-lg font-bold hover:bg-[#0059ff]/90 transition-colors shadow-[0_0_15px_-5px_#0059ff] flex items-center gap-2"
+                        onClick={() => router.push("/admin/members")}
+                        className="group relative px-5 py-2.5 bg-[#E8192B] text-white font-bold text-xs uppercase tracking-[0.2em] overflow-hidden transition-shadow hover:shadow-[0_0_30px_rgba(232,25,43,0.4)] flex items-center gap-2"
                     >
-                        <UserPlus size={18} /> Add Member
+                        <UserPlus size={15} /> Add Member
+                        <div className="absolute inset-0 bg-white/10 translate-x-[-115%] skew-x-[-20deg] group-hover:translate-x-[115%] transition-transform duration-500" />
                     </button>
                     <button
-                        onClick={() => alert("Broadcast feature coming soon! (v3.0)")}
-                        className="px-4 py-2 bg-[#2a2a2b] text-white rounded-lg font-bold hover:bg-[#2a2a2b]/80 transition-colors border border-white/10 flex items-center gap-2"
+                        onClick={() => alert("Broadcast feature coming soon!")}
+                        className="px-5 py-2.5 bg-white/[0.04] text-white/60 font-bold text-xs uppercase tracking-[0.2em] border border-white/[0.06] hover:border-[#E8192B]/30 hover:text-white transition-all flex items-center gap-2"
                     >
-                        <Bell size={18} /> BroadCast
+                        <Bell size={15} /> Broadcast
                     </button>
                 </div>
             </div>
 
             {/* KPI Cards */}
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                <Card className="bg-[#2a2a2b] border-l-2 border-[#0059ff] hover:border-[#0059ff]/80 transition-colors">
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium uppercase tracking-wider text-zinc-400">Total Members</CardTitle>
-                        <Users className="h-4 w-4 text-[#b6c4ff]" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-black text-white">{loading ? "..." : stats.totalMembers}</div>
-                        <p className="text-xs text-zinc-500">+12% from last month</p>
-                    </CardContent>
-                </Card>
-                <Card className="bg-[#2a2a2b] border-l-2 border-[#00daf3] hover:border-[#00daf3]/80 transition-colors">
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium uppercase tracking-wider text-zinc-400">Active Now</CardTitle>
-                        <TrendingUp className="h-4 w-4 text-[#00daf3]" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-black text-[#00daf3]">{loading ? "..." : stats.activeNow}</div>
-                        <p className="text-xs text-zinc-500">Currently in arena</p>
-                    </CardContent>
-                </Card>
-                <Card className="bg-[#2a2a2b] border-l-2 border-[#ffb4ab] hover:border-[#ffb4ab]/80 transition-colors">
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium uppercase tracking-wider text-zinc-400">Expiring Soon</CardTitle>
-                        <AlertTriangle className="h-4 w-4 text-[#ffb4ab]" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-black text-[#ffb4ab]">{loading ? "..." : stats.expiringSoon}</div>
-                        <p className="text-xs text-zinc-500">Within next 7 days</p>
-                    </CardContent>
-                </Card>
-                <Card className="bg-[#2a2a2b] border-l-2 border-[#b6c4ff] hover:border-[#b6c4ff]/80 transition-colors">
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium uppercase tracking-wider text-zinc-400">Today&apos;s Revenue</CardTitle>
-                        <div className="font-bold text-[#b6c4ff]">Rs.</div>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-black text-white">{loading ? "..." : `Rs. ${stats.todayRevenue.toLocaleString()}`}</div>
-                        <p className="text-xs text-zinc-500">Daily earnings</p>
-                    </CardContent>
-                </Card>
+                {kpis.map((kpi, i) => (
+                    <div key={i} className="bg-[#0f0f0f] border border-white/[0.06] p-6 relative overflow-hidden group hover:border-white/10 transition-colors"
+                        style={{ borderLeftColor: kpi.accent, borderLeftWidth: 2 }}>
+                        <div className="flex justify-between items-start mb-4">
+                            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 font-bold">{kpi.label}</p>
+                            {kpi.icon && <kpi.icon className="h-4 w-4" style={{ color: kpi.accent }} />}
+                        </div>
+                        <p className={`font-heading text-3xl tracking-wider ${kpi.textColor}`}>
+                            {loading ? "—" : kpi.value}
+                        </p>
+                    </div>
+                ))}
             </div>
 
             {/* Content Grid */}
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-                {/* Recent Activity */}
-                <Card className="col-span-4 bg-[#2a2a2b] border-[#131314]">
-                    <CardHeader>
-                        <CardTitle className="text-white font-black uppercase tracking-wider">Live Activity Feed</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="space-y-8">
-                            {loading ? (
-                                <p className="text-zinc-500 text-sm">Loading activity...</p>
-                            ) : activityFeed.length === 0 ? (
-                                <p className="text-zinc-500 text-sm">No recent activity.</p>
-                            ) : (
-                                activityFeed.map((item, i) => (
-                                    <div key={i} className="flex items-center">
-                                        <div className={`h-9 w-9 rounded-full flex items-center justify-center border border-white/10 ${item.type === 'checkin' ? 'bg-[#00daf3]/10 text-[#00daf3]' :
-                                            item.type === 'payment' ? 'bg-[#b6c4ff]/10 text-[#b6c4ff]' :
-                                                item.type === 'alert' ? 'bg-[#ffb4ab]/10 text-[#ffb4ab]' :
-                                                    'bg-zinc-800 text-white'
-                                            }`}>
-                                            {item.type === 'checkin' ? <UserCheck size={16} /> :
-                                                item.type === 'alert' ? <AlertTriangle size={16} /> :
-                                                    <Clock size={16} />}
-                                        </div>
-                                        <div className="ml-4 space-y-1">
-                                            <p className="text-sm font-medium leading-none text-white">
-                                                {item.name} <span className="text-zinc-500 font-normal">{item.action}</span>
-                                            </p>
-                                            <p className="text-xs text-[#b6c4ff]/40">{item.timeStr}</p>
-                                        </div>
-                                        <div className="ml-auto font-medium text-xs text-zinc-500">
-                                            {item.amount ? `+ Rs. ${item.amount.toLocaleString()}` : ""}
-                                        </div>
+                {/* Activity Feed */}
+                <div className="col-span-4 bg-[#0f0f0f] border border-white/[0.06] p-6">
+                    <div className="flex items-center gap-3 mb-6">
+                        <div className="w-[2px] h-5 bg-[#E8192B]" />
+                        <h2 className="font-heading text-lg uppercase tracking-wider text-white">Live Activity Feed</h2>
+                    </div>
+                    <div className="space-y-5">
+                        {loading ? (
+                            <p className="text-white/25 text-sm">Loading activity...</p>
+                        ) : activityFeed.length === 0 ? (
+                            <p className="text-white/25 text-sm">No recent activity.</p>
+                        ) : (
+                            activityFeed.map((item, i) => (
+                                <div key={i} className="flex items-center gap-4">
+                                    <div className={`h-8 w-8 flex items-center justify-center border ${
+                                        item.type === "checkin"
+                                            ? "border-green-500/20 bg-green-500/10 text-green-400"
+                                            : "border-[#E8192B]/20 bg-[#E8192B]/10 text-[#E8192B]"
+                                    }`}>
+                                        {item.type === "checkin" ? <UserCheck size={14} /> : <Clock size={14} />}
                                     </div>
-                                ))
-                            )}
-                        </div>
-                    </CardContent>
-                </Card>
+                                    <div className="flex-1 min-w-0">
+                                        <p className="text-sm font-bold text-white/80 truncate">
+                                            {item.name} <span className="text-white/30 font-normal">{item.action}</span>
+                                        </p>
+                                        <p className="text-[10px] text-white/20 tracking-wider uppercase">{item.timeStr}</p>
+                                    </div>
+                                    {item.amount > 0 && (
+                                        <span className="text-xs font-bold text-[#E8192B] whitespace-nowrap">
+                                            +₹{item.amount.toLocaleString()}
+                                        </span>
+                                    )}
+                                </div>
+                            ))
+                        )}
+                    </div>
+                </div>
 
-                {/* Recent Signups / Alerts */}
-                <Card className="col-span-3 bg-[#2a2a2b] border-[#131314]">
-                    <CardHeader>
-                        <CardTitle className="text-white font-black uppercase tracking-wider">Expiring Approaching</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="space-y-4">
-                            {loading ? (
-                                <p className="text-zinc-500 text-sm">Loading...</p>
-                            ) : expiringMembers.length === 0 ? (
-                                <p className="text-zinc-500 text-sm">No upcoming expiries.</p>
-                            ) : (
-                                expiringMembers.map((member, i) => {
-                                    const daysLeft = Math.ceil((new Date(member.membership.end_date).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
-                                    return (
-                                        <div key={i} className="flex items-center justify-between p-3 bg-[#131314]/60 rounded-lg border border-white/5">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-8 h-8 rounded-full bg-[#131314] flex items-center justify-center text-xs text-zinc-400">
-                                                    {member.name.charAt(0)}
-                                                </div>
-                                                <div>
-                                                    <div className="text-sm font-medium text-white">{member.name}</div>
-                                                    <div className="text-xs text-[#ffb4ab]">Expires in {daysLeft} days</div>
-                                                </div>
+                {/* Expiring Members */}
+                <div className="col-span-3 bg-[#0f0f0f] border border-white/[0.06] p-6">
+                    <div className="flex items-center gap-3 mb-6">
+                        <div className="w-[2px] h-5 bg-amber-500" />
+                        <h2 className="font-heading text-lg uppercase tracking-wider text-white">Expiring Soon</h2>
+                    </div>
+                    <div className="space-y-3">
+                        {loading ? (
+                            <p className="text-white/25 text-sm">Loading...</p>
+                        ) : expiringMembers.length === 0 ? (
+                            <p className="text-white/25 text-sm">No upcoming expiries.</p>
+                        ) : (
+                            expiringMembers.map((member, i) => {
+                                const daysLeft = Math.ceil((new Date(member.membership.end_date).getTime() - Date.now()) / (1000 * 60 * 60 * 24));
+                                return (
+                                    <div key={i} className="flex items-center justify-between p-3 bg-[#080808] border border-white/[0.04] hover:border-white/[0.08] transition-colors">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-7 h-7 bg-[#E8192B]/10 border border-[#E8192B]/20 flex items-center justify-center text-[10px] font-bold text-[#E8192B]">
+                                                {member.name.charAt(0)}
                                             </div>
-                                            <button
-                                                onClick={() => openWhatsAppReminder(member)}
-                                                disabled={!member.phone}
-                                                title={!member.phone ? "Phone number not available" : "Send Reminder via WhatsApp"}
-                                                className="text-xs bg-green-600/20 hover:bg-green-600/40 text-green-500 hover:text-green-400 px-3 py-1.5 rounded transition-colors border border-green-600/20 disabled:opacity-50 disabled:cursor-not-allowed"
-                                            >
-                                                Remind
-                                            </button>
+                                            <div>
+                                                <p className="text-sm font-bold text-white/80">{member.name}</p>
+                                                <p className="text-[10px] text-amber-400 uppercase tracking-wider">{daysLeft}d left</p>
+                                            </div>
                                         </div>
-                                    );
-                                })
-                            )}
-                        </div>
-                    </CardContent>
-                </Card>
+                                        <button
+                                            onClick={() => openWhatsAppReminder(member)}
+                                            disabled={!member.phone}
+                                            className="text-[10px] bg-green-500/10 hover:bg-green-500/20 text-green-400 px-3 py-1.5 border border-green-500/20 transition-colors disabled:opacity-40 uppercase tracking-wider font-bold"
+                                        >
+                                            Remind
+                                        </button>
+                                    </div>
+                                );
+                            })
+                        )}
+                    </div>
+                </div>
             </div>
         </div>
     );

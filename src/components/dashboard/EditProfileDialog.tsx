@@ -63,13 +63,13 @@ export function EditProfileDialog({ memberProfile }: { memberProfile: any }) {
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
-                <Button variant="outline" size="sm" className="bg-[#0e0e0f] text-[#bec8d3] border-[#434656]/30 hover:bg-[#1c1b1c] hover:text-white uppercase tracking-widest text-[10px] font-bold">
+                <Button variant="outline" size="sm" className="bg-[#080808] text-[rgba(255,255,255,0.4)] border-white/[0.06]/30 hover:bg-[#0d0d0d] hover:text-white uppercase tracking-widest text-[10px] font-bold">
                     <Edit className="w-3 h-3 mr-2" /> Edit Profile
                 </Button>
             </DialogTrigger>
-            <DialogContent className="bg-[#131314] border-[#0059ff]/20 text-[#e5e2e3] sm:max-w-md">
+            <DialogContent className="bg-[#080808] border-[#E8192B]/20 text-[rgba(255,255,255,0.85)] sm:max-w-md">
                 <DialogHeader>
-                    <DialogTitle className="font-heading text-2xl font-black uppercase tracking-widest text-[#b6c4ff]">
+                    <DialogTitle className="font-heading text-2xl font-black uppercase tracking-widest text-[#E8192B]">
                         Warrior Profile
                     </DialogTitle>
                 </DialogHeader>
@@ -85,7 +85,7 @@ export function EditProfileDialog({ memberProfile }: { memberProfile: any }) {
                         />
 
                         <div className="relative group cursor-pointer" onClick={() => fileInputRef.current?.click()}>
-                            <div className="w-32 h-32 sm:w-40 sm:h-40 bg-[#2a2a2b] overflow-hidden border-l-4 border-[#00daf3]">
+                            <div className="w-32 h-32 sm:w-40 sm:h-40 bg-[#111111] overflow-hidden border-l-4 border-[#E8192B]">
                                 {previewUrl ? (
                                     <img
                                         src={previewUrl}
@@ -93,7 +93,7 @@ export function EditProfileDialog({ memberProfile }: { memberProfile: any }) {
                                         className="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700 hover:scale-105"
                                     />
                                 ) : (
-                                    <div className="w-full h-full flex flex-col items-center justify-center text-[#bec8d3]/40 group-hover:text-[#00daf3]/60 transition-colors">
+                                    <div className="w-full h-full flex flex-col items-center justify-center text-[rgba(255,255,255,0.4)]/40 group-hover:text-[#E8192B]/60 transition-colors">
                                         <Edit className="w-8 h-8 mb-2" />
                                         <span className="text-[10px] uppercase font-bold tracking-widest text-center px-4">Upload<br/>Photo</span>
                                     </div>
@@ -101,7 +101,7 @@ export function EditProfileDialog({ memberProfile }: { memberProfile: any }) {
                             </div>
                             <button
                                 type="button"
-                                className="absolute -bottom-2 -right-2 bg-gradient-to-br from-[#b6c4ff] to-[#0059ff] p-3 text-[#00164f] shadow-[0_10px_20px_rgba(0,89,255,0.2)] active:scale-90 transition-transform hover:scale-105"
+                                className="absolute -bottom-2 -right-2 bg-[#E8192B] p-3 text-white shadow-[0_10px_20px_rgba(232,25,43,0.15)] active:scale-90 transition-transform hover:scale-105"
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     fileInputRef.current?.click();
@@ -114,25 +114,25 @@ export function EditProfileDialog({ memberProfile }: { memberProfile: any }) {
 
                     <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                            <Label className="text-[10px] font-bold uppercase tracking-widest text-[#bec8d3] opacity-60">Age (Optional)</Label>
-                            <Input name="age" type="number" defaultValue={memberProfile?.age || ""} className="bg-[#0e0e0f] border-[#434656]/30 focus-visible:ring-[#0059ff] font-bold" />
+                            <Label className="text-[10px] font-bold uppercase tracking-widest text-[rgba(255,255,255,0.4)] opacity-60">Age (Optional)</Label>
+                            <Input name="age" type="number" defaultValue={memberProfile?.age || ""} className="bg-[#080808] border-white/[0.06]/30 focus-visible:ring-[#E8192B] font-bold" />
                         </div>
                         <div className="space-y-2">
-                            <Label className="text-[10px] font-bold uppercase tracking-widest text-[#bec8d3] opacity-60">Date of Birth</Label>
-                            <Input name="dob" type="date" defaultValue={memberProfile?.dob || ""} className="bg-[#0e0e0f] border-[#434656]/30 focus-visible:ring-[#0059ff] font-bold color-scheme-dark" />
+                            <Label className="text-[10px] font-bold uppercase tracking-widest text-[rgba(255,255,255,0.4)] opacity-60">Date of Birth</Label>
+                            <Input name="dob" type="date" defaultValue={memberProfile?.dob || ""} className="bg-[#080808] border-white/[0.06]/30 focus-visible:ring-[#E8192B] font-bold color-scheme-dark" />
                         </div>
                         <div className="space-y-2">
-                            <Label className="text-[10px] font-bold uppercase tracking-widest text-[#bec8d3] opacity-60">Weight (kg)</Label>
-                            <Input name="weight" type="number" step="0.1" defaultValue={memberProfile?.weight || ""} className="bg-[#0e0e0f] border-[#434656]/30 focus-visible:ring-[#0059ff] font-bold" />
+                            <Label className="text-[10px] font-bold uppercase tracking-widest text-[rgba(255,255,255,0.4)] opacity-60">Weight (kg)</Label>
+                            <Input name="weight" type="number" step="0.1" defaultValue={memberProfile?.weight || ""} className="bg-[#080808] border-white/[0.06]/30 focus-visible:ring-[#E8192B] font-bold" />
                         </div>
                         <div className="space-y-2">
-                            <Label className="text-[10px] font-bold uppercase tracking-widest text-[#bec8d3] opacity-60">Height (cm)</Label>
-                            <Input name="height" type="number" defaultValue={memberProfile?.height || ""} className="bg-[#0e0e0f] border-[#434656]/30 focus-visible:ring-[#0059ff] font-bold" />
+                            <Label className="text-[10px] font-bold uppercase tracking-widest text-[rgba(255,255,255,0.4)] opacity-60">Height (cm)</Label>
+                            <Input name="height" type="number" defaultValue={memberProfile?.height || ""} className="bg-[#080808] border-white/[0.06]/30 focus-visible:ring-[#E8192B] font-bold" />
                         </div>
                     </div>
 
-                    <DialogFooter className="pt-6 border-t border-[#434656]/20">
-                        <Button type="submit" disabled={loading} className="w-full bg-gradient-to-r from-[#00daf3] to-[#0059ff] hover:opacity-90 text-white font-black uppercase tracking-[0.2em] shadow-[0_10px_20px_rgba(0,89,255,0.15)] h-12">
+                    <DialogFooter className="pt-6 border-t border-white/[0.06]/20">
+                        <Button type="submit" disabled={loading} className="w-full bg-[#E8192B] hover:opacity-90 text-white font-black uppercase tracking-[0.2em] shadow-[0_10px_20px_rgba(232,25,43,0.15)] h-12">
                             {loading ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
                             Update Warrior Status
                         </Button>

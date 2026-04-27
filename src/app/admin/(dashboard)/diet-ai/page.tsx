@@ -90,7 +90,7 @@ export default function DietAIPage() {
         <div className="space-y-8">
             <div>
                 <h1 className="text-3xl font-bold tracking-tight text-white mb-2 flex items-center gap-2">
-                    <Bot className="text-[#0059ff]" size={32} /> Diet AI Assistant
+                    <Bot className="text-[#E8192B]" size={32} /> Diet AI Assistant
                 </h1>
                 <p className="text-muted-foreground">Generate personalized meal plans using AI (OpenRouter).</p>
             </div>
@@ -183,7 +183,7 @@ export default function DietAIPage() {
                                     className="bg-zinc-950 border-zinc-800"
                                 />
                             </div>
-                            <Button type="submit" disabled={generating} className="w-full bg-[#0059ff] hover:bg-[#0059ff]/90 text-white shadow-[0_0_15px_-5px_#0059ff]">
+                            <Button type="submit" disabled={generating} className="w-full bg-[#E8192B] hover:bg-[#E8192B]/90 text-white shadow-[0_0_20px_rgba(232,25,43,0.3)]">
                                 {generating ? (
                                     <>
                                         <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Generating Plan... (Reasoning)
