@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -327,6 +328,16 @@ export function TransformationSection() {
 
   return (
     <section ref={sectionRef} className="relative py-14 md:py-20 px-4 bg-[#0A0A0A]">
+      {/* Subtle gym background */}
+      <Image
+        src="/gym/bench-press.jpg"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover object-center pointer-events-none"
+        style={{ opacity: 0.06 }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-transparent to-[#0A0A0A] pointer-events-none" />
       <div className="container mx-auto max-w-7xl">
         <div className="transform-heading flex items-start gap-5 md:gap-8 mb-8 md:mb-12">
           <div className="flex flex-col items-center gap-3 pt-2 flex-shrink-0">

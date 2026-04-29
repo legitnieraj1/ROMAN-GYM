@@ -3,7 +3,6 @@ import { Inter, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Providers } from "@/components/providers";
-import { CustomCursor } from "@/components/home/CustomCursor";
 import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -184,7 +183,6 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <CustomCursor />
         <Providers>
           {children}
         </Providers>

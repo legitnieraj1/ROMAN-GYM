@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Check, X, Crown, Star, Zap, Loader2 } from "lucide-react";
@@ -356,10 +357,20 @@ export function MembershipSection() {
 
   return (
     <section ref={sectionRef} id="plans" className="relative py-14 md:py-20 px-4 bg-[#0A0A0A]">
+      {/* Background gym image */}
+      <Image
+        src="/gym/shoulder-press.jpg"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover object-center pointer-events-none"
+        style={{ opacity: 0.08 }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-[#0A0A0A] pointer-events-none" />
       {/* Ambient red glow */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(232,25,43,0.05) 0%, transparent 55%)" }}
+        style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(232,25,43,0.07) 0%, transparent 55%)" }}
       />
 
       <div className="container mx-auto max-w-5xl relative z-10">

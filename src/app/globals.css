@@ -44,10 +44,6 @@
   ::-webkit-scrollbar-thumb { background: #222; border-radius: 2px; }
   ::-webkit-scrollbar-thumb:hover { background: #E8192B; }
 
-  /* ── Hide native cursor on fine-pointer (desktop) ── */
-  @media (pointer: fine) {
-    *, *::before, *::after { cursor: none !important; }
-  }
 }
 
 @layer utilities {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -136,7 +137,17 @@ export function FeaturesSection() {
 
   return (
     <section ref={sectionRef} id="features" className="relative py-14 md:py-20 bg-[#080808]">
-      <div className="container mx-auto max-w-6xl px-4 md:px-8">
+      {/* Background gym image — very subtle */}
+      <Image
+        src="/gym/dumbbell-area.jpg"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover object-center pointer-events-none"
+        style={{ opacity: 0.07 }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#080808] via-transparent to-[#080808] pointer-events-none" />
+      <div className="container mx-auto max-w-6xl px-4 md:px-8 relative z-10">
 
         {/* ── Heading block ── */}
         <div className="features-heading flex items-start gap-5 md:gap-8 mb-8 md:mb-12">

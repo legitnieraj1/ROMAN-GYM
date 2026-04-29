@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
     LayoutDashboard, Users, CalendarCheck, CreditCard, Utensils,
-    Bell, Dumbbell, Settings, LogOut, Menu, X, UserPlus, ClipboardList, Shield
+    Bell, Dumbbell, Settings, LogOut, Menu, X, MessageCircle, ClipboardList, Shield
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
@@ -12,14 +12,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 const sidebarLinks = [
-    { name: "Dashboard",    href: "/admin/dashboard",   icon: LayoutDashboard },
-    { name: "Members",      href: "/admin/members",      icon: Users },
-    { name: "Payments",     href: "/admin/payments",     icon: CreditCard },
-    { name: "Diet AI",      href: "/admin/diet-ai",      icon: Utensils },
-    { name: "Trainers",     href: "/admin/trainers",     icon: Dumbbell },
-    { name: "Members Log",  href: "/admin/members-log",  icon: UserPlus },
-    { name: "Today's Log",  href: "/admin/attendance",   icon: ClipboardList },
-    { name: "Settings",     href: "/admin/settings",     icon: Settings },
+    { name: "Dashboard",         href: "/admin/dashboard",        icon: LayoutDashboard },
+    { name: "Members",           href: "/admin/members",           icon: Users },
+    { name: "Payments",          href: "/admin/payments",          icon: CreditCard },
+    { name: "Diet AI",           href: "/admin/diet-ai",           icon: Utensils },
+    { name: "Trainers",          href: "/admin/trainers",          icon: Dumbbell },
+    { name: "WA Leads",          href: "/admin/whatsapp-leads",    icon: MessageCircle },
+    { name: "Today's Log",       href: "/admin/attendance",        icon: ClipboardList },
+    { name: "Settings",          href: "/admin/settings",          icon: Settings },
 ];
 
 export function Sidebar() {

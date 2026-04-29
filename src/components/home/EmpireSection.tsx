@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -71,18 +72,31 @@ export function EmpireSection() {
       className="relative py-16 md:py-24 flex flex-col items-center justify-center px-4 overflow-hidden"
     >
       {/* Background layers */}
-      <div className="absolute inset-0 bg-[#0A0A0A]">
+      <div className="absolute inset-0">
+        {/* Gym floor photo */}
+        <Image
+          src="/gym/floor-wide.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+          style={{ opacity: 0.18 }}
+        />
+        {/* Dark base */}
+        <div className="absolute inset-0 bg-[#0A0A0A]/80" />
         {/* Subtle red radial glow at center */}
         <div
           className="absolute inset-0"
-          style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(232,25,43,0.06) 0%, transparent 65%)" }}
+          style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(232,25,43,0.10) 0%, transparent 65%)" }}
         />
+        {/* Vignette edges */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-transparent to-[#0A0A0A]" />
         {/* Diagonal accent lines */}
-        <div className="absolute top-1/3 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#E8192B]/12 to-transparent" />
-        <div className="absolute top-2/3 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#E8192B]/08 to-transparent" />
+        <div className="absolute top-1/3 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#E8192B]/15 to-transparent" />
+        <div className="absolute top-2/3 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#E8192B]/10 to-transparent" />
         {/* Side vertical bars */}
-        <div className="absolute left-[8%] top-[20%] w-[1px] h-[60%] bg-gradient-to-b from-transparent via-[#E8192B]/15 to-transparent" />
-        <div className="absolute right-[8%] top-[20%] w-[1px] h-[60%] bg-gradient-to-b from-transparent via-[#E8192B]/15 to-transparent" />
+        <div className="absolute left-[8%] top-[20%] w-[1px] h-[60%] bg-gradient-to-b from-transparent via-[#E8192B]/20 to-transparent" />
+        <div className="absolute right-[8%] top-[20%] w-[1px] h-[60%] bg-gradient-to-b from-transparent via-[#E8192B]/20 to-transparent" />
       </div>
 
       <div className="relative z-10 text-center max-w-5xl mx-auto">

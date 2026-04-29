@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -39,8 +40,20 @@ export function MontageSection() {
 
   return (
     <section ref={sectionRef} className="relative h-[50vh] md:h-[60vh] overflow-hidden">
-      {/* Background gradient — red tint now */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-[#140202]/50 to-[#0A0A0A]" />
+      {/* Background gym corridor photo */}
+      <Image
+        src="/gym/corridor-2.jpg"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+        style={{ opacity: 0.22 }}
+      />
+      {/* Dark gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-[#0A0A0A]/55 to-[#0A0A0A]" />
+      {/* Red tint overlay */}
+      <div className="absolute inset-0"
+        style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(232,25,43,0.08) 0%, transparent 70%)" }} />
 
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center gap-4 md:gap-10">
         {words.map((word, index) => (

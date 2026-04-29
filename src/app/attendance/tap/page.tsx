@@ -229,31 +229,13 @@ export default function TapPage() {
                         </div>
                     </div>
 
-                    {!isAlready && (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full mb-12 sm:mb-16">
-                            {/* Stats Grid */}
-                            <div className="bg-[#111111] border-t-2 border-[#E8192B] p-6 sm:p-8 relative overflow-hidden group shadow-[0_0_20px_rgba(232,25,43,0.15)] hover:shadow-[0_0_30px_rgba(232,25,43,0.15)] hover:border-[#E8192B] transition-all duration-300">
-                                <div className="absolute -right-4 -top-4 opacity-[0.03] group-hover:opacity-10 transition-opacity pointer-events-none">
-                                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                                </div>
-                                <p className="text-[rgba(255,255,255,0.4)] text-[10px] sm:text-xs uppercase tracking-widest mb-4" >Session Time</p>
-                                <p className="text-4xl sm:text-5xl font-bold text-[rgba(255,255,255,0.85)]" >01:42:18</p>
-                            </div>
-
-                            <div className="bg-[#111111] border-t-2 border-[#E8192B] p-6 sm:p-8 relative overflow-hidden group shadow-[0_0_20px_rgba(232,25,43,0.15)] hover:shadow-[0_0_30px_rgba(232,25,43,0.15)] hover:border-[#E8192B] transition-all duration-300">
-                                <div className="absolute -right-4 -top-4 opacity-[0.03] group-hover:opacity-10 transition-opacity pointer-events-none">
-                                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                                </div>
-                                <p className="text-[rgba(255,255,255,0.4)] text-[10px] sm:text-xs uppercase tracking-widest mb-4" >Intensity Score</p>
-                                <p className="text-4xl sm:text-5xl font-bold text-[rgba(255,255,255,0.85)]" >88<span className="text-xl sm:text-2xl text-[#E8192B] font-medium">/100</span></p>
-                            </div>
-
-                            <div className="bg-[#111111] border-t-2 border-[#f59e0b] p-6 sm:p-8 relative overflow-hidden group shadow-[0_0_20px_rgba(232,25,43,0.15)] hover:shadow-[0_0_30px_rgba(232,25,43,0.15)] hover:border-[#f59e0b] transition-all duration-300">
-                                <div className="absolute -right-4 -top-4 opacity-[0.03] group-hover:opacity-10 transition-opacity pointer-events-none">
-                                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6.5 6.5h11"/><path d="M6.5 17.5h11"/><path d="m5 8.5-2 2 2 2"/><path d="m5 15.5-2-2 2-2"/><path d="m19 15.5 2-2-2-2"/><path d="m19 8.5 2 2-2 2"/><path d="M9 12h6"/></svg>
-                                </div>
-                                <p className="text-[rgba(255,255,255,0.4)] text-[10px] sm:text-xs uppercase tracking-widest mb-4" >Volume Moved</p>
-                                <p className="text-4xl sm:text-5xl font-bold text-[rgba(255,255,255,0.85)]" >12,450 <span className="text-xl sm:text-2xl text-[rgba(255,255,255,0.4)] font-medium uppercase">kg</span></p>
+                    {!isAlready && details?.time && (
+                        <div className="w-full mb-12 sm:mb-16">
+                            <div className="bg-[#111111] border-t-2 border-[#E8192B] p-6 sm:p-8 relative overflow-hidden inline-block min-w-[260px] text-center shadow-[0_0_20px_rgba(232,25,43,0.12)]">
+                                <p className="text-[rgba(255,255,255,0.4)] text-[10px] sm:text-xs uppercase tracking-widest mb-4">Check-out Time</p>
+                                <p className="text-3xl sm:text-4xl font-bold text-[rgba(255,255,255,0.85)]">
+                                    {new Date(details.time).toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" })}
+                                </p>
                             </div>
                         </div>
                     )}

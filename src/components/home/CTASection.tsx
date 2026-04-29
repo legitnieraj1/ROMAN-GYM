@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
@@ -48,15 +49,28 @@ export function CTASection() {
       ref={sectionRef}
       className="relative min-h-[70vh] flex flex-col items-center justify-center px-4 overflow-hidden bg-[#080808]"
     >
+      {/* Background gym image */}
+      <Image
+        src="/gym/motivation.jpg"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+        style={{ opacity: 0.12 }}
+      />
+      {/* Vignette */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#080808]/80 via-[#080808]/40 to-[#080808]/80" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#080808]/60 via-transparent to-[#080808]/60" />
+
       {/* Ambient red glow */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse at 50% 58%, rgba(232,25,43,0.08) 0%, transparent 60%)" }}
+        style={{ background: "radial-gradient(ellipse at 50% 58%, rgba(232,25,43,0.12) 0%, transparent 60%)" }}
       />
 
       {/* Hairlines */}
-      <div className="absolute top-[18%] left-0 w-full h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
-      <div className="absolute bottom-[18%] left-0 w-full h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
+      <div className="absolute top-[18%] left-0 w-full h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+      <div className="absolute bottom-[18%] left-0 w-full h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
 
       <div className="relative z-10 text-center flex flex-col items-center">
         {/* Top vertical accent */}

@@ -1,0 +1,16 @@
+{
+  "name": "roman-fitness-whatsapp-bot",
+  "version": "1.0.0",
+  "description": "WhatsApp bot for Roman Fitness — bulk blast + Grok AI auto-reply",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "qrcode": "^1.5.3",
+    "whatsapp-web.js": "^1.23.0"
+  }
+}
