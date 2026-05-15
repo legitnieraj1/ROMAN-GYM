@@ -69,34 +69,30 @@ export function EmpireSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-16 md:py-24 flex flex-col items-center justify-center px-4 overflow-hidden"
+      className="relative py-16 md:py-24 flex flex-col items-center justify-center px-4 overflow-hidden bg-[#FFFFFF]"
     >
       {/* Background layers */}
       <div className="absolute inset-0">
-        {/* Gym floor photo */}
         <Image
           src="/gym/floor-wide.jpg"
           alt=""
           fill
           sizes="100vw"
           className="object-cover object-center"
-          style={{ opacity: 0.18 }}
+          style={{ opacity: 0.06 }}
         />
-        {/* Dark base */}
-        <div className="absolute inset-0 bg-[#0A0A0A]/80" />
-        {/* Subtle red radial glow at center */}
+        <div className="absolute inset-0 bg-[#FFFFFF]/88" />
         <div
           className="absolute inset-0"
-          style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(232,25,43,0.10) 0%, transparent 65%)" }}
+          style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(232,25,43,0.07) 0%, transparent 65%)" }}
         />
-        {/* Vignette edges */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-transparent to-[#0A0A0A]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FFFFFF] via-transparent to-[#FFFFFF]" />
         {/* Diagonal accent lines */}
-        <div className="absolute top-1/3 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#E8192B]/15 to-transparent" />
-        <div className="absolute top-2/3 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#E8192B]/10 to-transparent" />
+        <div className="absolute top-1/3 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#E8192B]/12 to-transparent" />
+        <div className="absolute top-2/3 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#E8192B]/08 to-transparent" />
         {/* Side vertical bars */}
-        <div className="absolute left-[8%] top-[20%] w-[1px] h-[60%] bg-gradient-to-b from-transparent via-[#E8192B]/20 to-transparent" />
-        <div className="absolute right-[8%] top-[20%] w-[1px] h-[60%] bg-gradient-to-b from-transparent via-[#E8192B]/20 to-transparent" />
+        <div className="absolute left-[8%] top-[20%] w-[1px] h-[60%] bg-gradient-to-b from-transparent via-[#E8192B]/18 to-transparent" />
+        <div className="absolute right-[8%] top-[20%] w-[1px] h-[60%] bg-gradient-to-b from-transparent via-[#E8192B]/18 to-transparent" />
       </div>
 
       <div className="relative z-10 text-center max-w-5xl mx-auto">
@@ -109,10 +105,9 @@ export function EmpireSection() {
           <div className="empire-line w-12 h-[1px] bg-[#E8192B] origin-right" />
         </div>
 
-        {/* Headline — staggered words */}
         <div className="overflow-hidden">
           <h2
-            className="empire-word-1 font-heading text-white leading-none tracking-wider"
+            className="empire-word-1 font-heading text-[#0A0A0A] leading-none tracking-wider"
             style={{ fontSize: "clamp(3rem, 9vw, 7.5rem)" }}
           >
             ENTER THE
@@ -124,7 +119,7 @@ export function EmpireSection() {
             style={{
               fontSize: "clamp(3rem, 10vw, 8.5rem)",
               color: "#E8192B",
-              textShadow: "0 0 60px rgba(232,25,43,0.3), 0 0 120px rgba(232,25,43,0.1)",
+              textShadow: "0 0 60px rgba(232,25,43,0.18), 0 0 120px rgba(232,25,43,0.08)",
             }}
           >
             ROMAN EMPIRE
@@ -132,15 +127,14 @@ export function EmpireSection() {
         </div>
         <div className="overflow-hidden -mt-1 md:-mt-2">
           <h2
-            className="empire-word-3 font-heading text-white/70 leading-none tracking-wider"
+            className="empire-word-3 font-heading text-[#0A0A0A]/60 leading-none tracking-wider"
             style={{ fontSize: "clamp(3rem, 9vw, 7.5rem)" }}
           >
             OF FITNESS
           </h2>
         </div>
 
-        {/* Sub copy */}
-        <p className="empire-sub mt-8 md:mt-10 text-white/35 text-sm md:text-base tracking-[0.3em] uppercase max-w-2xl mx-auto">
+        <p className="empire-sub mt-8 md:mt-10 text-[#0A0A0A]/42 text-sm md:text-base tracking-[0.3em] uppercase max-w-2xl mx-auto">
           Where legends are forged and limits are shattered
         </p>
 
@@ -154,11 +148,11 @@ export function EmpireSection() {
             <div key={s.label} className="empire-stats flex flex-col items-center gap-1">
               <span
                 className="font-heading text-2xl md:text-4xl text-[#E8192B]"
-                style={{ textShadow: "0 0 20px rgba(232,25,43,0.3)" }}
+                style={{ textShadow: "0 0 20px rgba(232,25,43,0.2)" }}
               >
                 {s.value}
               </span>
-              <span className="text-white/30 text-[9px] tracking-[0.35em] uppercase">{s.label}</span>
+              <span className="text-[#0A0A0A]/38 text-[9px] tracking-[0.35em] uppercase">{s.label}</span>
             </div>
           ))}
         </div>

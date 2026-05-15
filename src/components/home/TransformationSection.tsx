@@ -54,21 +54,16 @@ function BeforeAfterSlider({
     setSliderPosition(percent);
   };
 
-  const handleMouseDown = () => {
-    isDragging.current = true;
-  };
-  const handleMouseUp = () => {
-    isDragging.current = false;
-  };
+  const handleMouseDown = () => { isDragging.current = true; };
+  const handleMouseUp   = () => { isDragging.current = false; };
   const handleMouseMove = (e: React.MouseEvent) => handleMove(e.clientX);
-  const handleTouchMove = (e: React.TouchEvent) =>
-    handleMove(e.touches[0].clientX);
+  const handleTouchMove = (e: React.TouchEvent) => handleMove(e.touches[0].clientX);
 
   return (
     <div className="flex flex-col items-center">
       <div
         ref={sliderRef}
-        className="relative w-full aspect-[3/4] overflow-hidden cursor-ew-resize select-none border border-white/10"
+        className="relative w-full aspect-[3/4] overflow-hidden cursor-ew-resize select-none border border-[#0A0A0A]/[0.10]"
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
@@ -77,8 +72,7 @@ function BeforeAfterSlider({
         onTouchEnd={handleMouseUp}
         onTouchMove={handleTouchMove}
       >
-        {/* After image (full background) */}
-        <div className="absolute inset-0 bg-black">
+        <div className="absolute inset-0 bg-[#F0EBE3]">
           <img
             src={after}
             alt="After transformation"
@@ -86,10 +80,8 @@ function BeforeAfterSlider({
             draggable={false}
           />
         </div>
-
-        {/* Before image (clipped by slider) */}
         <div
-          className="absolute inset-0 bg-black"
+          className="absolute inset-0 bg-[#F0EBE3]"
           style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
         >
           <img
@@ -100,17 +92,12 @@ function BeforeAfterSlider({
           />
         </div>
 
-        {/* Slider line */}
         <div
           className="absolute top-0 bottom-0 w-[3px] z-10"
-          style={{
-            left: `${sliderPosition}%`,
-            transform: "translateX(-50%)",
-          }}
+          style={{ left: `${sliderPosition}%`, transform: "translateX(-50%)" }}
         >
           <div className="w-full h-full bg-[#E8192B]" />
-          {/* Handle */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#E8192B] flex items-center justify-center border-2 border-white/20">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#E8192B] flex items-center justify-center border-2 border-white/30">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path
                 d="M4 8L1 5M4 8L1 11M4 8H12M12 8L15 5M12 8L15 11"
@@ -123,52 +110,35 @@ function BeforeAfterSlider({
           </div>
         </div>
 
-        {/* Labels */}
-        <div className="absolute bottom-3 left-3 text-[10px] text-white/60 tracking-[0.2em] uppercase z-10 bg-black/50 px-2 py-1">
+        <div className="absolute bottom-3 left-3 text-[10px] text-[#0A0A0A]/55 tracking-[0.2em] uppercase z-10 bg-white/70 px-2 py-1">
           Before
         </div>
-        <div className="absolute bottom-3 right-3 text-[10px] text-[#E8192B] tracking-[0.2em] uppercase z-10 bg-black/50 px-2 py-1">
+        <div className="absolute bottom-3 right-3 text-[10px] text-[#E8192B] tracking-[0.2em] uppercase z-10 bg-white/70 px-2 py-1">
           After
         </div>
       </div>
 
-      {/* Caption */}
       <div className="mt-3 text-center">
-        <p className="text-white/70 text-sm font-medium">{name}</p>
-        <p className="text-[#E8192B]/60 text-xs tracking-wider uppercase">
-          {days}
-        </p>
+        <p className="text-[#0A0A0A]/68 text-sm font-medium">{name}</p>
+        <p className="text-[#E8192B]/65 text-xs tracking-wider uppercase">{days}</p>
       </div>
     </div>
   );
 }
 
 function MobileTransformCarousel() {
-  const [active, setActive] = useState(1); // Start with center
+  const [active, setActive] = useState(1);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const touchStartX = useRef(0);
-  const touchEndX = useRef(0);
+  const touchEndX   = useRef(0);
 
-  const next = useCallback(
-    () => setActive((p) => (p + 1) % transformations.length),
-    []
-  );
-  const prev = useCallback(
-    () =>
-      setActive(
-        (p) => (p - 1 + transformations.length) % transformations.length
-      ),
-    []
-  );
+  const next = useCallback(() => setActive((p) => (p + 1) % transformations.length), []);
+  const prev = useCallback(() => setActive((p) => (p - 1 + transformations.length) % transformations.length), []);
 
   useEffect(() => {
-    if (isAutoPlaying) {
-      intervalRef.current = setInterval(next, 4000);
-    }
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
+    if (isAutoPlaying) intervalRef.current = setInterval(next, 4000);
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
   }, [isAutoPlaying, next]);
 
   const pauseAuto = () => {
@@ -176,41 +146,18 @@ function MobileTransformCarousel() {
     setTimeout(() => setIsAutoPlaying(true), 8000);
   };
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-  const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
-  const handleTouchEnd = () => {
+  const handleTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.touches[0].clientX; };
+  const handleTouchMove  = (e: React.TouchEvent) => { touchEndX.current   = e.touches[0].clientX; };
+  const handleTouchEnd   = () => {
     const diff = touchStartX.current - touchEndX.current;
-    if (Math.abs(diff) > 50) {
-      pauseAuto();
-      if (diff > 0) next();
-      else prev();
-    }
+    if (Math.abs(diff) > 50) { pauseAuto(); diff > 0 ? next() : prev(); }
   };
 
   const getStyle = (index: number): React.CSSProperties => {
-    const diff =
-      ((index - active + transformations.length) % transformations.length);
-    if (diff === 0)
-      return {
-        transform: "translateX(0) scale(1) rotateY(0deg)",
-        zIndex: 10,
-        opacity: 1,
-      };
-    if (diff === 1)
-      return {
-        transform: "translateX(65%) scale(0.8) rotateY(-20deg)",
-        zIndex: 5,
-        opacity: 0.35,
-      };
-    return {
-      transform: "translateX(-65%) scale(0.8) rotateY(20deg)",
-      zIndex: 5,
-      opacity: 0.35,
-    };
+    const diff = ((index - active + transformations.length) % transformations.length);
+    if (diff === 0) return { transform: "translateX(0) scale(1) rotateY(0deg)",   zIndex: 10, opacity: 1 };
+    if (diff === 1) return { transform: "translateX(65%) scale(0.8) rotateY(-20deg)", zIndex: 5, opacity: 0.35 };
+    return              { transform: "translateX(-65%) scale(0.8) rotateY(20deg)", zIndex: 5, opacity: 0.35 };
   };
 
   return (
@@ -226,17 +173,9 @@ function MobileTransformCarousel() {
             key={t.id}
             className="absolute w-[75%] max-w-[280px] transition-all duration-500 ease-out"
             style={{ ...getStyle(index), transformStyle: "preserve-3d" }}
-            onClick={() => {
-              pauseAuto();
-              setActive(index);
-            }}
+            onClick={() => { pauseAuto(); setActive(index); }}
           >
-            <BeforeAfterSlider
-              before={t.before}
-              after={t.after}
-              name={t.name}
-              days={t.days}
-            />
+            <BeforeAfterSlider before={t.before} after={t.after} name={t.name} days={t.days} />
           </div>
         ))}
       </div>
@@ -245,13 +184,8 @@ function MobileTransformCarousel() {
           {transformations.map((_, i) => (
             <button
               key={i}
-              onClick={() => {
-                pauseAuto();
-                setActive(i);
-              }}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                i === active ? "bg-[#E8192B] w-6" : "bg-white/20 w-2"
-              }`}
+              onClick={() => { pauseAuto(); setActive(i); }}
+              className={`h-2 rounded-full transition-all duration-300 ${i === active ? "bg-[#E8192B] w-6" : "bg-[#0A0A0A]/20 w-2"}`}
             />
           ))}
         </div>
@@ -277,15 +211,8 @@ export function TransformationSection() {
         ".transform-heading",
         { opacity: 0, y: 40 },
         {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 75%",
-            toggleActions: "play none none reverse",
-          },
+          opacity: 1, y: 0, duration: 1, ease: "power2.out",
+          scrollTrigger: { trigger: sectionRef.current, start: "top 75%", toggleActions: "play none none reverse" },
         }
       );
 
@@ -294,15 +221,8 @@ export function TransformationSection() {
           ".transform-grid",
           { opacity: 0, y: 40 },
           {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 65%",
-              toggleActions: "play none none reverse",
-            },
+            opacity: 1, y: 0, duration: 1, ease: "power2.out",
+            scrollTrigger: { trigger: sectionRef.current, start: "top 65%", toggleActions: "play none none reverse" },
           }
         );
       }
@@ -311,14 +231,8 @@ export function TransformationSection() {
         ".progress-line",
         { scaleX: 0 },
         {
-          scaleX: 1,
-          duration: 2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 60%",
-            toggleActions: "play none none reverse",
-          },
+          scaleX: 1, duration: 2, ease: "power2.out",
+          scrollTrigger: { trigger: sectionRef.current, start: "top 60%", toggleActions: "play none none reverse" },
         }
       );
     }, sectionRef);
@@ -327,17 +241,16 @@ export function TransformationSection() {
   }, [isMobile]);
 
   return (
-    <section ref={sectionRef} className="relative py-14 md:py-20 px-4 bg-[#0A0A0A]">
-      {/* Subtle gym background */}
+    <section ref={sectionRef} className="relative py-14 md:py-20 px-4 bg-[#FFFFFF]">
       <Image
         src="/gym/bench-press.jpg"
         alt=""
         fill
         sizes="100vw"
         className="object-cover object-center pointer-events-none"
-        style={{ opacity: 0.06 }}
+        style={{ opacity: 0.04 }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-transparent to-[#0A0A0A] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#FFFFFF] via-transparent to-[#FFFFFF] pointer-events-none" />
       <div className="container mx-auto max-w-7xl">
         <div className="transform-heading flex items-start gap-5 md:gap-8 mb-8 md:mb-12">
           <div className="flex flex-col items-center gap-3 pt-2 flex-shrink-0">
@@ -349,13 +262,13 @@ export function TransformationSection() {
               Real Results
             </p>
             <h2
-              className="font-heading tracking-wider leading-none text-white"
+              className="font-heading tracking-wider leading-none text-[#0A0A0A]"
               style={{ fontSize: "clamp(2.5rem, 8vw, 6rem)" }}
             >
               BODY{" "}
               <span
                 className="text-[#E8192B]"
-                style={{ textShadow: "0 0 40px rgba(232,25,43,0.25)" }}
+                style={{ textShadow: "0 0 40px rgba(232,25,43,0.18)" }}
               >
                 TRANSFORMATION
               </span>
@@ -368,25 +281,18 @@ export function TransformationSection() {
         ) : (
           <div className="transform-grid grid grid-cols-3 gap-6 items-start">
             {transformations.map((t) => (
-              <BeforeAfterSlider
-                key={t.id}
-                before={t.before}
-                after={t.after}
-                name={t.name}
-                days={t.days}
-              />
+              <BeforeAfterSlider key={t.id} before={t.before} after={t.after} name={t.name} days={t.days} />
             ))}
           </div>
         )}
 
-        {/* Glowing progress line */}
         <div className="mt-10 max-w-lg mx-auto">
-          <div className="flex justify-between text-xs text-white/30 tracking-wider uppercase mb-2">
+          <div className="flex justify-between text-xs text-[#0A0A0A]/32 tracking-wider uppercase mb-2">
             <span>Day 1</span>
             <span>Day 60</span>
             <span>Day 120</span>
           </div>
-          <div className="h-[2px] bg-white/5 rounded-full overflow-hidden">
+          <div className="h-[2px] bg-[#0A0A0A]/[0.07] rounded-full overflow-hidden">
             <div className="progress-line h-full bg-gradient-to-r from-[#E8192B]/50 via-[#E8192B] to-[#E8192B]/50 origin-left" />
           </div>
         </div>

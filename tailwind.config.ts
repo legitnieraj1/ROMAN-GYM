@@ -46,6 +46,8 @@ const config: Config = {
                 "roman-black":    "#0A0A0A",
                 "roman-graphite": "#1A1A1A",
                 "roman-red":      "#E8192B",
+                "roman-cream":    "#F8F5F0",
+                "roman-white":    "#FFFFFF",
                 // keep legacy alias so admin/dashboard code still resolves
                 "roman-blue":     "#E8192B",
                 "roman-navy":     "#1A0505",

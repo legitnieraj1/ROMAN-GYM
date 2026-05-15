@@ -175,7 +175,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={cn(inter.variable, bebas.variable, "font-sans antialiased text-white bg-[#0A0A0A]")}>
+      <body className={cn(inter.variable, bebas.variable, "font-sans antialiased text-[#0A0A0A] bg-[#F5EFE8]")}>
         {/* Skip-to-content for keyboard / screen-reader users */}
         <a
           href="#main-content"

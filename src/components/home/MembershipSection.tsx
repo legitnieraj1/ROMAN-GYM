@@ -79,9 +79,9 @@ function PlanCard({
     const y  = e.clientY - rect.top;
     const cx = rect.width  / 2;
     const cy = rect.height / 2;
-    const rotX = ((y - cy) / cy) * -5;
-    const rotY = ((x - cx) / cx) *  5;
-    el.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(14px) translateY(-10px)`;
+    const rotX = ((y - cy) / cy) * -4;
+    const rotY = ((x - cx) / cx) *  4;
+    el.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(12px) translateY(-8px)`;
     el.style.transition = "transform 0.1s linear";
   };
 
@@ -97,14 +97,14 @@ function PlanCard({
       onMouseLeave={handleMouseLeave}
       className={`group relative flex flex-col p-6 md:p-8 h-full cursor-pointer ${
         plan.featured
-          ? "bg-[#0f0303] border-pulse-red"
-          : "bg-[#111]/60 border border-white/[0.06]"
+          ? "bg-white border-pulse-red"
+          : "bg-white border border-[#0A0A0A]/[0.08]"
       }`}
       style={{
         transformStyle: "preserve-3d",
         ...(plan.featured
-          ? { boxShadow: "0 0 0 1px rgba(232,25,43,0.4), 0 0 50px rgba(232,25,43,0.12)" }
-          : {}),
+          ? { boxShadow: "0 0 0 1px rgba(232,25,43,0.40), 0 4px 40px rgba(232,25,43,0.10)" }
+          : { boxShadow: "0 2px 20px rgba(10,10,10,0.06)" }),
       }}
     >
       {/* Most Popular badge */}
@@ -118,14 +118,14 @@ function PlanCard({
       <div className="flex items-center gap-3 mb-6">
         <div
           className={`w-10 h-10 flex items-center justify-center ${
-            plan.featured ? "bg-[#E8192B]/20" : "bg-white/[0.05]"
+            plan.featured ? "bg-[#E8192B]/10" : "bg-[#0A0A0A]/[0.05]"
           }`}
         >
-          <Icon className={`w-5 h-5 ${plan.featured ? "text-[#E8192B]" : "text-white/40"}`} />
+          <Icon className={`w-5 h-5 ${plan.featured ? "text-[#E8192B]" : "text-[#0A0A0A]/45"}`} />
         </div>
         <div>
-          <h3 className="font-heading text-2xl tracking-wider text-white">{plan.name}</h3>
-          <p className={`text-[10px] tracking-wider ${plan.featured ? "text-[#E8192B]/70" : "text-white/30"}`}>
+          <h3 className="font-heading text-2xl tracking-wider text-[#0A0A0A]">{plan.name}</h3>
+          <p className={`text-[10px] tracking-wider ${plan.featured ? "text-[#E8192B]/70" : "text-[#0A0A0A]/35"}`}>
             {plan.bonus}
           </p>
         </div>
@@ -134,17 +134,17 @@ function PlanCard({
       {/* Price */}
       <div className="mb-7">
         <div className="flex items-baseline gap-1">
-          <span className="text-sm text-white/35">₹</span>
+          <span className="text-sm text-[#0A0A0A]/38">₹</span>
           <span
             className={`font-heading text-4xl md:text-5xl tracking-wider ${
-              plan.featured ? "text-[#E8192B]" : "text-white"
+              plan.featured ? "text-[#E8192B]" : "text-[#0A0A0A]"
             }`}
-            style={plan.featured ? { textShadow: "0 0 30px rgba(232,25,43,0.35)" } : {}}
+            style={plan.featured ? { textShadow: "0 0 20px rgba(232,25,43,0.20)" } : {}}
           >
             {plan.price}
           </span>
         </div>
-        <p className="text-white/30 text-xs mt-1 tracking-wider">{plan.period}</p>
+        <p className="text-[#0A0A0A]/32 text-xs mt-1 tracking-wider">{plan.period}</p>
       </div>
 
       {/* Features list */}
@@ -152,11 +152,11 @@ function PlanCard({
         {plan.features.map((feature) => (
           <div key={feature.text} className="flex items-center gap-3">
             {feature.included ? (
-              <Check className={`w-4 h-4 flex-shrink-0 ${plan.featured ? "text-[#E8192B]" : "text-white/50"}`} />
+              <Check className={`w-4 h-4 flex-shrink-0 ${plan.featured ? "text-[#E8192B]" : "text-[#0A0A0A]/50"}`} />
             ) : (
-              <X className="w-4 h-4 text-white/15 flex-shrink-0" />
+              <X className="w-4 h-4 text-[#0A0A0A]/18 flex-shrink-0" />
             )}
-            <span className={`text-sm ${feature.included ? "text-white/65" : "text-white/20"}`}>
+            <span className={`text-sm ${feature.included ? "text-[#0A0A0A]/65" : "text-[#0A0A0A]/22"}`}>
               {feature.text}
             </span>
           </div>
@@ -169,8 +169,8 @@ function PlanCard({
         disabled={isLoading}
         className={`group/btn relative w-full py-3.5 font-bold uppercase tracking-[0.2em] text-sm transition-all duration-300 disabled:opacity-50 overflow-hidden ${
           plan.featured
-            ? "bg-[#E8192B] text-white hover:shadow-[0_0_30px_rgba(232,25,43,0.5)] hover:scale-[1.02]"
-            : "border border-white/10 text-white/60 hover:text-white hover:border-[#E8192B]/50 hover:bg-[#E8192B]/08"
+            ? "bg-[#E8192B] text-white hover:shadow-[0_0_30px_rgba(232,25,43,0.4)] hover:scale-[1.02]"
+            : "border border-[#0A0A0A]/12 text-[#0A0A0A]/55 hover:text-[#E8192B] hover:border-[#E8192B]/45 hover:bg-[#E8192B]/[0.04]"
         }`}
       >
         {isLoading ? (
@@ -186,8 +186,8 @@ function PlanCard({
       {/* Hover glow overlay */}
       {!plan.featured && (
         <div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-          style={{ boxShadow: "0 0 0 1px rgba(232,25,43,0.25), inset 0 0 30px rgba(232,25,43,0.04)" }}
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"
+          style={{ boxShadow: "0 0 0 1px rgba(232,25,43,0.20), inset 0 0 30px rgba(232,25,43,0.02)" }}
         />
       )}
     </div>
@@ -201,7 +201,7 @@ function MobileCarousel({
   onSubscribe: (planName: string) => void;
   loadingPlan: string | null;
 }) {
-  const [active, setActive]             = useState(1);
+  const [active, setActive]               = useState(1);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const touchStartX = useRef(0);
@@ -230,8 +230,8 @@ function MobileCarousel({
   const getStyle = (index: number): React.CSSProperties => {
     const diff = ((index - active) + plans.length) % plans.length;
     if (diff === 0) return { transform: "translateX(0) scale(1) rotateY(0deg)",       zIndex: 10, opacity: 1 };
-    if (diff === 1) return { transform: "translateX(70%) scale(0.8) rotateY(-25deg)", zIndex: 5,  opacity: 0.4 };
-    return              { transform: "translateX(-70%) scale(0.8) rotateY(25deg)",    zIndex: 5,  opacity: 0.4 };
+    if (diff === 1) return { transform: "translateX(70%) scale(0.8) rotateY(-25deg)", zIndex: 5,  opacity: 0.35 };
+    return              { transform: "translateX(-70%) scale(0.8) rotateY(25deg)",    zIndex: 5,  opacity: 0.35 };
   };
 
   return (
@@ -258,7 +258,7 @@ function MobileCarousel({
           <button
             key={i}
             onClick={() => { pauseAuto(); setActive(i); }}
-            className={`h-[3px] rounded-none transition-all duration-300 ${i === active ? "bg-[#E8192B] w-8" : "bg-white/20 w-3"}`}
+            className={`h-[3px] rounded-none transition-all duration-300 ${i === active ? "bg-[#E8192B] w-8" : "bg-[#0A0A0A]/18 w-3"}`}
           />
         ))}
       </div>
@@ -269,7 +269,7 @@ function MobileCarousel({
 export function MembershipSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardsRef   = useRef<HTMLDivElement[]>([]);
-  const [isMobile, setIsMobile]   = useState(false);
+  const [isMobile, setIsMobile]       = useState(false);
   const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
   const router = useRouter();
 
@@ -356,21 +356,19 @@ export function MembershipSection() {
   }, [isMobile]);
 
   return (
-    <section ref={sectionRef} id="plans" className="relative py-14 md:py-20 px-4 bg-[#0A0A0A]">
-      {/* Background gym image */}
+    <section ref={sectionRef} id="plans" className="relative py-14 md:py-20 px-4 bg-[#F5EFE8]">
       <Image
         src="/gym/shoulder-press.jpg"
         alt=""
         fill
         sizes="100vw"
         className="object-cover object-center pointer-events-none"
-        style={{ opacity: 0.08 }}
+        style={{ opacity: 0.04 }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-[#0A0A0A] pointer-events-none" />
-      {/* Ambient red glow */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#F5EFE8] via-transparent to-[#F5EFE8] pointer-events-none" />
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(232,25,43,0.07) 0%, transparent 55%)" }}
+        style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(232,25,43,0.05) 0%, transparent 55%)" }}
       />
 
       <div className="container mx-auto max-w-5xl relative z-10">
@@ -381,18 +379,18 @@ export function MembershipSection() {
             <div className="w-8 h-px bg-[#E8192B]/60" />
           </div>
           <h2
-            className="font-heading tracking-wider leading-none text-white"
+            className="font-heading tracking-wider leading-none text-[#0A0A0A]"
             style={{ fontSize: "clamp(2.5rem, 8vw, 6rem)" }}
           >
             MEMBERSHIP{" "}
             <span
               className="text-[#E8192B]"
-              style={{ textShadow: "0 0 40px rgba(232,25,43,0.25)" }}
+              style={{ textShadow: "0 0 40px rgba(232,25,43,0.18)" }}
             >
               PLANS
             </span>
           </h2>
-          <p className="mt-4 text-white/25 text-[11px] tracking-[0.35em] uppercase">
+          <p className="mt-4 text-[#0A0A0A]/28 text-[11px] tracking-[0.35em] uppercase">
             No admission fee. Just results.
           </p>
         </div>
@@ -400,7 +398,7 @@ export function MembershipSection() {
         {isMobile ? (
           <MobileCarousel onSubscribe={handleSubscribe} loadingPlan={loadingPlan} />
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-[1px] bg-white/[0.04] items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 items-stretch">
             {plans.map((plan, index) => (
               <div key={plan.name} ref={(el) => { if (el) cardsRef.current[index] = el; }}>
                 <PlanCard plan={plan} onSubscribe={handleSubscribe} loadingPlan={loadingPlan} />

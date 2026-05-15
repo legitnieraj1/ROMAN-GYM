@@ -40,20 +40,20 @@ export function MontageSection() {
 
   return (
     <section ref={sectionRef} className="relative h-[50vh] md:h-[60vh] overflow-hidden">
-      {/* Background gym corridor photo */}
+      {/* Keep dark — cinematic contrast moment between light sections */}
       <Image
         src="/gym/corridor-2.jpg"
         alt=""
         fill
         sizes="100vw"
         className="object-cover object-center"
-        style={{ opacity: 0.22 }}
+        style={{ opacity: 0.30 }}
       />
-      {/* Dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-[#0A0A0A]/55 to-[#0A0A0A]" />
-      {/* Red tint overlay */}
-      <div className="absolute inset-0"
-        style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(232,25,43,0.08) 0%, transparent 70%)" }} />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-[#0A0A0A]/50 to-[#0A0A0A]" />
+      <div
+        className="absolute inset-0"
+        style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(232,25,43,0.10) 0%, transparent 70%)" }}
+      />
 
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center gap-4 md:gap-10">
         {words.map((word, index) => (
@@ -64,12 +64,12 @@ export function MontageSection() {
           >
             <h2
               className={`font-heading leading-none tracking-wider ${
-                index === 1 ? "text-[#E8192B]" : "text-white/75"
+                index === 1 ? "text-[#E8192B]" : "text-white/80"
               }`}
               style={{
                 fontSize: "clamp(3.5rem, 10vw, 10rem)",
                 textShadow: index === 1 ? "0 0 80px rgba(232,25,43,0.35), 0 0 160px rgba(232,25,43,0.12)" : "none",
-                WebkitTextStroke: index !== 1 ? "1px rgba(232, 25, 43, 0.18)" : "none",
+                WebkitTextStroke: index !== 1 ? "1px rgba(255,255,255,0.12)" : "none",
               }}
             >
               {word}
@@ -78,8 +78,8 @@ export function MontageSection() {
         ))}
 
         {/* Side vertical accent bars */}
-        <div className="absolute left-8 top-1/4 w-[1px] h-1/2 bg-gradient-to-b from-transparent via-[#E8192B]/20 to-transparent" />
-        <div className="absolute right-8 top-1/4 w-[1px] h-1/2 bg-gradient-to-b from-transparent via-[#E8192B]/20 to-transparent" />
+        <div className="absolute left-8 top-1/4 w-[1px] h-1/2 bg-gradient-to-b from-transparent via-[#E8192B]/25 to-transparent" />
+        <div className="absolute right-8 top-1/4 w-[1px] h-1/2 bg-gradient-to-b from-transparent via-[#E8192B]/25 to-transparent" />
       </div>
     </section>
   );

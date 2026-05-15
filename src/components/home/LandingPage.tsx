@@ -1,46 +1,38 @@
 "use client";
 
-import { SmoothScroll }        from "./SmoothScroll";
-import { GrainOverlay }        from "./GrainOverlay";
-import { PageIntro }           from "./PageIntro";
-import { HeroSection }         from "./HeroSection";
-import { ManifestoSection }    from "./ManifestoSection";
-import { EmpireSection }       from "./EmpireSection";
-import { FeaturesSection }     from "./FeaturesSection";
+import { SmoothScroll }          from "./SmoothScroll";
+import { PageIntro }             from "./PageIntro";
+import { HeroSection }           from "./HeroSection";
+import { ManifestoSection }      from "./ManifestoSection";
+import { GallerySection }        from "./GallerySection";
+import { FeaturesSection }       from "./FeaturesSection";
 import { TransformationSection } from "./TransformationSection";
-import { MembershipSection }   from "./MembershipSection";
-import { MontageSection }      from "./MontageSection";
-import { TrainersSection }     from "./TrainersSection";
-import { CTASection }          from "./CTASection";
+import { MembershipSection }     from "./MembershipSection";
+import { TrainersSection }       from "./TrainersSection";
+import { CTASection }            from "./CTASection";
 
 /**
- * Narrative order:
- * 1. "BUILT DIFFERENT."              — Hero makes the claim
- * 2. "THIS IS NOT A GYM. IT'S YOUR FORGE." — Manifesto drives it home
- * 3. "ENTER THE ROMAN EMPIRE"        — Context + stats
- * 4. GYM FEATURES                    — Editorial what-you-get
- * 5. BODY TRANSFORMATION             — Proof (before/after)
- * 6. MEMBERSHIP PLANS                — Offer
- * 7. POWER · DISCIPLINE · LEGACY     — Emotional montage
- * 8. ELITE TRAINERS                  — The people
- * 9. JOIN.                           — Final call to action
+ * Page narrative:
+ * 1. Hero — gym photo + bold headline
+ * 2. Manifesto — stats strip + "NOT A GYM"
+ * 3. Gallery — all 14 gym photos in editorial grid
+ * 4. Features — what we offer
+ * 5. Transformations — proof
+ * 6. Membership — pricing
+ * 7. Trainers — the team
+ * 8. CTA — final call
  */
 export function LandingPage() {
   return (
     <>
-      {/* ── Fixed overlays ── */}
       <PageIntro />
-      <GrainOverlay />
-
-      {/* ── Scrollable content ── */}
       <SmoothScroll>
         <HeroSection />
         <ManifestoSection />
-        <EmpireSection />
+        <GallerySection />
         <FeaturesSection />
         <TransformationSection />
         <MembershipSection />
-        <MontageSection />
         <TrainersSection />
         <CTASection />
       </SmoothScroll>
